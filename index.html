@@ -145,24 +145,54 @@
       border-top: 1px solid var(--border);
     }
 
-    /* Demo gallery */
-    .demo-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+    /* How it works – steps */
+    .how-it-works-steps {
       margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
     }
-    .demo-gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius-sm);
+    .step-item {
+      background: var(--surface);
+      border-radius: var(--radius);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      overflow: hidden;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
-    .demo-gallery img:hover {
-      transform: translateY(-2px);
+    .step-item:hover {
       box-shadow: var(--shadow-lg);
+      border-color: rgba(37, 99, 235, 0.15);
+    }
+    .step-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-content {
+      padding: 24px 28px;
+    }
+    .step-number {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .step-item h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 8px;
+    }
+    .step-item p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.6;
     }
 
     /* Sections */
@@ -338,14 +368,63 @@
     <section>
       <p class="section-label">Screenshots</p>
       <h2 class="section-title">How it works</h2>
-      <div class="demo-gallery">
-        <img src="Clear Approve Demo 1.png" alt="Clear Approve demo 1" />
-        <img src="Clear Approve Demo 2.png" alt="Clear Approve demo 2" />
-        <img src="Clear Approve Demo 3.png" alt="Clear Approve demo 3" />
-        <img src="Clear Approve Demo 4.png" alt="Clear Approve demo 4" />
-        <img src="Clear Approve Demo 5.png" alt="Clear Approve demo 5" />
-        <img src="Clear Approve Demo 6.png" alt="Clear Approve demo 6" />
-        <img src="Clear Approve Demo 7.png" alt="Clear Approve demo 7" />
+      <div class="how-it-works-steps">
+        <div class="step-item">
+          <img src="Clear Approve Demo 1.png" alt="Select rows in your sheet" />
+          <div class="step-content">
+            <span class="step-number">Step 1</span>
+            <h3>Select the rows that need approval</h3>
+            <p>In your Google Sheet, highlight the rows you want to send for approval. Clear Approve works with any sheet—expense reports, leave requests, purchase orders, or custom workflows.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <img src="Clear Approve Demo 2.png" alt="Open Clear Approve and request approval" />
+          <div class="step-content">
+            <span class="step-number">Step 2</span>
+            <h3>Open Clear Approve and choose “Request approval”</h3>
+            <p>From the add-on menu, start a new approval request. The selected rows are attached to the request so approvers see exactly what they’re signing off on.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <img src="Clear Approve Demo 3.png" alt="Add approvers and send" />
+          <div class="step-content">
+            <span class="step-number">Step 3</span>
+            <h3>Add approver email(s) and send</h3>
+            <p>Enter one or more approver email addresses, add an optional message, and send. Clear Approve sends a clear, professional email with the request details and direct links to approve or reject.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <img src="Clear Approve Demo 4.png" alt="Approvers receive the email" />
+          <div class="step-content">
+            <span class="step-number">Step 4</span>
+            <h3>Approvers receive the email</h3>
+            <p>Approvers get an email that summarizes the request and shows the relevant row data. They don’t need to open the sheet to understand what’s being asked.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <img src="Clear Approve Demo 5.png" alt="Approve or reject with one click" />
+          <div class="step-content">
+            <span class="step-number">Step 5</span>
+            <h3>Approve or reject with one click</h3>
+            <p>From the email (or a short linked page), approvers click Approve or Reject. No login to a separate tool—decisions are recorded instantly.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <img src="Clear Approve Demo 6.png" alt="Sheet updates with status" />
+          <div class="step-content">
+            <span class="step-number">Step 6</span>
+            <h3>Your sheet updates automatically</h3>
+            <p>The spreadsheet reflects the decision right away: status badges, timestamps, and (optionally) the approver’s name. You can see at a glance what’s pending, approved, or rejected.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <img src="Clear Approve Demo 7.png" alt="Audit log of all decisions" />
+          <div class="step-content">
+            <span class="step-number">Step 7</span>
+            <h3>Every decision is recorded in the audit log</h3>
+            <p>Clear Approve keeps an immutable record of every request and decision in a protected audit sheet. Use it for compliance, reviews, or simply to see the full history of approvals.</p>
+          </div>
+        </div>
       </div>
     </section>
 
