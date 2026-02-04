@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="Clear Approve 128.png" />
-  <title>Clear Approve — PDF Snapshots & Approval Workflows for Google Sheets</title>
+  <title>Clear Approve — Smart Snapshots & Auto-PDF for Google Sheets</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -464,9 +464,9 @@
     <div class="container">
       <img src="Clear Approve Logo.png" alt="Clear Approve" class="hero-logo" />
       <h1>Clear Approve</h1>
-      <p class="hero-text">Generate accurate PDF/HTML snapshots from your sheet, send them to stakeholders, and run
-        auditable approval workflows—all from the spreadsheet you’re already using.</p>
-      <span class="badge">✓ Free trial · Works in Google Workspace</span>
+      <p class="hero-text">Effortlessly share data with <b>Smart Snapshots</b>. Select your rows to send professional
+        HTML email cards or automatic PDF attachments—directly from the spreadsheet you’re already using.</p>
+      <span class="badge">✓ Free trial · Secure Contextual Access</span>
     </div>
   </header>
 
@@ -479,7 +479,7 @@
           <source src="Clear Approve Send Snapshot Demo/Clear Approve Send Snapshot Demo.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <p class="video-caption">Clear Approve Send Snapshot Demo — create and send PDF snapshots and approval requests
+        <p class="video-caption">Clear Approve Send Snapshot Demo — create and send Email/PDF snapshots
           from Google Sheets.</p>
       </div>
     </section>
@@ -494,18 +494,17 @@
         <div class="demo-explained-text">
           <p class="demo-explained-intro">In the Send Snapshot flow, here’s what’s happening:</p>
           <ol class="demo-steps-list">
-            <li><strong>Open Clear Approve</strong> — From your Google Sheet, open the add-on. The sidebar opens so you
-              can configure and send a snapshot.</li>
-            <li><strong>Select rows</strong> — Highlight the rows you want to capture. The add-on reads only the data
-              and formatting from this sheet to build an accurate snapshot.</li>
-            <li><strong>Configure in the sidebar</strong> — Choose whether you want a PDF or HTML snapshot, add
-              recipient email(s), and optionally turn it into an approval request. You can also see your trial usage or
-              refresh your Pro license here.</li>
-            <li><strong>Click Send</strong> — Nothing is sent until you click “Send.” Clear Approve then generates the
-              snapshot and emails it (and any approval request) to the recipients you specified.</li>
-            <li><strong>Recipients get the snapshot</strong> — Stakeholders receive a clear email with the snapshot
-              attached or linked. If it’s an approval request, they can approve or reject from the email; your sheet and
-              audit log update accordingly.</li>
+            <li><strong>Open Clear Approve</strong> — From your Google Sheet, launch the add-on via the Extensions menu.
+              The sidebar opens within your active document.</li>
+            <li><strong>Select rows</strong> — Highlight the rows you want to share. The add-on only reads the specific
+              data you've selected in the current sheet.</li>
+            <li><strong>Smart Formatting</strong> — The sidebar automatically optimizes your snapshot: selections of 8
+              rows or fewer are sent as <b>visual email cards</b>, while larger datasets are converted into a <b>PDF
+                attachment</b> for clarity.</li>
+            <li><strong>Click Send</strong> — Nothing is sent until you click “Send.” Clear Approve generates the
+              snapshot and emails it directly to your stakeholders using the Gmail API.</li>
+            <li><strong>Recipients get the snapshot</strong> — Stakeholders receive a professional email with the data
+              formatted as cards or a PDF.</li>
           </ol>
         </div>
       </div>
@@ -516,10 +515,10 @@
       <h2 class="section-title">How the email looks</h2>
       <div class="email-preview">
         <img src="Clear Approve Send Snapshot Email Img.png"
-          alt="Clear Approve email — snapshot or approval request as received by the recipient" />
-        <p class="email-preview-caption"><strong>When you send a snapshot or approval request</strong>, recipients get a
-          clear, professional email like this. They can view the snapshot (PDF or HTML) and, for approval requests,
-          approve or reject directly from the email—no need to open the spreadsheet.</p>
+          alt="Clear Approve email — snapshot or as received by the recipient" />
+        <p class="email-preview-caption"><strong>When you send a snapshot </strong>, recipients get a
+          clear, professional email like this. They can view the snapshot (PDF or HTML)
+        </p>
       </div>
     </section>
 
@@ -541,15 +540,22 @@
         </div>
         <div class="card">
           <div class="card-icon">📤</div>
-          <h3>Send Snapshots & Approval Requests</h3>
-          <p>Email PDF snapshots and approval requests to stakeholders only when you choose—emails are sent only after
+          <h3>Send Snapshots</h3>
+          <p>Email PDF snapshots to stakeholders only when you choose—emails are sent only after
             you click the “Send” button.</p>
         </div>
+
         <div class="card">
           <div class="card-icon">◇</div>
-          <h3>Sidebar & License</h3>
-          <p>Use the sidebar to configure snapshots, track your trial limits, and refresh your license. Your email is
-            used only as a unique identifier to verify your subscription against our secure license database.</p>
+          <h3>Smart Snapshots</h3>
+          <p>Generate optimized HTML cards or PDF snapshots from selected rows. Our "Auto-PDF" logic ensures your data
+            is always easy to read, regardless of the selection size.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>Contextual Security</h3>
+          <p>We use the <i>currentonly</i> spreadsheet scope. This means the app only accesses the specific file you are
+            working on, ensuring maximum privacy for your other Drive files.</p>
         </div>
       </div>
     </section>
