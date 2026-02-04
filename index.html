@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="Clear Approve 128.png" />
-  <title>Clear Approve — Professional Workflows for Google Sheets</title>
+  <title>Clear Approve — PDF Snapshots & Approval Workflows for Google Sheets</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@500&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --primary: #2563eb;
@@ -25,7 +28,10 @@
       --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text);
@@ -36,7 +42,11 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
     .nav {
       background: rgba(255, 255, 255, 0.9);
@@ -47,22 +57,45 @@
       top: 0;
       z-index: 10;
     }
+
     .nav .container {
       display: flex;
       align-items: center;
       gap: 12px;
     }
+
     .nav a {
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s ease;
     }
-    .nav a:hover { color: var(--primary); }
-    .nav-logo { width: 36px; height: 36px; border-radius: 8px; display: block; }
-    .nav-links { margin-left: auto; display: flex; gap: 24px; }
-    .nav-links a { font-size: 0.9375rem; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--primary); }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
 
     /* Hero */
     .hero {
@@ -72,6 +105,7 @@
       background: linear-gradient(180deg, #eff6ff 0%, var(--surface) 100%);
       overflow: hidden;
     }
+
     .hero::before {
       content: '';
       position: absolute;
@@ -82,7 +116,12 @@
       background: radial-gradient(circle at 30% 20%, rgba(37, 99, 235, 0.06) 0%, transparent 50%);
       pointer-events: none;
     }
-    .hero .container { position: relative; z-index: 1; }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
     .hero-logo {
       width: 72px;
       height: 72px;
@@ -90,6 +129,7 @@
       display: block;
       border-radius: var(--radius-sm);
     }
+
     .hero h1 {
       font-size: clamp(2rem, 5vw, 2.75rem);
       font-weight: 700;
@@ -97,6 +137,7 @@
       margin: 0 0 16px;
       letter-spacing: -0.02em;
     }
+
     .hero .hero-text {
       font-size: 1.2rem;
       color: var(--text-muted);
@@ -104,6 +145,7 @@
       margin: 0 auto;
       line-height: 1.65;
     }
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -116,6 +158,7 @@
       font-weight: 500;
       border-radius: 999px;
     }
+
     .hero-banner {
       margin-top: 48px;
       border-radius: var(--radius);
@@ -125,7 +168,12 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .hero-banner img { width: 100%; height: auto; display: block; }
+
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     /* Video */
     .video-wrap {
@@ -135,7 +183,13 @@
       box-shadow: var(--shadow-lg);
       background: #0f172a;
     }
-    .video-wrap video { width: 100%; height: auto; display: block; }
+
+    .video-wrap video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     .video-caption {
       padding: 16px 20px;
       background: var(--surface);
@@ -145,58 +199,93 @@
       border-top: 1px solid var(--border);
     }
 
-    /* How it works – steps */
-    .how-it-works-steps {
+    /* How it works – single demo image + explanation */
+    .demo-explained {
       margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-    .step-item {
       background: var(--surface);
       border-radius: var(--radius);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
       overflow: hidden;
-      transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
-    .step-item:hover {
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(37, 99, 235, 0.15);
+
+    .demo-explained-img-wrap {
+      border-bottom: 1px solid var(--border);
+      background: #f8fafc;
     }
-    .step-item img {
+
+    .demo-explained-img-wrap img {
       width: 100%;
       height: auto;
       display: block;
-      border-bottom: 1px solid var(--border);
     }
-    .step-content {
-      padding: 24px 28px;
+
+    .demo-explained-text {
+      padding: 32px 28px 36px;
     }
-    .step-number {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-    .step-item h3 {
-      font-size: 1.125rem;
-      font-weight: 600;
+
+    .demo-explained-intro {
+      font-size: 1rem;
+      font-weight: 500;
       color: var(--text);
-      margin: 0 0 8px;
+      margin: 0 0 20px;
+      line-height: 1.5;
     }
-    .step-item p {
+
+    .demo-steps-list {
+      margin: 0;
+      padding-left: 1.35rem;
       font-size: 0.9375rem;
       color: var(--text-muted);
-      margin: 0;
+      line-height: 1.7;
+    }
+
+    .demo-steps-list li {
+      margin-bottom: 12px;
+    }
+
+    .demo-steps-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .demo-steps-list strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Email preview – what recipients see */
+    .email-preview {
+      margin-top: 32px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .email-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .email-preview-caption {
+      padding: 20px 28px 24px;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
       line-height: 1.6;
+      border-top: 1px solid var(--border);
+    }
+
+    .email-preview-caption strong {
+      color: var(--text);
     }
 
     /* Sections */
-    section { padding: 64px 0; }
+    section {
+      padding: 64px 0;
+    }
+
     .section-label {
       font-size: 0.75rem;
       font-weight: 600;
@@ -205,6 +294,7 @@
       color: var(--primary);
       margin-bottom: 12px;
     }
+
     .section-title {
       font-size: clamp(1.5rem, 3vw, 1.875rem);
       font-weight: 600;
@@ -219,6 +309,7 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
     }
+
     .card {
       background: var(--surface);
       padding: 28px;
@@ -227,11 +318,13 @@
       box-shadow: var(--shadow);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
+
     .card:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-lg);
       border-color: rgba(37, 99, 235, 0.2);
     }
+
     .card-icon {
       width: 44px;
       height: 44px;
@@ -242,15 +335,30 @@
       font-size: 1.25rem;
       margin-bottom: 16px;
     }
-    .card:nth-child(1) .card-icon { background: rgba(37, 99, 235, 0.12); }
-    .card:nth-child(2) .card-icon { background: rgba(14, 165, 233, 0.12); }
-    .card:nth-child(3) .card-icon { background: rgba(34, 197, 94, 0.12); }
+
+    .card:nth-child(1) .card-icon {
+      background: rgba(37, 99, 235, 0.12);
+    }
+
+    .card:nth-child(2) .card-icon {
+      background: rgba(14, 165, 233, 0.12);
+    }
+
+    .card:nth-child(3) .card-icon {
+      background: rgba(34, 197, 94, 0.12);
+    }
+
+    .card:nth-child(4) .card-icon {
+      background: rgba(168, 85, 247, 0.12);
+    }
+
     .card h3 {
       font-size: 1.125rem;
       font-weight: 600;
       color: var(--text);
       margin: 0 0 8px;
     }
+
     .card p {
       font-size: 0.9375rem;
       color: var(--text-muted);
@@ -262,6 +370,7 @@
     .pricing-wrap {
       margin-top: 48px;
     }
+
     .price-box {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
@@ -272,6 +381,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .price-box::before {
       content: '';
       position: absolute;
@@ -279,19 +389,22 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     }
+
     .price-box .price {
       font-family: 'JetBrains Mono', monospace;
       font-size: 2rem;
       font-weight: 500;
       margin: 0 0 4px;
     }
+
     .price-box .price-note {
       font-size: 0.9375rem;
       opacity: 0.9;
       margin: 0 0 12px;
     }
+
     .price-box small {
       font-size: 0.8125rem;
       opacity: 0.8;
@@ -304,6 +417,7 @@
       border-top: 1px solid var(--border);
       background: var(--surface);
     }
+
     footer .links {
       display: flex;
       flex-wrap: wrap;
@@ -311,6 +425,7 @@
       gap: 8px 24px;
       margin-bottom: 16px;
     }
+
     footer a {
       color: var(--text-muted);
       text-decoration: none;
@@ -318,7 +433,11 @@
       font-weight: 500;
       transition: color 0.2s ease;
     }
-    footer a:hover { color: var(--primary); }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
     footer .copy {
       font-size: 0.875rem;
       color: var(--text-muted);
@@ -326,6 +445,7 @@
     }
   </style>
 </head>
+
 <body>
   <nav class="nav">
     <div class="container">
@@ -344,11 +464,9 @@
     <div class="container">
       <img src="Clear Approve Logo.png" alt="Clear Approve" class="hero-logo" />
       <h1>Clear Approve</h1>
-      <p class="hero-text">The simplest way to manage auditable approval workflows directly inside your Google Sheets.</p>
+      <p class="hero-text">Generate accurate PDF/HTML snapshots from your sheet, send them to stakeholders, and run
+        auditable approval workflows—all from the spreadsheet you’re already using.</p>
       <span class="badge">✓ Free trial · Works in Google Workspace</span>
-      <div class="hero-banner">
-        <img src="Clear Approve Banner Image.png" alt="Clear Approve in Google Sheets" />
-      </div>
     </div>
   </header>
 
@@ -358,73 +476,50 @@
       <h2 class="section-title">Watch a quick demo</h2>
       <div class="video-wrap">
         <video controls poster="Clear Approve Demo 1.png" preload="metadata">
-          <source src="Demo video.mp4" type="video/mp4" />
+          <source src="Clear Approve Send Snapshot Demo/Clear Approve Send Snapshot Demo.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <p class="video-caption">See how Clear Approve handles approval workflows inside Google Sheets.</p>
+        <p class="video-caption">Clear Approve Send Snapshot Demo — create and send PDF snapshots and approval requests
+          from Google Sheets.</p>
       </div>
     </section>
 
     <section>
-      <p class="section-label">Screenshots</p>
+      <p class="section-label">Send Snapshot Demo</p>
       <h2 class="section-title">How it works</h2>
-      <div class="how-it-works-steps">
-        <div class="step-item">
-          <img src="Clear Approve Demo 1.png" alt="Select rows in your sheet" />
-          <div class="step-content">
-            <span class="step-number">Step 1</span>
-            <h3>Select the rows that need approval</h3>
-            <p>In your Google Sheet, highlight the rows you want to send for approval. Clear Approve works with any sheet—expense reports, leave requests, purchase orders, or custom workflows.</p>
-          </div>
+      <div class="demo-explained">
+        <div class="demo-explained-img-wrap">
+          <img src="Clear Approve Send Snapshot Demo Img.png" alt="Clear Approve Send Snapshot Demo" />
         </div>
-        <div class="step-item">
-          <img src="Clear Approve Demo 2.png" alt="Open Clear Approve and request approval" />
-          <div class="step-content">
-            <span class="step-number">Step 2</span>
-            <h3>Open Clear Approve and choose “Request approval”</h3>
-            <p>From the add-on menu, start a new approval request. The selected rows are attached to the request so approvers see exactly what they’re signing off on.</p>
-          </div>
+        <div class="demo-explained-text">
+          <p class="demo-explained-intro">In the Send Snapshot flow, here’s what’s happening:</p>
+          <ol class="demo-steps-list">
+            <li><strong>Open Clear Approve</strong> — From your Google Sheet, open the add-on. The sidebar opens so you
+              can configure and send a snapshot.</li>
+            <li><strong>Select rows</strong> — Highlight the rows you want to capture. The add-on reads only the data
+              and formatting from this sheet to build an accurate snapshot.</li>
+            <li><strong>Configure in the sidebar</strong> — Choose whether you want a PDF or HTML snapshot, add
+              recipient email(s), and optionally turn it into an approval request. You can also see your trial usage or
+              refresh your Pro license here.</li>
+            <li><strong>Click Send</strong> — Nothing is sent until you click “Send.” Clear Approve then generates the
+              snapshot and emails it (and any approval request) to the recipients you specified.</li>
+            <li><strong>Recipients get the snapshot</strong> — Stakeholders receive a clear email with the snapshot
+              attached or linked. If it’s an approval request, they can approve or reject from the email; your sheet and
+              audit log update accordingly.</li>
+          </ol>
         </div>
-        <div class="step-item">
-          <img src="Clear Approve Demo 3.png" alt="Add approvers and send" />
-          <div class="step-content">
-            <span class="step-number">Step 3</span>
-            <h3>Add approver email(s) and send</h3>
-            <p>Enter one or more approver email addresses, add an optional message, and send. Clear Approve sends a clear, professional email with the request details and direct links to approve or reject.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <img src="Clear Approve Demo 4.png" alt="Approvers receive the email" />
-          <div class="step-content">
-            <span class="step-number">Step 4</span>
-            <h3>Approvers receive the email</h3>
-            <p>Approvers get an email that summarizes the request and shows the relevant row data. They don’t need to open the sheet to understand what’s being asked.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <img src="Clear Approve Demo 5.png" alt="Approve or reject with one click" />
-          <div class="step-content">
-            <span class="step-number">Step 5</span>
-            <h3>Approve or reject with one click</h3>
-            <p>From the email (or a short linked page), approvers click Approve or Reject. No login to a separate tool—decisions are recorded instantly.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <img src="Clear Approve Demo 6.png" alt="Sheet updates with status" />
-          <div class="step-content">
-            <span class="step-number">Step 6</span>
-            <h3>Your sheet updates automatically</h3>
-            <p>The spreadsheet reflects the decision right away: status badges, timestamps, and (optionally) the approver’s name. You can see at a glance what’s pending, approved, or rejected.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <img src="Clear Approve Demo 7.png" alt="Audit log of all decisions" />
-          <div class="step-content">
-            <span class="step-number">Step 7</span>
-            <h3>Every decision is recorded in the audit log</h3>
-            <p>Clear Approve keeps an immutable record of every request and decision in a protected audit sheet. Use it for compliance, reviews, or simply to see the full history of approvals.</p>
-          </div>
-        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">What recipients see</p>
+      <h2 class="section-title">How the email looks</h2>
+      <div class="email-preview">
+        <img src="Clear Approve Send Snapshot Email Img.png"
+          alt="Clear Approve email — snapshot or approval request as received by the recipient" />
+        <p class="email-preview-caption"><strong>When you send a snapshot or approval request</strong>, recipients get a
+          clear, professional email like this. They can view the snapshot (PDF or HTML) and, for approval requests,
+          approve or reject directly from the email—no need to open the spreadsheet.</p>
       </div>
     </section>
 
@@ -433,19 +528,28 @@
       <h2 class="section-title">Powerful Simplicity</h2>
       <div class="feature-grid">
         <div class="card">
-          <div class="card-icon">📤</div>
-          <h3>One-Click Requests</h3>
-          <p>Select any rows and send them to approvers instantly via professional, interactive emails.</p>
+          <div class="card-icon">📄</div>
+          <h3>PDF/HTML Snapshots</h3>
+          <p>Generate accurate PDF or HTML snapshots from user-selected rows and formatting. The add-on only accesses
+            the spreadsheet where you launched it—so your data stays scoped to that sheet.</p>
         </div>
         <div class="card">
-          <div class="card-icon">🔒</div>
-          <h3>Secure Audit Log</h3>
-          <p>Maintain an immutable record of every decision in a protected, system-managed sheet.</p>
+          <div class="card-icon">✓</div>
+          <h3>Pro License & Payments</h3>
+          <p>Your Pro subscription and Razorpay payments are verified securely with our backend. Once payment succeeds,
+            your license is synced so you get immediate access to paid features.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📤</div>
+          <h3>Send Snapshots & Approval Requests</h3>
+          <p>Email PDF snapshots and approval requests to stakeholders only when you choose—emails are sent only after
+            you click the “Send” button.</p>
         </div>
         <div class="card">
           <div class="card-icon">◇</div>
-          <h3>Live Status Tracking</h3>
-          <p>Watch your spreadsheet update in real-time with beautiful status badges and timestamps.</p>
+          <h3>Sidebar & License</h3>
+          <p>Use the sidebar to configure snapshots, track your trial limits, and refresh your license. Your email is
+            used only as a unique identifier to verify your subscription against our secure license database.</p>
         </div>
       </div>
     </section>
@@ -472,4 +576,5 @@
     <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
   </footer>
 </body>
+
 </html>
