@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +8,9 @@
   <title>Privacy Policy — Clear Approve</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --primary: #2563eb;
@@ -20,7 +23,11 @@
       --radius-sm: 10px;
       --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text);
@@ -30,38 +37,62 @@
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
     .nav {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
       padding: 16px 24px;
     }
+
     .nav .container {
       display: flex;
       align-items: center;
       gap: 12px;
     }
+
     .nav a {
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s ease;
     }
-    .nav a:hover { color: var(--primary); }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
     .nav-logo {
       width: 36px;
       height: 36px;
       border-radius: 8px;
       display: block;
     }
-    .nav-links { margin-left: auto; display: flex; gap: 24px; }
-    .nav-links a { font-size: 0.9375rem; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--primary); }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
 
     .page-content {
       padding: 56px 0 64px;
     }
+
     .page-content h1 {
       font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 700;
@@ -69,12 +100,14 @@
       margin: 0 0 8px;
       letter-spacing: -0.02em;
     }
+
     .page-content .updated {
       font-size: 0.9375rem;
       color: var(--text-muted);
       margin: 0 0 32px;
       font-style: italic;
     }
+
     .page-content h2 {
       font-size: 1.25rem;
       font-weight: 600;
@@ -84,17 +117,23 @@
       border-bottom: 2px solid var(--primary);
       display: inline-block;
     }
+
     .page-content p {
       margin: 0 0 16px;
       font-size: 1rem;
       color: var(--text);
     }
+
     .page-content a {
       color: var(--primary);
       text-decoration: none;
       font-weight: 500;
     }
-    .page-content a:hover { text-decoration: underline; }
+
+    .page-content a:hover {
+      text-decoration: underline;
+    }
+
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -110,6 +149,7 @@
       text-decoration: none;
       transition: background 0.2s ease, border-color 0.2s ease;
     }
+
     .back-link:hover {
       background: rgba(37, 99, 235, 0.06);
       border-color: var(--primary);
@@ -121,12 +161,34 @@
       border-top: 1px solid var(--border);
       background: var(--surface);
     }
-    footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; }
-    footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
-    footer a:hover { color: var(--primary); }
-    footer .copy { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
+
+    footer .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    footer .copy {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
   </style>
 </head>
+
 <body>
   <nav class="nav">
     <div class="container">
@@ -145,17 +207,48 @@
   <div class="container">
     <main class="page-content">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last Updated: January 29, 2026</p>
-      <p>Clear Approve operates entirely within your Google Workspace environment. We minimize data access to ensure your business remains secure.</p>
+      <p class="updated">Last Updated: February 4, 2026</p>
 
-      <h2>Data Access & Usage</h2>
-      <p>Clear Approve accesses only the active Google Sheet where it is explicitly enabled. The add-on reads row data to generate approval emails and writes status metadata back to your sheet.</p>
+      <p>Clear Approve ("we," "us," or "our") is committed to protecting your privacy. This policy explains how our
+        Google Sheets Add-on handles your data.</p>
 
-      <h2>Data Storage</h2>
-      <p>All approval data and audit logs are stored <b>only</b> within your Google Spreadsheet. We do not store your spreadsheet content on our servers.</p>
+      <h2>1. Limited Use Disclosure</h2>
+      <p>Clear Approve's use and transfer to any other app of information received from Google APIs will adhere to the
+        <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services
+          User Data Policy</a>, including the Limited Use requirements.</p>
 
-      <h2>Google User Data Policy</h2>
-      <p>Clear Approve's use and transfer to any other app of information received from Google APIs will adhere to <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+      <h2>2. Data Access & Scopes</h2>
+      <p>Our Add-on requests only the minimum permissions necessary to function:</p>
+      <ul>
+        <li><b>Active Spreadsheet Access:</b> We read only the rows you explicitly select to generate snapshots. We do
+          not access your other files or drive data.</li>
+        <li><b>Email Service:</b> We use your Google account to send the snapshots you generate. We never send emails
+          without your direct interaction (clicking the "Send" button).</li>
+        <li><b>External Requests:</b> We connect to our secure licensing server solely to verify your subscription
+          status and Pro features.</li>
+      </ul>
+
+      <h2>3. Data Usage & The "Snapshot" Feature</h2>
+      <p>When you use the "Send Snapshot" feature, the following occurs:</p>
+      <ul>
+        <li>The data from your selected rows is converted into HTML "Cards" or a PDF document.</li>
+        <li><b>Automatic Formatting:</b> If you select more than 8 rows, the data is automatically converted to a PDF
+          attachment to ensure email deliverability and document clarity.</li>
+        <li>This data is sent directly to your chosen recipient via the Google Mail API.</li>
+      </ul>
+
+      <h2>4. Data Storage & Security</h2>
+      <p><b>We do not store your spreadsheet data.</b> All row content is processed in real-time to generate your email
+        and is not cached or saved on our servers. Your spreadsheet data stays within the Google ecosystem.</p>
+      <p>We only store your <b>Email Address</b> in our licensing database to manage your trial limits and Pro
+        subscription.</p>
+
+      <h2>5. AI Disclosure (if applicable)</h2>
+      <p>Clear Approve does not use your spreadsheet data to train artificial intelligence or machine learning models.
+      </p>
+
+      <h2>6. Contact Support</h2>
+      <p>If you have questions about this policy, please visit our <a href="support.html">Support Page</a>.</p>
 
       <a href="index.html" class="back-link">← Back to Home</a>
     </main>
@@ -170,4 +263,5 @@
     <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
   </footer>
 </body>
+
 </html>

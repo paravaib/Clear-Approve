@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +8,9 @@
   <title>Terms of Service — Clear Approve</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --primary: #2563eb;
@@ -20,7 +23,11 @@
       --radius-sm: 10px;
       --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text);
@@ -30,36 +37,62 @@
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
     .nav {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
       padding: 16px 24px;
     }
+
     .nav .container {
       display: flex;
       align-items: center;
       gap: 12px;
     }
+
     .nav a {
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s ease;
     }
-    .nav a:hover { color: var(--primary); }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
     .nav-logo {
       width: 36px;
       height: 36px;
       border-radius: 8px;
       display: block;
     }
-    .nav-links { margin-left: auto; display: flex; gap: 24px; }
-    .nav-links a { font-size: 0.9375rem; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--primary); }
 
-    .page-content { padding: 56px 0 64px; }
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .page-content {
+      padding: 56px 0 64px;
+    }
+
     .page-content h1 {
       font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 700;
@@ -67,16 +100,24 @@
       margin: 0 0 16px;
       letter-spacing: -0.02em;
     }
-    .page-content p { margin: 0 0 16px; font-size: 1rem; color: var(--text); }
+
+    .page-content p {
+      margin: 0 0 16px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
     .page-content ul {
       margin: 0 0 24px;
       padding-left: 1.5rem;
     }
+
     .page-content li {
       margin-bottom: 12px;
       font-size: 1rem;
       color: var(--text);
     }
+
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -92,6 +133,7 @@
       text-decoration: none;
       transition: background 0.2s ease, border-color 0.2s ease;
     }
+
     .back-link:hover {
       background: rgba(37, 99, 235, 0.06);
       border-color: var(--primary);
@@ -103,12 +145,34 @@
       border-top: 1px solid var(--border);
       background: var(--surface);
     }
-    footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; }
-    footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
-    footer a:hover { color: var(--primary); }
-    footer .copy { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
+
+    footer .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    footer .copy {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
   </style>
 </head>
+
 <body>
   <nav class="nav">
     <div class="container">
@@ -127,13 +191,44 @@
   <div class="container">
     <main class="page-content">
       <h1>Terms of Service</h1>
-      <p>By installing Clear Approve, you agree to the following terms:</p>
+      <p class="updated">Effective Date: February 4, 2026</p>
+
+      <p>By installing and using the Clear Approve Google Sheets Add-on, you agree to the following terms and
+        conditions:</p>
+
+      <h2>1. Description of Service</h2>
+      <p>Clear Approve provides a productivity tool within Google Sheets to generate and send data snapshots via email
+        as HTML cards or PDF attachments. The service is provided "as-is" and "as-available."</p>
+
+      <h2>2. License & Subscriptions</h2>
       <ul>
-        <li><b>Service:</b> Provided on an "as-is" basis.</li>
-        <li><b>Responsibility:</b> You are responsible for maintaining your Google account access.</li>
-        <li><b>Billing:</b> Subscriptions are billed externally. Access to premium features requires an active license.</li>
-        <li><b>Liability:</b> We are not liable for incidental or consequential damages.</li>
+        <li><b>Trial Version:</b> New users may be granted a limited number of free sends to test the service.</li>
+        <li><b>Pro License:</b> Unlimited sends and premium features require a paid subscription.</li>
+        <li><b>Payment Processing:</b> All payments are processed securely via <b>Razorpay</b>. We do not store your
+          credit card or banking information.</li>
       </ul>
+
+      <h2>3. Refund Policy</h2>
+      <p>Since Clear Approve offers a free trial to test all features before purchasing, we generally do not offer
+        refunds once a Pro license has been activated and used. However, if you experience technical issues that prevent
+        the service from functioning, please contact our support team within 7 days of purchase for a manual review.</p>
+
+      <h2>4. User Responsibilities</h2>
+      <ul>
+        <li>You are responsible for the accuracy of the data you select and the email addresses you enter.</li>
+        <li>You agree not to use the service for "spamming" or sending unsolicited commercial emails.</li>
+        <li>You must comply with all Google Workspace and Gmail acceptable use policies.</li>
+      </ul>
+
+      <h2>5. Limitation of Liability</h2>
+      <p>Clear Approve and its developers shall not be liable for any data loss, incidental damages, or consequential
+        damages resulting from the use or inability to use the service. We do not guarantee 100% uptime, as the service
+        relies on Google’s infrastructure.</p>
+
+      <h2>6. Changes to Terms</h2>
+      <p>We reserve the right to modify these terms at any time. Continued use of the Add-on constitutes acceptance of
+        the updated terms.</p>
+
       <a href="index.html" class="back-link">← Back to Home</a>
     </main>
   </div>
@@ -147,4 +242,5 @@
     <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
   </footer>
 </body>
+
 </html>
