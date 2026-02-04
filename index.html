@@ -253,9 +253,15 @@
       font-weight: 600;
     }
 
-    /* Email preview – what recipients see */
-    .email-preview {
+    /* Email/PDF preview – what recipients see */
+    .recipient-previews {
       margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .email-preview {
       background: var(--surface);
       border-radius: var(--radius);
       border: 1px solid var(--border);
@@ -279,6 +285,15 @@
 
     .email-preview-caption strong {
       color: var(--text);
+    }
+
+    .email-preview-subtitle {
+      padding: 20px 28px 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0;
+      border-bottom: 1px solid var(--border);
     }
 
     /* Sections */
@@ -513,12 +528,22 @@
     <section>
       <p class="section-label">What recipients see</p>
       <h2 class="section-title">How the email looks</h2>
-      <div class="email-preview">
-        <img src="Clear Approve Send Snapshot Email Img.png"
-          alt="Clear Approve email — snapshot or as received by the recipient" />
-        <p class="email-preview-caption"><strong>When you send a snapshot </strong>, recipients get a
-          clear, professional email like this. They can view the snapshot (PDF or HTML)
-        </p>
+      <div class="recipient-previews">
+        <div class="email-preview">
+          <img src="Clear Approve Send Snapshot Email Img.png"
+            alt="Clear Approve email — snapshot or approval request as received by the recipient" />
+          <p class="email-preview-caption"><strong>When you send a snapshot or approval request</strong>, recipients get
+            a clear, professional email like this. They can view the snapshot (PDF or HTML) and, for approval requests,
+            approve or reject directly from the email.</p>
+        </div>
+        <div class="email-preview">
+          <p class="email-preview-subtitle">How the PDF looks</p>
+          <img src="Clear Approve Send Snapshot Demo PDF Img.png"
+            alt="Clear Approve PDF snapshot as received by the recipient" />
+          <p class="email-preview-caption">The snapshot is delivered as an accurate PDF (or HTML) of your selected rows
+            and formatting. Recipients see the same layout and data as in your sheet—no need to open the spreadsheet.
+          </p>
+        </div>
       </div>
     </section>
 
