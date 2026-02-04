@@ -385,18 +385,22 @@
 
     /* Pricing */
     .pricing-wrap {
-      margin-top: 48px;
+      margin-top: 32px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .price-box {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
-      padding: 40px 32px;
+      padding: 48px 40px 40px;
       border-radius: var(--radius);
       text-align: center;
       box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.35);
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .price-box::before {
@@ -406,25 +410,74 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
     }
 
     .price-box .price {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 2rem;
-      font-weight: 500;
+      font-size: 2.75rem;
+      font-weight: 600;
       margin: 0 0 4px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
     }
 
-    .price-box .price-note {
+    .price-box .price-period {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 400;
+      opacity: 0.92;
+    }
+
+    .price-box .price-subline {
       font-size: 0.9375rem;
-      opacity: 0.9;
-      margin: 0 0 12px;
+      opacity: 0.92;
+      margin: 0 0 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .price-box small {
+    .price-box .price-intro {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      opacity: 0.95;
+      margin: 0 0 20px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .price-box .price-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      text-align: left;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .price-box .price-features li {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      padding: 8px 0 8px 28px;
+      position: relative;
+    }
+
+    .price-box .price-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    .price-box .price-footnote {
+      display: block;
       font-size: 0.8125rem;
-      opacity: 0.8;
+      opacity: 0.82;
+      line-height: 1.5;
+      margin: 0;
     }
 
     /* Footer */
@@ -640,43 +693,30 @@
     <!-- Pricing -->
     <section id="pricing">
       <p class="section-label">Pricing</p>
-      <h2 class="section-title">Professional snapshots for professional work</h2>
+      <h2 class="section-title">Simple, transparent pricing</h2>
 
       <div class="pricing-wrap">
         <div class="price-box">
-          <p class="price">
-            $15 <span style="font-weight:400; opacity:0.9;">/ month</span>
-          </p>
+          <p class="price">$15 <span class="price-period">/ month</span></p>
+          <p class="price-subline">Per active sender · Free trial included</p>
 
-          <p class="price-note">
-            Per active sender · Free trial included
-          </p>
-
-          <p style="max-width:520px; margin:16px auto 20px; font-size:0.9375rem; line-height:1.6; opacity:0.95;">
+          <p class="price-intro">
             Clear Approve is built for people who regularly share spreadsheet data with
             clients, stakeholders, or leadership—and want it to look clean, intentional,
             and controlled.
           </p>
 
-          <ul style="
-            list-style:none;
-            padding:0;
-            margin:0 auto 20px;
-            max-width:520px;
-            text-align:left;
-            font-size:0.9375rem;
-            line-height:1.6;
-          ">
-            <li>✓ Unlimited email snapshots from Google Sheets</li>
-            <li>✓ Automatic PDF generation for larger selections</li>
-            <li>✓ Clean HTML email formatting for quick updates</li>
-            <li>✓ Exact row-level control — share only what you select</li>
-            <li>✓ No spreadsheet access required for recipients</li>
+          <ul class="price-features">
+            <li>Unlimited email snapshots from Google Sheets</li>
+            <li>Automatic PDF generation for larger selections</li>
+            <li>Clean HTML email formatting for quick updates</li>
+            <li>Exact row-level control — share only what you select</li>
+            <li>No spreadsheet access required for recipients</li>
           </ul>
 
-          <small style="display:block; max-width:520px; margin:0 auto; opacity:0.85;">
-            If you send even a few updates a month, Clear Approve pays for itself in
-            time saved, fewer mistakes, and more professional communication.
+          <small class="price-footnote">
+            Use your Google Sheets email at checkout for instant activation. If you send even a few updates a month,
+            Clear Approve pays for itself in time saved and more professional communication.
           </small>
         </div>
       </div>
