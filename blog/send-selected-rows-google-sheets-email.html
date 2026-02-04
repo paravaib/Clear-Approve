@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../Clear Approve 128.png" />
+  <title>How to Send Selected Rows from Google Sheets by Email — Clear Approve</title>
+  <meta name="description"
+    content="Send only the rows you select from Google Sheets—as a clean email or PDF. No sharing the sheet, no screenshots. Step-by-step with a Sheets add-on." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .page-content {
+      padding: 56px 0 64px;
+    }
+
+    .page-content h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .page-content h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 32px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--primary);
+      display: inline-block;
+    }
+
+    .page-content p {
+      margin: 0 0 16px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .page-content ul,
+    .page-content ol {
+      margin: 0 0 16px;
+      padding-left: 1.35rem;
+    }
+
+    .page-content li {
+      margin-bottom: 8px;
+    }
+
+    .page-content a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .page-content a:hover {
+      text-decoration: underline;
+    }
+
+    .cta-box {
+      margin-top: 40px;
+      padding: 28px 32px;
+      background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+      color: white;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .cta-box p {
+      margin: 0 0 16px;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 1rem;
+    }
+
+    .cta-box p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .cta-box a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 24px;
+      background: white;
+      color: var(--primary);
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .cta-box a:hover {
+      opacity: 0.95;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 40px;
+      padding: 10px 16px;
+      background: var(--surface);
+      color: var(--primary);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.06);
+      border-color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    footer .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    footer .copy {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container">
+      <a href="../index.html"><img src="../Clear Approve Logo.png" alt="Clear Approve" class="nav-logo" /></a>
+      <a href="../index.html">Clear Approve</a>
+      <div class="nav-links">
+        <a href="index.html">Blog</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../support.html">Support</a>
+        <a href="../terms.html">Terms</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <main class="page-content">
+      <h1>How to Send Selected Rows from Google Sheets by Email</h1>
+
+      <p>You have a Google Sheet with dozens or hundreds of rows, but you only need to send a subset—a status update for
+        one project, a list of tasks for one person, or a data slice for a report. You want those rows in the
+        recipient’s inbox, readable and self-contained, without giving them access to the spreadsheet or pasting ugly
+        tables into email.</p>
+
+      <p><strong>The problem:</strong> Google Sheets doesn’t have a “send these rows by email” feature. You’re left
+        choosing between sharing the whole file, copying into email (and losing formatting), or taking screenshots. None
+        of these gives you “just these rows, clean, by email.”</p>
+
+      <h2>Why the default options fall short</h2>
+
+      <p><strong>Sharing the sheet</strong><br>The recipient sees the entire sheet (and possibly other tabs). They can
+        scroll, see formulas, see data you didn’t mean to share. You don’t get “only these rows.”</p>
+
+      <p><strong>Copy and paste into email</strong><br>Tables often break. Alignment and borders are lost. Large pastes
+        make the email hard to read. It’s fine once or twice; it doesn’t scale.</p>
+
+      <p><strong>Screenshots</strong><br>They’re images. Text isn’t selectable or searchable. Long tables become
+        multiple images or tiny text. It looks informal and is hard to maintain.</p>
+
+      <p><strong>Print range to PDF</strong><br>You can set a print area and save as PDF, then attach. But you’re
+        manually adjusting ranges and print settings every time. No automation, no “select rows → send.”</p>
+
+      <p>What’s missing is a direct path: <strong>select the rows → send them by email as a clean, read-only
+          snapshot.</strong> No link to the sheet, no access, no manual export.</p>
+
+      <h2>Sending selected rows with Clear Approve</h2>
+
+      <p>Clear Approve is a Google Sheets add-on that sends only the rows (or range) you select. You highlight the rows
+        you want, run the add-on, add the recipient and an optional message, and send. They get an email with exactly
+        that data—either as a formatted HTML table in the body (for smaller selections) or as a PDF attachment (for
+        larger ones). They don’t need to open the spreadsheet or have any access to it.</p>
+
+      <ul>
+        <li>Select any rows (and columns) in your sheet.</li>
+        <li>One action sends them as a read-only snapshot.</li>
+        <li>No screenshots, no full-sheet sharing, no manual PDF export.</li>
+      </ul>
+
+      <h2>How it works</h2>
+
+      <ol>
+        <li><strong>Install Clear Approve</strong> from the Google Workspace Marketplace and open your Google Sheet.
+        </li>
+        <li><strong>Select the rows</strong> you want to send (drag to select, or select a range). You can include
+          headers and as many rows as you need.</li>
+        <li><strong>Open the add-on</strong> from the Extensions menu and choose to send a snapshot.</li>
+        <li><strong>Enter the recipient’s email</strong> and, if you like, a short message.</li>
+        <li><strong>Send.</strong> The recipient gets an email containing only the selected rows—as clean HTML in the
+          body or as a PDF attachment, depending on size.</li>
+      </ol>
+
+      <p>You don’t configure sharing, print areas, or copy-paste. You select and send.</p>
+
+      <h2>Who this is for</h2>
+
+      <ul>
+        <li>Anyone who regularly emails <strong>subsets</strong> of a Google Sheet (e.g. “this week’s tasks,” “this
+          client’s line items,” “this region’s metrics”).</li>
+        <li>People who want recipients to get <strong>only the rows they care about</strong>, without opening the sheet.
+        </li>
+        <li>Teams that need a repeatable way to <strong>send selected rows by email</strong> without sharing the whole
+          file or fiddling with exports.</li>
+      </ul>
+
+      <div class="cta-box">
+        <p><strong>Get Clear Approve</strong></p>
+        <p>Select the rows you need, send them by email as a clean snapshot. No sharing, no screenshots.</p>
+        <!-- Replace # with your Google Workspace Marketplace URL -->
+        <a href="#">Install Clear Approve from Google Workspace Marketplace</a>
+      </div>
+
+      <a href="index.html" class="back-link">← Back to Blog</a>
+    </main>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../support.html">Support</a>
+      <a href="../terms.html">Terms of Service</a>
+    </div>
+    <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
+  </footer>
+</body>
+
+</html>

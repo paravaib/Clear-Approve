@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="Clear Approve 128.png" />
-  <title>Support — Clear Approve</title>
+  <link rel="icon" type="image/png" href="../Clear Approve 128.png" />
+  <title>Blog — Clear Approve</title>
   <meta name="description"
-    content="Get help with Clear Approve: contact support, FAQs, and resources for the Google Sheets snapshot add-on." />
+    content="Tips and guides for sharing Google Sheets data without giving access—clean email snapshots, no screenshots, no manual exports." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -99,77 +99,51 @@
       font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 700;
       color: var(--text);
-      margin: 0 0 16px;
+      margin: 0 0 12px;
       letter-spacing: -0.02em;
     }
 
-    .support-card {
-      background: var(--surface);
-      padding: 32px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      margin: 24px 0;
-    }
-
-    .support-card p {
-      margin: 0 0 12px;
+    .page-content .subtitle {
       font-size: 1rem;
-      color: var(--text);
+      color: var(--text-muted);
+      margin: 0 0 40px;
     }
 
-    .support-card p:last-child {
+    .post-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .post-list li {
       margin-bottom: 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    .support-card a {
-      color: var(--primary);
+    .post-list li:last-child {
+      border-bottom: none;
+    }
+
+    .post-list a {
+      display: block;
+      padding: 24px 0;
+      color: var(--text);
       text-decoration: none;
-      font-weight: 500;
-    }
-
-    .support-card a:hover {
-      text-decoration: underline;
-    }
-
-    .support-email {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px;
-      padding: 12px 20px;
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--primary);
-      font-size: 1.0625rem;
       font-weight: 600;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      transition: background 0.2s ease;
+      font-size: 1.0625rem;
+      transition: color 0.2s ease;
     }
 
-    .support-email:hover {
-      background: rgba(37, 99, 235, 0.12);
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 32px;
-      padding: 10px 16px;
-      background: var(--surface);
+    .post-list a:hover {
       color: var(--primary);
-      font-size: 0.9375rem;
-      font-weight: 500;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      text-decoration: none;
-      transition: background 0.2s ease, border-color 0.2s ease;
     }
 
-    .back-link:hover {
-      background: rgba(37, 99, 235, 0.06);
-      border-color: var(--primary);
+    .post-list .post-desc {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-top: 6px;
+      line-height: 1.5;
     }
 
     footer {
@@ -209,36 +183,60 @@
 <body>
   <nav class="nav">
     <div class="container">
-      <a href="index.html">
-        <img src="Clear Approve Logo.png" alt="Clear Approve" class="nav-logo" />
+      <a href="../index.html">
+        <img src="../Clear Approve Logo.png" alt="Clear Approve" class="nav-logo" />
       </a>
-      <a href="index.html">Clear Approve</a>
+      <a href="../index.html">Clear Approve</a>
       <div class="nav-links">
-        <a href="blog/index.html">Blog</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="support.html">Support</a>
-        <a href="terms.html">Terms</a>
+        <a href="index.html">Blog</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../support.html">Support</a>
+        <a href="../terms.html">Terms</a>
       </div>
     </div>
   </nav>
 
   <div class="container">
     <main class="page-content">
-      <h1>Support</h1>
-      <div class="support-card">
-        <p>Need help? Our team is available to assist you with setup, billing, or technical issues.</p>
-        <a href="mailto:vaibhav@aayutech.in" class="support-email">vaibhav@aayutech.in</a>
-        <p style="margin-top: 20px;">We typically respond within 1–2 business days.</p>
-      </div>
-      <a href="index.html" class="back-link">← Back to Home</a>
+      <h1>Blog</h1>
+      <p class="subtitle">How to share Google Sheets data without giving access—clean snapshots, no screenshots.</p>
+
+      <ul class="post-list">
+        <li>
+          <a href="share-google-sheet-without-giving-access.html">How to share part of a Google Sheet without giving
+            access</a>
+          <p class="post-desc">Send specific rows or columns—no viewer access, no screenshots, no full-sheet PDFs.</p>
+        </li>
+        <li>
+          <a href="send-selected-rows-google-sheets-email.html">How to send selected rows from Google Sheets by
+            email</a>
+          <p class="post-desc">Send only the rows you select as a clean email or PDF. No sharing the sheet, no
+            screenshots.</p>
+        </li>
+        <li>
+          <a href="stop-sending-screenshots-google-sheets.html">Stop sending screenshots from Google Sheets (do this
+            instead)</a>
+          <p class="post-desc">Send clean, read-only email snapshots of selected rows instead—no access needed.</p>
+        </li>
+        <li>
+          <a href="send-google-sheets-data-to-clients-professionally.html">How to send Google Sheets data to clients
+            professionally</a>
+          <p class="post-desc">Share updates with clients without giving sheet access. Clean email or PDF snapshots.</p>
+        </li>
+        <li>
+          <a href="email-vs-pdf-share-google-sheets-data.html">Email vs PDF: the best way to share Google Sheets
+            data</a>
+          <p class="post-desc">When to put data in the email body vs attach a PDF. One tool does both automatically.</p>
+        </li>
+      </ul>
     </main>
   </div>
 
   <footer>
     <div class="links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="support.html">Support</a>
-      <a href="terms.html">Terms of Service</a>
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../support.html">Support</a>
+      <a href="../terms.html">Terms of Service</a>
     </div>
     <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
   </footer>
