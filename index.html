@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="Clear Approve 128.png" />
-  <title>Clear Approve — Smart Snapshots & Auto-PDF for Google Sheets</title>
+  <title>Clear Approve — Clean Email & PDF Snapshots from Google Sheets</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -462,6 +462,7 @@
 </head>
 
 <body>
+
   <nav class="nav">
     <div class="container">
       <a href="index.html">
@@ -475,128 +476,149 @@
       </div>
     </div>
   </nav>
+
   <header class="hero">
     <div class="container">
       <img src="Clear Approve Logo.png" alt="Clear Approve" class="hero-logo" />
       <h1>Clear Approve</h1>
-      <p class="hero-text">Effortlessly share data with <b>Smart Snapshots</b>. Select your rows to send professional
-        HTML email cards or automatic PDF attachments—directly from the spreadsheet you’re already using.</p>
-      <span class="badge">✓ Free trial · Secure Contextual Access</span>
+      <p class="hero-text">
+        Turn selected rows in Google Sheets into <b>clean, read-only email snapshots</b>.
+        No screenshots. No file sharing. No spreadsheet access required for recipients.
+      </p>
+      <span class="badge">✓ Free trial · Only accesses the current sheet</span>
     </div>
   </header>
 
   <div class="container">
+
+    <!-- Demo -->
     <section>
       <p class="section-label">See it in action</p>
       <h2 class="section-title">Watch a quick demo</h2>
+
       <div class="video-wrap">
         <video controls poster="Clear Approve Demo 1.png" preload="metadata">
           <source src="Clear Approve Send Snapshot Demo/Clear Approve Send Snapshot Demo.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
-        <p class="video-caption">Clear Approve Send Snapshot Demo — create and send Email/PDF snapshots
-          from Google Sheets.</p>
+        <p class="video-caption">
+          Select rows in Google Sheets and send a clean snapshot by email.
+        </p>
       </div>
     </section>
 
+    <!-- How it works -->
     <section>
-      <p class="section-label">Send Snapshot Demo</p>
-      <h2 class="section-title">How it works</h2>
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">From sheet to inbox in seconds</h2>
+
       <div class="demo-explained">
         <div class="demo-explained-img-wrap">
-          <img src="Clear Approve Send Snapshot Demo Img.png" alt="Clear Approve Send Snapshot Demo" />
+          <img src="Clear Approve Send Snapshot Demo Img.png" alt="Send snapshot demo" />
         </div>
+
         <div class="demo-explained-text">
-          <p class="demo-explained-intro">In the Send Snapshot flow, here’s what’s happening:</p>
           <ol class="demo-steps-list">
-            <li><strong>Open Clear Approve</strong> — From your Google Sheet, launch the add-on via the Extensions menu.
-              The sidebar opens within your active document.</li>
-            <li><strong>Select rows</strong> — Highlight the rows you want to share. The add-on only reads the specific
-              data you've selected in the current sheet.</li>
-            <li><strong>Smart Formatting</strong> — The sidebar automatically optimizes your snapshot: selections of 8
-              rows or fewer are sent as <b>visual email cards</b>, while larger datasets are converted into a <b>PDF
-                attachment</b> for clarity.</li>
-            <li><strong>Click Send</strong> — Nothing is sent until you click “Send.” Clear Approve generates the
-              snapshot and emails it directly to your stakeholders using the Gmail API.</li>
-            <li><strong>Recipients get the snapshot</strong> — Stakeholders receive a professional email with the data
-              formatted as cards or a PDF.</li>
+            <li>
+              <strong>Open Clear Approve</strong> from the Extensions menu inside your Google Sheet.
+            </li>
+            <li>
+              <strong>Select rows</strong> you want to share. Only the selected data is included.
+            </li>
+            <li>
+              <strong>Automatic formatting</strong> turns small selections into clean email cards and larger selections
+              into a PDF attachment.
+            </li>
+            <li>
+              <strong>Click Send</strong>. Nothing is shared until you explicitly send it.
+            </li>
+            <li>
+              <strong>Recipients receive a snapshot</strong> they can read instantly — no Sheet access required.
+            </li>
           </ol>
         </div>
       </div>
     </section>
 
+    <!-- Recipient preview -->
     <section>
       <p class="section-label">What recipients see</p>
-      <h2 class="section-title">How the email looks</h2>
+      <h2 class="section-title">Clean, read-only snapshots</h2>
+
       <div class="recipient-previews">
         <div class="email-preview">
-          <img src="Clear Approve Send Snapshot Email Img.png"
-            alt="Clear Approve email — snapshot or approval request as received by the recipient" />
-          <p class="email-preview-caption"><strong>When you send a snapshot or approval request</strong>, recipients get
-            a clear, professional email like this. They can view the snapshot (PDF or HTML) and, for approval requests,
-            approve or reject directly from the email.</p>
+          <img src="Clear Approve Send Snapshot Email Img.png" alt="Snapshot email preview" />
+          <p class="email-preview-caption">
+            Recipients receive a clear, professional snapshot of exactly the rows you selected —
+            no spreadsheet access, no downloads required.
+          </p>
         </div>
+
         <div class="email-preview">
-          <p class="email-preview-subtitle">How the PDF looks</p>
-          <img src="Clear Approve Send Snapshot Demo PDF Img.png"
-            alt="Clear Approve PDF snapshot as received by the recipient" />
-          <p class="email-preview-caption">The snapshot is delivered as an accurate PDF (or HTML) of your selected rows
-            and formatting. Recipients see the same layout and data as in your sheet—no need to open the spreadsheet.
+          <p class="email-preview-subtitle">PDF snapshot (for larger selections)</p>
+          <img src="Clear Approve Send Snapshot Demo PDF Img.png" alt="PDF snapshot preview" />
+          <p class="email-preview-caption">
+            Larger selections are automatically delivered as a PDF attachment for easier reading.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- Features -->
     <section>
       <p class="section-label">Features</p>
-      <h2 class="section-title">Powerful Simplicity</h2>
+      <h2 class="section-title">Designed for fast, controlled sharing</h2>
+
       <div class="feature-grid">
         <div class="card">
-          <div class="card-icon">📄</div>
-          <h3>PDF/HTML Snapshots</h3>
-          <p>Generate accurate PDF or HTML snapshots from user-selected rows and formatting. The add-on only accesses
-            the spreadsheet where you launched it—so your data stays scoped to that sheet.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">✓</div>
-          <h3>Pro License & Payments</h3>
-          <p>Your Pro subscription and Razorpay payments are verified securely with our backend. Once payment succeeds,
-            your license is synced so you get immediate access to paid features.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">📤</div>
-          <h3>Send Snapshots</h3>
-          <p>Email PDF snapshots to stakeholders only when you choose—emails are sent only after
-            you click the “Send” button.</p>
+          <div class="card-icon">📧</div>
+          <h3>Email-ready snapshots</h3>
+          <p>
+            Send clean HTML snapshots or PDFs directly from Google Sheets — no formatting work required.
+          </p>
         </div>
 
         <div class="card">
-          <div class="card-icon">◇</div>
-          <h3>Smart Snapshots</h3>
-          <p>Generate optimized HTML cards or PDF snapshots from selected rows. Our "Auto-PDF" logic ensures your data
-            is always easy to read, regardless of the selection size.</p>
+          <div class="card-icon">📄</div>
+          <h3>Automatic PDF generation</h3>
+          <p>
+            Larger selections are converted into a professional PDF attachment automatically.
+          </p>
         </div>
+
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h3>Exact row-level control</h3>
+          <p>
+            Share only what you select. Nothing more, nothing less.
+          </p>
+        </div>
+
         <div class="card">
           <div class="card-icon">🔒</div>
-          <h3>Contextual Security</h3>
-          <p>We use the <i>currentonly</i> spreadsheet scope. This means the app only accesses the specific file you are
-            working on, ensuring maximum privacy for your other Drive files.</p>
+          <h3>Context-only access</h3>
+          <p>
+            The add-on only accesses the sheet you are currently working in. No Drive-wide permissions.
+          </p>
         </div>
       </div>
     </section>
 
+    <!-- Pricing -->
     <section id="pricing">
       <p class="section-label">Pricing</p>
-      <h2 class="section-title">Simple, transparent pricing</h2>
+      <h2 class="section-title">Simple, sender-based pricing</h2>
+
       <div class="pricing-wrap">
         <div class="price-box">
-          <p class="price">$15 <span style="font-weight: 400; opacity: 0.9;">/ month</span></p>
-          <p class="price-note">Per active sender · 10 free trial snapshots included</p>
-          <small>Recipients can view your snapshots for free. One license unlocks unlimited sending for your
-            account.</small>
+          <p class="price">$15 <span style="opacity:0.9">/ month</span></p>
+          <p class="price-note">Per active sender · Free trial included</p>
+          <small>
+            Recipients can view snapshots for free. One license unlocks unlimited sending.
+          </small>
         </div>
       </div>
     </section>
+
   </div>
 
   <footer>
@@ -607,6 +629,7 @@
     </div>
     <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
   </footer>
+
 </body>
 
 </html>
