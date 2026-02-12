@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <link rel="icon" type="image/png" href="../Clear Approve 128.png" />
+  <link rel="canonical" href="https://www.aayu-tech.com/blog/share-google-sheets-data-without-giving-access.html" />
+  <title>How to Share Google Sheets Data Without Giving Access to the Spreadsheet — Clear Approve</title>
+  <meta name="description" content="Share specific rows and columns from Google Sheets without giving Viewer or Editor access. Keep formulas, other tabs, and sensitive data private." />
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Clear Approve" />
+  <meta property="og:title" content="How to Share Google Sheets Data Without Giving Access to the Spreadsheet" />
+  <meta property="og:description" content="Share specific data from Google Sheets without exposing your entire spreadsheet. Keep formulas, tabs, and sensitive columns private." />
+  <meta property="og:url" content="https://www.aayu-tech.com/blog/share-google-sheets-data-without-giving-access.html" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20Approve%20Logo.png" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="How to Share Google Sheets Data Without Giving Access to the Spreadsheet" />
+  <meta name="twitter:description" content="Share specific data from Google Sheets without exposing your entire spreadsheet. Keep formulas, tabs, and sensitive columns private." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --text: #1e293b; --text-muted: #64748b; --bg: #f8fafc; --surface: #ffffff; --border: #e2e8f0; --radius: 16px; --radius-sm: 10px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05); }
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.7; margin: 0; padding: 0; background: var(--bg); -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
+    .nav .container { display: flex; align-items: center; gap: 12px; max-width: 960px; }
+    .nav a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
+    .nav a:hover { color: var(--primary); }
+    .nav-logo { width: 36px; height: 36px; border-radius: 8px; display: block; }
+    .nav-links { margin-left: auto; display: flex; gap: 24px; }
+    .nav-links a { font-size: 0.9375rem; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+    article { padding: 56px 0 64px; }
+    article h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 700; color: var(--text); margin: 0 0 12px; letter-spacing: -0.02em; line-height: 1.25; }
+    .post-meta { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 32px; }
+    .post-tag { display: inline-block; padding: 3px 10px; background: rgba(37,99,235,0.08); color: var(--primary); font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin-right: 6px; }
+    article h2 { font-size: 1.375rem; font-weight: 600; color: var(--text); margin: 40px 0 16px; line-height: 1.3; }
+    article h3 { font-size: 1.125rem; font-weight: 600; color: var(--text); margin: 32px 0 12px; }
+    article p { margin: 0 0 16px; font-size: 1rem; }
+    article ul, article ol { margin: 0 0 20px; padding-left: 1.5rem; }
+    article li { margin-bottom: 8px; font-size: 1rem; }
+    .step-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 16px 0; }
+    .step-box h3 { margin: 0 0 8px; font-size: 1rem; }
+    .step-box p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); }
+    .cta-box { background: rgba(37,99,235,0.06); border: 1px solid rgba(37,99,235,0.15); border-radius: var(--radius); padding: 28px 32px; margin: 40px 0; text-align: center; }
+    .cta-box h3 { margin: 0 0 8px; font-size: 1.125rem; color: var(--text); }
+    .cta-box p { margin: 0 0 16px; font-size: 0.9375rem; color: var(--text-muted); }
+    .cta-btn { display: inline-block; padding: 12px 28px; background: var(--primary); color: #fff; font-size: 0.9375rem; font-weight: 600; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s ease; }
+    .cta-btn:hover { background: var(--primary-dark); }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 32px; padding: 10px 16px; background: var(--surface); color: var(--primary); font-size: 0.9375rem; font-weight: 500; border-radius: var(--radius-sm); border: 1px solid var(--border); text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease; }
+    .back-link:hover { background: rgba(37,99,235,0.06); border-color: var(--primary); }
+    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); background: var(--surface); }
+    footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; }
+    footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
+    footer a:hover { color: var(--primary); }
+    footer .copy { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container" style="max-width:960px;">
+      <a href="../index.html"><img src="../Clear Approve Logo.png" alt="Clear Approve" class="nav-logo" /></a>
+      <a href="../index.html">Clear Approve</a>
+      <div class="nav-links">
+        <a href="index.html">Blog</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../support.html">Support</a>
+        <a href="../terms.html">Terms</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <article>
+      <h1>How to Share Google Sheets Data Without Giving Access to the Spreadsheet</h1>
+      <div class="post-meta">
+        <span class="post-tag">Privacy</span>
+        Feb 10, 2026
+      </div>
+
+      <p>You have a Google Sheet with data that someone else needs to see. Maybe it is a client who needs their project status, a vendor who needs order details, or an executive who wants a weekly summary. The obvious move is to click "Share" and give them access. But the moment you do, they can see <em>everything</em> — every tab, every formula, every comment, every column you never intended them to see.</p>
+
+      <p>This is a surprisingly common problem. Google Sheets was designed for collaboration, not selective data sharing. There is no built-in way to share specific rows or columns with someone while keeping the rest of the spreadsheet private. In this post, we will look at the workarounds people typically use, why they fall short, and a cleaner approach that lets you share exactly the data you want without giving anyone access to the underlying file.</p>
+
+      <h2>The Problem with Google Sheets Sharing Permissions</h2>
+
+      <p>When you share a Google Sheet, you have three permission levels: Viewer, Commenter, and Editor. All three expose the same amount of data. A Viewer sees exactly what an Editor sees — every sheet tab, every cell, every formula. The only difference is whether they can make changes.</p>
+
+      <p>Here is what gets exposed the moment you share a spreadsheet, even with Viewer-only access:</p>
+
+      <ul>
+        <li><strong>All sheet tabs.</strong> If your workbook has a "Client Data" tab, a "Financials" tab, and a "Internal Notes" tab, the Viewer sees all three. You cannot hide individual tabs from specific users.</li>
+        <li><strong>All formulas.</strong> Anyone with access can click on a cell and see the formula behind it. If your pricing is calculated from a margin formula, that margin is now visible.</li>
+        <li><strong>All columns.</strong> You might only want to share columns A through D, but the Viewer can scroll right and see columns E through Z, which might contain cost data, internal ratings, or supplier information.</li>
+        <li><strong>Comments and notes.</strong> Internal comments like "check with legal before sending this" or "this client is difficult" are fully visible to anyone with access.</li>
+        <li><strong>Version history.</strong> Viewers can open the version history and see every change ever made to the spreadsheet, including data that was deleted.</li>
+      </ul>
+
+      <p>Google does offer "Protected ranges" and the ability to hide sheets, but these only prevent editing — they do not prevent viewing. A hidden sheet can be unhidden by any Viewer through a simple menu click. Protected ranges are transparent to anyone looking at the spreadsheet.</p>
+
+      <h2>Common Workarounds and Why They Fall Short</h2>
+
+      <h3>Copy-Paste into an Email</h3>
+      <p>The most common approach: select the cells you want to share, copy them, and paste them into Gmail. The problem is that formatting rarely survives the copy. Column widths get mangled, colors disappear, and merged cells break apart. For a quick one-time share, this might be acceptable. For anything recurring, it is tedious and looks unprofessional.</p>
+
+      <h3>Screenshots</h3>
+      <p>Some people take a screenshot of the relevant rows and attach it to an email. This preserves the visual layout, but the text is not searchable or selectable. The recipient cannot copy a value from the image into their own system. On mobile, screenshots of wide spreadsheets are often unreadable. And if you need to share 50 rows, stitching multiple screenshots together is a mess.</p>
+
+      <h3>Export as PDF</h3>
+      <p>Google Sheets can export the current sheet as a PDF via File &gt; Download &gt; PDF. This gives you a shareable document, but it exports the entire active sheet — you cannot select specific rows. If the sheet has 500 rows and you only want to share rows 10 through 15, you are out of luck. You also lose the ability to export only certain columns without manually hiding them first, then remembering to unhide them afterward.</p>
+
+      <h3>Create a Separate "Sharing" Sheet</h3>
+      <p>A more structured approach is to create a second spreadsheet that pulls in specific data from the master sheet using <code>IMPORTRANGE</code>. You share this secondary sheet with the recipient. This works, but it creates maintenance overhead. Every time you add a column or change the structure of the master sheet, you have to update the sharing sheet. If you have ten clients who each need different views, you end up maintaining ten sharing sheets. It does not scale.</p>
+
+      <h2>A Cleaner Approach: Send Data Snapshots with Clear Approve</h2>
+
+      <p>Clear Approve takes a fundamentally different approach to this problem. Instead of giving someone access to your spreadsheet, you send them a snapshot — a clean, formatted capture of exactly the rows and columns you choose. The recipient gets the data in their email inbox. They never see your spreadsheet, never get a sharing invitation, and never know the spreadsheet exists.</p>
+
+      <p>Here is how it works:</p>
+
+      <div class="step-box">
+        <h3>Step 1: Select the Data You Want to Share</h3>
+        <p>In your Google Sheet, highlight the specific rows and columns you want to send. You have complete control over what gets included. Only the selected cells will appear in the snapshot.</p>
+      </div>
+
+      <div class="step-box">
+        <h3>Step 2: Open Clear Approve and Enter the Recipient</h3>
+        <p>Go to <strong>Extensions &gt; Clear Approve &gt; Open</strong>. In the sidebar, enter the recipient's email address. You can optionally add a subject line and message.</p>
+      </div>
+
+      <div class="step-box">
+        <h3>Step 3: Send</h3>
+        <p>Click Send. The recipient receives an email containing a clean, well-formatted table with exactly the data you selected. No spreadsheet link, no access request, no shared file.</p>
+      </div>
+
+      <h2>What Stays Private</h2>
+
+      <p>When you share data through Clear Approve instead of sharing the spreadsheet itself, here is everything that remains completely invisible to the recipient:</p>
+
+      <ul>
+        <li><strong>Formulas.</strong> The snapshot contains only display values. If cell B5 shows "$1,250" but is calculated from a formula like <code>=A5*margin_rate</code>, the recipient sees "$1,250" and nothing else. Your pricing logic stays private.</li>
+        <li><strong>Other tabs and sheets.</strong> The snapshot only includes data from the cells you selected. Other tabs in the workbook are never referenced or exposed.</li>
+        <li><strong>Unselected columns.</strong> If your sheet has columns A through J but you only select A through D, columns E through J do not exist as far as the recipient is concerned. Internal notes, cost data, and supplier information stay hidden.</li>
+        <li><strong>Comments and notes.</strong> Cell comments and notes are not included in snapshots. Internal conversations stay internal.</li>
+        <li><strong>Version history.</strong> Since the recipient never accesses the spreadsheet, they cannot view any historical changes, deleted data, or prior edits.</li>
+        <li><strong>The spreadsheet itself.</strong> The recipient does not receive a link to your file. They cannot request access, share it with others, or bookmark it for later. The data exists only in the email you sent.</li>
+      </ul>
+
+      <h2>This Works Across All Three Clear Approve Modes</h2>
+
+      <p>Clear Approve is not limited to manual, one-off sends. The same privacy principle applies to all three modes of operation:</p>
+
+      <h3>Manual Send</h3>
+      <p>Select your data, enter a recipient, and send. The snapshot captures exactly what you selected at that moment. This is ideal for ad-hoc requests — when a client asks "can you send me the latest numbers?" you can respond in seconds without granting spreadsheet access.</p>
+
+      <h3>Scheduled Reports</h3>
+      <p>Configure a recurring schedule (daily, weekly, or monthly) to automatically send a snapshot of a specific range. The schedule always sends just the configured rows and columns. This is perfect for recurring reports where the recipient should see updated data on a regular cadence, but should never have access to the full spreadsheet.</p>
+
+      <h3>Smart Triggers</h3>
+      <p>Set up a condition-based trigger that sends a snapshot when a cell value changes to match your criteria. When the trigger fires, it sends just the triggered row — not the entire sheet, not the surrounding rows, and not any columns outside the configured range. The recipient gets a focused notification with only the relevant data.</p>
+
+      <h2>Real-World Use Cases</h2>
+
+      <h3>Sharing Client-Specific Data from a Master Sheet</h3>
+      <p>An agency manages all client projects in a single master spreadsheet. Each client occasionally asks for a progress update. Instead of creating separate spreadsheets per client or risking one client seeing another's data, the agency uses Clear Approve to send each client a snapshot of just their rows. The master sheet stays consolidated and private.</p>
+
+      <h3>Sending Project Updates Without Exposing Budget Columns</h3>
+      <p>A project manager tracks tasks, deadlines, owners, and budget allocations in one sheet. Stakeholders need to see task progress but should not see the budget columns. By selecting only the task-related columns and sending a snapshot, the project manager shares relevant updates while keeping financial data internal.</p>
+
+      <h3>Sharing Order Details Without Revealing Supplier Costs</h3>
+      <p>An e-commerce team tracks orders in a spreadsheet that includes customer details, order items, sale prices, and supplier costs. When a customer asks about their order status, the team sends a snapshot of that order row — but only the columns showing the customer-facing information. The supplier cost column, which reveals the margin, stays hidden.</p>
+
+      <h3>Sending Approved Records to External Partners</h3>
+      <p>A procurement team processes vendor invoices in a shared spreadsheet. When an invoice is approved, the vendor needs to be notified with the approved amount and reference number, but should not see the internal approval chain, notes, or other vendor invoices. A Smart Trigger detects the status change to "Approved" and sends only that vendor's row to their email.</p>
+
+      <h2>The Principle: Send the Data, Not the File</h2>
+
+      <p>The core idea is simple. Most of the time, people do not need access to your spreadsheet. They need access to specific information that happens to live in your spreadsheet. By sending the data instead of sharing the file, you maintain full control over what gets seen, who sees it, and when they see it. There is no access to revoke later, no permissions to manage, and no risk of someone scrolling to a tab they should not see.</p>
+
+      <p>Clear Approve makes this workflow effortless. Whether you are sending a one-time snapshot, setting up a recurring report, or automating notifications based on cell changes, the recipient gets exactly the data you intend — and nothing more.</p>
+
+      <div class="cta-box">
+        <h3>Try Clear Approve Free</h3>
+        <p>Install the add-on and send your first snapshot in under a minute.</p>
+        <a href="https://workspace.google.com/marketplace/app/clear_approve/463832518037" class="cta-btn">Install from Google Workspace Marketplace</a>
+      </div>
+      <a href="index.html" class="back-link">&larr; All Posts</a>
+    </article>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../support.html">Support</a>
+      <a href="../terms.html">Terms of Service</a>
+    </div>
+    <p class="copy">&copy; 2026 Clear Approve. Built for Google Workspace.</p>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Share Google Sheets Data Without Giving Access to the Spreadsheet",
+    "description": "Share specific rows and columns from Google Sheets without giving Viewer or Editor access. Keep formulas, other tabs, and sensitive data private.",
+    "url": "https://www.aayu-tech.com/blog/share-google-sheets-data-without-giving-access.html",
+    "datePublished": "2026-02-10",
+    "dateModified": "2026-02-10",
+    "author": { "@type": "Organization", "name": "Aayu Tech", "url": "https://www.aayu-tech.com" },
+    "publisher": { "@type": "Organization", "name": "Aayu Tech", "url": "https://www.aayu-tech.com" },
+    "isPartOf": { "@type": "WebSite", "name": "Clear Approve", "url": "https://www.aayu-tech.com/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.aayu-tech.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.aayu-tech.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Share Data Without Giving Access", "item": "https://www.aayu-tech.com/blog/share-google-sheets-data-without-giving-access.html" }
+    ]
+  }
+  </script>
+</body>
+</html>

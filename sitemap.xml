@@ -2,43 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.aayu-tech.com/</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.aayu-tech.com/blog/</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.aayu-tech.com/blog/share-google-sheet-without-giving-access.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <loc>https://www.aayu-tech.com/blog/send-google-sheets-rows-by-email.html</loc>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.aayu-tech.com/blog/send-selected-rows-google-sheets-email.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <loc>https://www.aayu-tech.com/blog/schedule-email-reports-google-sheets.html</loc>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.aayu-tech.com/blog/stop-sending-screenshots-google-sheets.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <loc>https://www.aayu-tech.com/blog/auto-send-email-when-cell-value-changes-google-sheets.html</loc>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.aayu-tech.com/blog/send-google-sheets-data-to-clients-professionally.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <loc>https://www.aayu-tech.com/blog/share-google-sheets-data-without-giving-access.html</loc>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.aayu-tech.com/blog/email-vs-pdf-share-google-sheets-data.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <loc>https://www.aayu-tech.com/blog/google-sheets-to-pdf-email.html</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aayu-tech.com/blog/automated-reports-google-sheets.html</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aayu-tech.com/blog/google-sheets-conditional-email-alerts.html</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aayu-tech.com/blog/google-sheets-email-notification-apps-script-vs-addons.html</loc>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

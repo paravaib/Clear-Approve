@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <link rel="icon" type="image/png" href="../Clear Approve 128.png" />
+  <link rel="canonical" href="https://www.aayu-tech.com/blog/google-sheets-email-notification-apps-script-vs-addons.html" />
+  <title>Google Sheets Email Notifications: Apps Script vs Add-ons Compared — Clear Approve</title>
+  <meta name="description" content="Should you use Google Apps Script or an add-on for email notifications from Google Sheets? A practical comparison of setup time, features, and maintenance." />
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Clear Approve" />
+  <meta property="og:title" content="Google Sheets Email Notifications: Apps Script vs Add-ons Compared" />
+  <meta property="og:description" content="Apps Script or add-on? Compare both approaches for sending email notifications from Google Sheets — setup, features, cost, and maintenance." />
+  <meta property="og:url" content="https://www.aayu-tech.com/blog/google-sheets-email-notification-apps-script-vs-addons.html" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20Approve%20Logo.png" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Google Sheets Email Notifications: Apps Script vs Add-ons Compared" />
+  <meta name="twitter:description" content="Apps Script or add-on? Compare both approaches for sending email notifications from Google Sheets — setup, features, cost, and maintenance." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --text: #1e293b; --text-muted: #64748b; --bg: #f8fafc; --surface: #ffffff; --border: #e2e8f0; --radius: 16px; --radius-sm: 10px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05); }
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.7; margin: 0; padding: 0; background: var(--bg); -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
+    .nav .container { display: flex; align-items: center; gap: 12px; max-width: 960px; }
+    .nav a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
+    .nav a:hover { color: var(--primary); }
+    .nav-logo { width: 36px; height: 36px; border-radius: 8px; display: block; }
+    .nav-links { margin-left: auto; display: flex; gap: 24px; }
+    .nav-links a { font-size: 0.9375rem; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+    article { padding: 56px 0 64px; }
+    article h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 700; color: var(--text); margin: 0 0 12px; letter-spacing: -0.02em; line-height: 1.25; }
+    .post-meta { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 32px; }
+    .post-tag { display: inline-block; padding: 3px 10px; background: rgba(37,99,235,0.08); color: var(--primary); font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin-right: 6px; }
+    article h2 { font-size: 1.375rem; font-weight: 600; color: var(--text); margin: 40px 0 16px; line-height: 1.3; }
+    article h3 { font-size: 1.125rem; font-weight: 600; color: var(--text); margin: 32px 0 12px; }
+    article p { margin: 0 0 16px; font-size: 1rem; }
+    article ul, article ol { margin: 0 0 20px; padding-left: 1.5rem; }
+    article li { margin-bottom: 8px; font-size: 1rem; }
+    .step-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 16px 0; }
+    .step-box h3 { margin: 0 0 8px; font-size: 1rem; }
+    .step-box p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); }
+    .cta-box { background: rgba(37,99,235,0.06); border: 1px solid rgba(37,99,235,0.15); border-radius: var(--radius); padding: 28px 32px; margin: 40px 0; text-align: center; }
+    .cta-box h3 { margin: 0 0 8px; font-size: 1.125rem; color: var(--text); }
+    .cta-box p { margin: 0 0 16px; font-size: 0.9375rem; color: var(--text-muted); }
+    .cta-btn { display: inline-block; padding: 12px 28px; background: var(--primary); color: #fff; font-size: 0.9375rem; font-weight: 600; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s ease; }
+    .cta-btn:hover { background: var(--primary-dark); }
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 0.9375rem; }
+    .comparison-table th { background: var(--primary); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; }
+    .comparison-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+    .comparison-table tr:nth-child(even) td { background: rgba(37,99,235,0.03); }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 32px; padding: 10px 16px; background: var(--surface); color: var(--primary); font-size: 0.9375rem; font-weight: 500; border-radius: var(--radius-sm); border: 1px solid var(--border); text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease; }
+    .back-link:hover { background: rgba(37,99,235,0.06); border-color: var(--primary); }
+    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); background: var(--surface); }
+    footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; }
+    footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
+    footer a:hover { color: var(--primary); }
+    footer .copy { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container" style="max-width:960px;">
+      <a href="../index.html"><img src="../Clear Approve Logo.png" alt="Clear Approve" class="nav-logo" /></a>
+      <a href="../index.html">Clear Approve</a>
+      <div class="nav-links">
+        <a href="index.html">Blog</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../support.html">Support</a>
+        <a href="../terms.html">Terms</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <article>
+      <h1>Google Sheets Email Notifications: Apps Script vs Add-ons Compared</h1>
+      <div class="post-meta">
+        <span class="post-tag">Comparison</span>
+        Feb 10, 2026 &middot; 6 min read
+      </div>
+
+      <p>You need to send email notifications from a Google Sheet. Maybe it is a weekly status report, an alert when a cell value changes, or a formatted snapshot of specific rows. You have two main paths: write custom code with Google Apps Script, or install a pre-built add-on from the Google Workspace Marketplace.</p>
+
+      <p>Both approaches work. Both can send emails triggered by data in your spreadsheet. But they are suited to fundamentally different situations, and choosing the wrong one can cost you time up front or create maintenance headaches later. This guide provides a honest, practical comparison to help you decide which approach fits your needs.</p>
+
+      <h2>Option 1: Google Apps Script</h2>
+
+      <h3>What It Is</h3>
+
+      <p>Google Apps Script is a JavaScript-based runtime built directly into Google Workspace. Every Google Sheet has access to a script editor (Extensions &gt; Apps Script) where you can write code that interacts with the spreadsheet, sends emails, creates calendar events, calls external APIs, and more. It is free to use and requires no additional installation.</p>
+
+      <h3>How It Works for Email Notifications</h3>
+
+      <p>The typical pattern for email notifications involves three components: a trigger that detects changes or runs on a schedule, a function that reads data from the spreadsheet, and a call to <code>MailApp.sendEmail()</code> or <code>GmailApp.sendEmail()</code> to deliver the message.</p>
+
+      <p>For edit-based notifications, you create an installable <code>onEdit</code> trigger that fires whenever someone changes a cell. Your function checks whether the edited cell is in the column you care about, evaluates whether the new value meets your condition, and sends an email if it does. For scheduled reports, you create a time-driven trigger that runs your function every day, week, or at a custom interval.</p>
+
+      <h3>When Apps Script Is the Right Choice</h3>
+
+      <p>Apps Script excels when your requirements go beyond what any pre-built tool can offer. Here are scenarios where custom code is genuinely the better path:</p>
+
+      <ul>
+        <li><strong>Complex business logic.</strong> You need the email to include data pulled from multiple sheets, cross-referenced with a Google Calendar, filtered by a formula that no UI could express. For example, "send an email to the project owner listed in Sheet2 only if their task in Sheet1 is overdue and they have no calendar event for a follow-up this week."</li>
+        <li><strong>Integration with other services.</strong> Your notification needs to simultaneously update a CRM via API, log the event to a separate tracking sheet, and send a Slack message alongside the email. Apps Script can orchestrate all of this in a single function.</li>
+        <li><strong>Custom email body logic.</strong> You want the email content to change dynamically based on multiple conditions — different templates for different recipients, conditional sections that appear or disappear based on data values, or computed summaries that no template system supports.</li>
+        <li><strong>You already have developer resources.</strong> If your team includes someone comfortable with JavaScript who can write, test, and maintain the script, the development cost is low and the flexibility is high.</li>
+      </ul>
+
+      <h3>The Strengths</h3>
+
+      <ul>
+        <li><strong>Free.</strong> Apps Script is included with every Google Workspace account. There is no subscription fee. The only limits are Google's built-in quotas (100 emails per day for consumer accounts, 1,500 for Workspace accounts).</li>
+        <li><strong>Fully customizable.</strong> You have complete control over every aspect of the notification — the trigger conditions, the email content, the recipient logic, the formatting, and the timing.</li>
+        <li><strong>No third-party dependency.</strong> Your code runs on Google's infrastructure. There is no external service to trust, no vendor to evaluate, and no risk of an add-on being discontinued.</li>
+        <li><strong>Deep Google Workspace integration.</strong> Apps Script can natively access Google Drive, Calendar, Gmail, Docs, Forms, and other Workspace services. If your notification workflow spans multiple Google products, Apps Script is the natural glue.</li>
+      </ul>
+
+      <h3>The Challenges</h3>
+
+      <ul>
+        <li><strong>Requires JavaScript knowledge.</strong> There is no way around this. You need to be comfortable reading and writing code, understanding event objects, and debugging asynchronous behavior.</li>
+        <li><strong>HTML email formatting is tedious.</strong> If you want the notification email to look professional — with formatted tables, styled headers, or card-like layouts — you have to build the HTML manually in your script. Constructing email templates with string concatenation or template literals is time-consuming and error-prone.</li>
+        <li><strong>Maintenance is ongoing.</strong> When someone inserts a new column, renames a sheet tab, or changes the structure of the spreadsheet, your script can silently break. There is no warning. Emails simply stop sending, and you may not notice for days or weeks until someone asks why they stopped getting updates.</li>
+        <li><strong>Debugging is limited.</strong> The Apps Script editor provides basic logging via <code>Logger.log()</code> and the Execution log, but there is no step-through debugger for trigger-based functions. When something goes wrong in a trigger, diagnosing the issue often involves adding log statements, saving, waiting for the trigger to fire, and checking the logs.</li>
+        <li><strong>Non-technical users are locked out.</strong> Once the script is deployed, only someone with code access can change the recipient, adjust the condition, or modify the email template. If a team lead wants to add a new recipient or change the trigger threshold, they need to file a request with whoever wrote the script.</li>
+        <li><strong>Trigger quotas apply.</strong> Simple triggers have a 30-second execution limit. Installable triggers have a 90-minute daily cumulative execution quota for consumer accounts. For high-volume spreadsheets with frequent edits, this can become a constraint.</li>
+      </ul>
+
+      <h2>Option 2: Google Workspace Add-ons</h2>
+
+      <h3>What They Are</h3>
+
+      <p>Add-ons are pre-built applications installed from the Google Workspace Marketplace. They extend Google Sheets with features that would otherwise require custom development. For email notifications, several add-ons exist — we will use Clear Approve as a representative example, since it covers the most common notification use cases: sending row snapshots on demand, scheduling recurring reports, and setting up conditional triggers.</p>
+
+      <h3>How It Works</h3>
+
+      <p>After installing the add-on, you open a sidebar panel within your spreadsheet. From there, you configure your notification through a visual interface: select the rows or columns you want to include, choose a trigger type (manual send, schedule, or value-based trigger), enter the recipient's email address, and save. The add-on handles the underlying trigger creation, data extraction, email formatting, and delivery.</p>
+
+      <h3>When an Add-on Is the Right Choice</h3>
+
+      <p>Add-ons are designed for teams that need reliable email notifications without investing in custom development. Here are the scenarios where they make the most sense:</p>
+
+      <ul>
+        <li><strong>Non-technical users need to manage it.</strong> A team lead, project manager, or operations coordinator should be able to set up and modify notifications without filing a ticket with the engineering team. A sidebar with dropdowns and text fields is accessible to anyone.</li>
+        <li><strong>You need it working today.</strong> If the requirement is "send a weekly report by email starting this Friday," an add-on gets you there in minutes. Writing, testing, and deploying a custom script takes hours at minimum.</li>
+        <li><strong>Formatted emails matter.</strong> Add-ons like Clear Approve render row data as styled HTML cards that look clean on desktop and mobile. Achieving the same result with Apps Script requires significant HTML and CSS work.</li>
+        <li><strong>You want built-in features.</strong> Scheduling, conditional triggers, PDF generation for large datasets, and duplicate prevention are features that come pre-built. Implementing each of these from scratch in Apps Script is a meaningful development effort.</li>
+      </ul>
+
+      <h3>The Strengths</h3>
+
+      <ul>
+        <li><strong>No code required.</strong> Everything is configured through a UI. Setting up a scheduled report or a conditional trigger takes two minutes, not two hours.</li>
+        <li><strong>Clean email formatting out of the box.</strong> Row data is automatically rendered as formatted HTML cards with column headers as labels and cell values as content. For selections larger than 8 rows, the add-on generates a PDF attachment instead, keeping emails lightweight.</li>
+        <li><strong>Easy to modify.</strong> Need to change the recipient? Add a new condition? Adjust the schedule? Open the sidebar, make the change, and save. No code review, no deployment, no risk of breaking something.</li>
+        <li><strong>Edge cases are handled.</strong> Features like duplicate prevention on conditional triggers, automatic PDF conversion for large datasets, and proper trigger lifecycle management (creating and cleaning up triggers) are built in. These are the details that take the most time to get right in custom code.</li>
+      </ul>
+
+      <h3>The Challenges</h3>
+
+      <ul>
+        <li><strong>Less customizable than raw code.</strong> An add-on provides a fixed set of features. If you need the email to include data from a different spreadsheet, call an external API, or apply business logic that the UI does not support, you will hit the ceiling of what the add-on can do.</li>
+        <li><strong>Pro features may require a subscription.</strong> Most add-ons offer a free tier with limited functionality and a paid tier for advanced features. If your needs include scheduling, smart triggers, or higher usage limits, there is a recurring cost.</li>
+        <li><strong>Third-party dependency.</strong> You are relying on an external developer or company to maintain the add-on. If the add-on is discontinued, changes its pricing, or introduces a bug, you are affected. It is worth checking the add-on's update history and reviews before committing.</li>
+        <li><strong>Permissions scope.</strong> Add-ons request OAuth permissions to access your spreadsheet data and send emails on your behalf. Reputable add-ons go through Google's review process and request only the minimum scopes needed, but it is still a trust decision.</li>
+      </ul>
+
+      <h2>Side-by-Side Comparison</h2>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Apps Script</th>
+            <th>Add-on</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Setup time</strong></td>
+            <td>Hours (writing + testing)</td>
+            <td>Minutes (UI configuration)</td>
+          </tr>
+          <tr>
+            <td><strong>Code required</strong></td>
+            <td>Yes (JavaScript)</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><strong>Email formatting</strong></td>
+            <td>Manual HTML construction</td>
+            <td>Automatic styled cards</td>
+          </tr>
+          <tr>
+            <td><strong>Scheduling</strong></td>
+            <td>Custom time-driven triggers</td>
+            <td>Built-in (daily, weekly, monthly)</td>
+          </tr>
+          <tr>
+            <td><strong>Conditional triggers</strong></td>
+            <td>Custom onEdit logic</td>
+            <td>Built-in (5 operators)</td>
+          </tr>
+          <tr>
+            <td><strong>PDF support</strong></td>
+            <td>Requires custom implementation</td>
+            <td>Automatic for large selections</td>
+          </tr>
+          <tr>
+            <td><strong>Duplicate prevention</strong></td>
+            <td>Must build tracking logic</td>
+            <td>Built-in</td>
+          </tr>
+          <tr>
+            <td><strong>Maintenance</strong></td>
+            <td>Ongoing (breaks on schema changes)</td>
+            <td>Minimal (managed by add-on)</td>
+          </tr>
+          <tr>
+            <td><strong>Cost</strong></td>
+            <td>Free (within quotas)</td>
+            <td>Free tier + paid for Pro features</td>
+          </tr>
+          <tr>
+            <td><strong>Customization</strong></td>
+            <td>Unlimited</td>
+            <td>Limited to add-on features</td>
+          </tr>
+          <tr>
+            <td><strong>Non-technical access</strong></td>
+            <td>No (code changes only)</td>
+            <td>Yes (sidebar UI)</td>
+          </tr>
+          <tr>
+            <td><strong>Multi-service integration</strong></td>
+            <td>Yes (Drive, Calendar, APIs)</td>
+            <td>Limited to add-on scope</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>When to Choose Each Approach</h2>
+
+      <h3>Choose Apps Script If:</h3>
+
+      <ul>
+        <li>You have unique business logic that cannot be expressed through a standard UI — for example, cross-referencing multiple data sources or applying conditional formatting rules to determine recipients.</li>
+        <li>Your team includes a developer who can write, test, and maintain the script over time.</li>
+        <li>You need deep integration with other Google Workspace services or external APIs as part of the notification workflow.</li>
+        <li>Cost is the primary concern, and you need to stay within Google's free quotas without any paid tools.</li>
+        <li>You are building a one-off solution for a single, stable spreadsheet that is unlikely to change structure.</li>
+      </ul>
+
+      <h3>Choose an Add-on If:</h3>
+
+      <ul>
+        <li>Non-technical team members need to set up or modify notifications without developer support.</li>
+        <li>You want clean, formatted emails without building HTML templates from scratch.</li>
+        <li>You need scheduling, conditional triggers, and PDF generation without building each feature yourself.</li>
+        <li>You are managing notifications across multiple spreadsheets and want a consistent, maintainable approach.</li>
+        <li>Speed matters — you need the notification working today, not after a development cycle.</li>
+      </ul>
+
+      <h2>Can You Use Both?</h2>
+
+      <p>Yes, and many teams do. The two approaches are not mutually exclusive. A common pattern is to use an add-on for standard, recurring workflows — weekly reports, conditional alerts on status changes, on-demand row snapshots — and reserve Apps Script for custom integrations that go beyond what any add-on can handle.</p>
+
+      <p>For example, you might use Clear Approve to send a weekly snapshot of your project tracker to stakeholders every Monday morning, while also running a custom Apps Script that cross-references the same spreadsheet with your CRM and sends personalized follow-up emails to sales reps based on deal activity. The add-on handles the routine reporting, and the script handles the specialized logic.</p>
+
+      <p>This hybrid approach gives you the best of both worlds: fast setup and easy management for standard notifications, and unlimited flexibility for the cases that truly need custom code.</p>
+
+      <h2>Making Your Decision</h2>
+
+      <p>The right choice depends on your team's technical resources, the complexity of your requirements, and how much ongoing maintenance you are willing to accept. If you have a developer and need deep customization, Apps Script gives you full control. If you need something working quickly that non-technical users can manage, an add-on is the more practical path.</p>
+
+      <p>Neither approach is universally better. The best teams evaluate their specific needs, consider who will be maintaining the solution six months from now, and choose accordingly.</p>
+
+      <div class="cta-box">
+        <h3>Try Clear Approve Free</h3>
+        <p>Install the add-on and send your first snapshot in under a minute.</p>
+        <a href="https://workspace.google.com/marketplace/app/clear_approve/463832518037" class="cta-btn">Install from Google Workspace Marketplace</a>
+      </div>
+      <a href="index.html" class="back-link">&larr; All Posts</a>
+    </article>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../support.html">Support</a>
+      <a href="../terms.html">Terms of Service</a>
+    </div>
+    <p class="copy">&copy; 2026 Clear Approve. Built for Google Workspace.</p>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Google Sheets Email Notifications: Apps Script vs Add-ons Compared",
+    "description": "Should you use Google Apps Script or an add-on for email notifications from Google Sheets? A practical comparison of setup time, features, and maintenance.",
+    "url": "https://www.aayu-tech.com/blog/google-sheets-email-notification-apps-script-vs-addons.html",
+    "datePublished": "2026-02-10",
+    "dateModified": "2026-02-10",
+    "author": { "@type": "Organization", "name": "Aayu Tech", "url": "https://www.aayu-tech.com" },
+    "publisher": { "@type": "Organization", "name": "Aayu Tech", "url": "https://www.aayu-tech.com" },
+    "isPartOf": { "@type": "WebSite", "name": "Clear Approve", "url": "https://www.aayu-tech.com/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.aayu-tech.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.aayu-tech.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Apps Script vs Add-ons", "item": "https://www.aayu-tech.com/blog/google-sheets-email-notification-apps-script-vs-addons.html" }
+    ]
+  }
+  </script>
+</body>
+</html>

@@ -4,188 +4,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="icon" type="image/png" href="../Clear Approve 128.png" />
-  <title>Blog — Clear Approve</title>
+  <link rel="canonical" href="https://www.aayu-tech.com/blog/" />
+  <title>Blog — Clear Approve | Google Sheets Email Snapshots, Reports & Triggers</title>
   <meta name="description"
-    content="Tips and guides for sharing Google Sheets data without giving access—clean email snapshots, no screenshots, no manual exports." />
+    content="Tips, guides, and tutorials for sharing Google Sheets data by email. Learn how to send rows, schedule automated reports, set up smart triggers, and more with Clear Approve." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Clear Approve" />
+  <meta property="og:title" content="Blog — Clear Approve" />
+  <meta property="og:description" content="Guides and tutorials for sending, scheduling, and auto-triggering email snapshots from Google Sheets." />
+  <meta property="og:url" content="https://www.aayu-tech.com/blog/" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20Approve%20Logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Blog — Clear Approve" />
+  <meta name="twitter:description" content="Guides for sharing Google Sheets data by email — send, schedule, and auto-trigger snapshots." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --primary: #2563eb;
-      --text: #1e293b;
-      --text-muted: #64748b;
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --border: #e2e8f0;
-      --radius: 16px;
-      --radius-sm: 10px;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .nav {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
-    }
-
-    .nav .container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    .nav a:hover {
-      color: var(--primary);
-    }
-
-    .nav-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      display: block;
-    }
-
-    .nav-links {
-      margin-left: auto;
-      display: flex;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      font-size: 0.9375rem;
-      color: var(--text-muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .page-content {
-      padding: 56px 0 64px;
-    }
-
-    .page-content h1 {
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 700;
-      color: var(--text);
-      margin: 0 0 12px;
-      letter-spacing: -0.02em;
-    }
-
-    .page-content .subtitle {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin: 0 0 40px;
-    }
-
-    .post-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .post-list li {
-      margin-bottom: 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .post-list li:last-child {
-      border-bottom: none;
-    }
-
-    .post-list a {
-      display: block;
-      padding: 24px 0;
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.0625rem;
-      transition: color 0.2s ease;
-    }
-
-    .post-list a:hover {
-      color: var(--primary);
-    }
-
-    .post-list .post-desc {
-      font-size: 0.9375rem;
-      color: var(--text-muted);
-      font-weight: 400;
-      margin-top: 6px;
-      line-height: 1.5;
-    }
-
-    footer {
-      text-align: center;
-      padding: 32px 24px;
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    footer .links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px 24px;
-      margin-bottom: 12px;
-    }
-
-    footer a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9375rem;
-      font-weight: 500;
-    }
-
-    footer a:hover {
-      color: var(--primary);
-    }
-
-    footer .copy {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
+    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --text: #1e293b; --text-muted: #64748b; --bg: #f8fafc; --surface: #ffffff; --border: #e2e8f0; --radius: 16px; --radius-sm: 10px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05); --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04); }
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.6; margin: 0; padding: 0; background: var(--bg); -webkit-font-smoothing: antialiased; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    .nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
+    .nav .container { display: flex; align-items: center; gap: 12px; max-width: 960px; }
+    .nav a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
+    .nav a:hover { color: var(--primary); }
+    .nav-logo { width: 36px; height: 36px; border-radius: 8px; display: block; }
+    .nav-links { margin-left: auto; display: flex; gap: 24px; }
+    .nav-links a { font-size: 0.9375rem; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+    .page-header { padding: 56px 0 40px; }
+    .page-header h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 700; color: var(--text); margin: 0 0 8px; letter-spacing: -0.02em; }
+    .page-header p { font-size: 1.0625rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+    .post-grid { display: flex; flex-direction: column; gap: 20px; padding-bottom: 64px; }
+    .post-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; box-shadow: var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; text-decoration: none; color: inherit; display: block; }
+    .post-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: rgba(37,99,235,0.2); }
+    .post-card h2 { font-size: 1.1875rem; font-weight: 600; color: var(--text); margin: 0 0 8px; line-height: 1.4; }
+    .post-card p { font-size: 0.9375rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+    .post-card .post-meta { font-size: 0.8125rem; color: var(--text-muted); margin-top: 12px; opacity: 0.8; }
+    .post-tag { display: inline-block; padding: 3px 10px; background: rgba(37,99,235,0.08); color: var(--primary); font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin-right: 6px; margin-bottom: 10px; }
+    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); background: var(--surface); }
+    footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; }
+    footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
+    footer a:hover { color: var(--primary); }
+    footer .copy { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
   </style>
 </head>
 
 <body>
   <nav class="nav">
-    <div class="container">
-      <a href="../index.html">
-        <img src="../Clear Approve Logo.png" alt="Clear Approve" class="nav-logo" />
-      </a>
+    <div class="container" style="max-width:960px;">
+      <a href="../index.html"><img src="../Clear Approve Logo.png" alt="Clear Approve" class="nav-logo" /></a>
       <a href="../index.html">Clear Approve</a>
       <div class="nav-links">
         <a href="index.html">Blog</a>
@@ -197,39 +73,70 @@
   </nav>
 
   <div class="container">
-    <main class="page-content">
+    <div class="page-header">
       <h1>Blog</h1>
-      <p class="subtitle">How to share Google Sheets data without giving access—clean snapshots, no screenshots.</p>
+      <p>Guides, tips, and tutorials for sharing Google Sheets data by email — without screenshots, file sharing, or giving spreadsheet access.</p>
+    </div>
 
-      <ul class="post-list">
-        <li>
-          <a href="share-google-sheet-without-giving-access.html">How to share part of a Google Sheet without giving
-            access</a>
-          <p class="post-desc">Send specific rows or columns—no viewer access, no screenshots, no full-sheet PDFs.</p>
-        </li>
-        <li>
-          <a href="send-selected-rows-google-sheets-email.html">How to send selected rows from Google Sheets by
-            email</a>
-          <p class="post-desc">Send only the rows you select as a clean email or PDF. No sharing the sheet, no
-            screenshots.</p>
-        </li>
-        <li>
-          <a href="stop-sending-screenshots-google-sheets.html">Stop sending screenshots from Google Sheets (do this
-            instead)</a>
-          <p class="post-desc">Send clean, read-only email snapshots of selected rows instead—no access needed.</p>
-        </li>
-        <li>
-          <a href="send-google-sheets-data-to-clients-professionally.html">How to send Google Sheets data to clients
-            professionally</a>
-          <p class="post-desc">Share updates with clients without giving sheet access. Clean email or PDF snapshots.</p>
-        </li>
-        <li>
-          <a href="email-vs-pdf-share-google-sheets-data.html">Email vs PDF: the best way to share Google Sheets
-            data</a>
-          <p class="post-desc">When to put data in the email body vs attach a PDF. One tool does both automatically.</p>
-        </li>
-      </ul>
-    </main>
+    <div class="post-grid">
+
+      <a href="send-google-sheets-rows-by-email.html" class="post-card">
+        <span class="post-tag">Send Now</span>
+        <h2>How to Send Google Sheets Rows by Email (Without Sharing the File)</h2>
+        <p>Select specific rows in your spreadsheet and email them as a clean snapshot. No file sharing, no screenshots, no spreadsheet access needed for recipients.</p>
+        <div class="post-meta">February 2026 · 5 min read</div>
+      </a>
+
+      <a href="schedule-email-reports-google-sheets.html" class="post-card">
+        <span class="post-tag">Schedule</span>
+        <h2>How to Schedule Automated Email Reports from Google Sheets</h2>
+        <p>Set up daily, weekly, or monthly automated reports that send the latest spreadsheet data to your team or clients — no manual work required.</p>
+        <div class="post-meta">February 2026 · 5 min read</div>
+      </a>
+
+      <a href="auto-send-email-when-cell-value-changes-google-sheets.html" class="post-card">
+        <span class="post-tag">Smart Trigger</span>
+        <h2>How to Auto-Send an Email When a Cell Value Changes in Google Sheets</h2>
+        <p>Watch a column for value changes and automatically email a row snapshot when a condition is met. No code, no Apps Script required.</p>
+        <div class="post-meta">February 2026 · 6 min read</div>
+      </a>
+
+      <a href="share-google-sheets-data-without-giving-access.html" class="post-card">
+        <span class="post-tag">Privacy</span>
+        <h2>How to Share Google Sheets Data Without Giving Access to the Spreadsheet</h2>
+        <p>Share exactly the rows you need without granting Viewer or Editor access. Keep your formulas, notes, and sensitive columns private.</p>
+        <div class="post-meta">February 2026 · 5 min read</div>
+      </a>
+
+      <a href="google-sheets-to-pdf-email.html" class="post-card">
+        <span class="post-tag">PDF</span>
+        <h2>How to Convert Google Sheets Rows to PDF and Email Them</h2>
+        <p>Automatically generate a clean PDF from your selected rows and send it as an email attachment — no manual exporting needed.</p>
+        <div class="post-meta">February 2026 · 4 min read</div>
+      </a>
+
+      <a href="automated-reports-google-sheets.html" class="post-card">
+        <span class="post-tag">Automation</span>
+        <h2>5 Ways to Send Automated Reports from Google Sheets</h2>
+        <p>Compare Google Apps Script, Zapier, add-ons, and more — find the right approach for sending recurring reports from your spreadsheets.</p>
+        <div class="post-meta">February 2026 · 7 min read</div>
+      </a>
+
+      <a href="google-sheets-conditional-email-alerts.html" class="post-card">
+        <span class="post-tag">Smart Trigger</span>
+        <h2>How to Set Up Conditional Email Alerts in Google Sheets</h2>
+        <p>Get notified by email when a cell equals, contains, or exceeds a value you define. Works with text, numbers, and status columns.</p>
+        <div class="post-meta">February 2026 · 5 min read</div>
+      </a>
+
+      <a href="google-sheets-email-notification-apps-script-vs-addons.html" class="post-card">
+        <span class="post-tag">Comparison</span>
+        <h2>Google Sheets Email Notifications: Apps Script vs Add-ons Compared</h2>
+        <p>Should you write custom Apps Script code or use an add-on? A practical comparison covering setup time, maintenance, features, and limitations.</p>
+        <div class="post-meta">February 2026 · 6 min read</div>
+      </a>
+
+    </div>
   </div>
 
   <footer>
@@ -238,8 +145,31 @@
       <a href="../support.html">Support</a>
       <a href="../terms.html">Terms of Service</a>
     </div>
-    <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
+    <p class="copy">&copy; 2026 Clear Approve. Built for Google Workspace.</p>
   </footer>
-</body>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Blog — Clear Approve",
+    "description": "Guides and tutorials for sending, scheduling, and auto-triggering email snapshots from Google Sheets.",
+    "url": "https://www.aayu-tech.com/blog/",
+    "isPartOf": { "@type": "WebSite", "name": "Clear Approve", "url": "https://www.aayu-tech.com/" },
+    "publisher": { "@type": "Organization", "name": "Aayu Tech", "url": "https://www.aayu-tech.com" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.aayu-tech.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.aayu-tech.com/blog/" }
+    ]
+  }
+  </script>
+
+</body>
 </html>

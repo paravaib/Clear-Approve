@@ -207,10 +207,11 @@
       background: #0f172a;
     }
 
-    .video-wrap video {
+    .video-wrap iframe {
       width: 100%;
-      height: auto;
+      aspect-ratio: 16 / 9;
       display: block;
+      border: 0;
     }
 
     .video-caption {
@@ -586,9 +587,7 @@
       <h2 class="section-title">Watch a quick demo</h2>
 
       <div class="video-wrap">
-        <video controls poster="Clear Approve Demo 1.png" preload="metadata">
-          <source src="Demo Video 2.mp4" type="video/mp4" />
-        </video>
+        <iframe src="https://www.youtube.com/embed/JEMccquSofw" title="Clear Approve Demo — Send Google Sheets Rows by Email" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         <p class="video-caption">
           Select rows in Google Sheets and send a clean snapshot by email.
         </p>
@@ -932,6 +931,25 @@
       "ratingCount": "1",
       "bestRating": "5",
       "worstRating": "1"
+    }
+  }
+  </script>
+
+  <!-- VideoObject -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Clear Approve Demo — Send Google Sheets Rows by Email",
+    "description": "Watch how to select rows in Google Sheets and send them as a clean email snapshot using the Clear Approve add-on. No screenshots, no file sharing required.",
+    "thumbnailUrl": "https://www.aayu-tech.com/Clear%20Approve%20Demo%201.png",
+    "uploadDate": "2026-02-04",
+    "contentUrl": "https://www.youtube.com/watch?v=JEMccquSofw",
+    "embedUrl": "https://www.youtube.com/embed/JEMccquSofw",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aayu Tech",
+      "url": "https://www.aayu-tech.com"
     }
   }
   </script>
