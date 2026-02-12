@@ -543,6 +543,76 @@
       color: var(--text-muted);
       margin: 0;
     }
+
+    /* Blog Posts Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 22px 24px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+
+    .blog-card .blog-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .blog-card h3 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 6px;
+      line-height: 1.4;
+    }
+
+    .blog-card p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .blog-view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .blog-view-all:hover {
+      gap: 10px;
+    }
   </style>
 </head>
 
@@ -556,7 +626,7 @@
       <a href="index.html">Clear Approve</a>
       <div class="nav-links">
         <a href="blog/index.html">Blog</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="pricing.html">Pricing</a>
         <a href="support.html">Support</a>
         <a href="terms.html">Terms</a>
       </div>
@@ -574,7 +644,7 @@
       </p>
       <span class="badge">✓ Free trial · 3 ways to share · Only accesses the current sheet</span>
       <div class="hero-banner">
-        <img src="Clear approve Updated Banner.png" alt="Clear Approve sidebar open in Google Sheets showing send, schedule, and trigger tabs" />
+        <img src=" Canva SC/Tab - Send Now.png" alt="Clear Approve sidebar open in Google Sheets showing send, schedule, and trigger tabs" />
       </div>
     </div>
   </header>
@@ -633,7 +703,7 @@
 
       <div class="demo-explained">
         <div class="demo-explained-img-wrap">
-          <img src="Clear Approve Send Snapshot Demo Img.png" alt="Step-by-step demo of sending a row snapshot from Google Sheets via Clear Approve" />
+          <img src=" Canva SC/Tab - Send Now.png" alt="Step-by-step demo of sending a row snapshot from Google Sheets via Clear Approve" />
         </div>
 
         <div class="demo-explained-text">
@@ -665,6 +735,9 @@
       <h2 class="section-title">Schedule recurring snapshots</h2>
 
       <div class="demo-explained">
+        <div class="demo-explained-img-wrap">
+          <img src=" Canva SC/Tab - Schedule.png" alt="Clear Approve Schedule tab showing daily, weekly, and monthly recurring snapshot options" />
+        </div>
         <div class="demo-explained-text">
           <p class="demo-explained-intro">
             Set it once, and Clear Approve sends snapshot emails on your schedule — no manual work required.
@@ -693,6 +766,9 @@
       <h2 class="section-title">Auto-send when your data changes</h2>
 
       <div class="demo-explained">
+        <div class="demo-explained-img-wrap">
+          <img src=" Canva SC/Tab - Trigger (1).png" alt="Clear Approve Smart Trigger tab showing column-based conditions for auto-sending snapshots" />
+        </div>
         <div class="demo-explained-text">
           <p class="demo-explained-intro">
             Smart Triggers watch a column for value changes and fire an email the moment a condition is met.
@@ -722,7 +798,7 @@
 
       <div class="recipient-previews">
         <div class="email-preview">
-          <img src="Clear Approve Send Snapshot Email Img.png" alt="Example email received by recipient showing a clean HTML snapshot of Google Sheets rows" />
+          <img src=" Canva SC/Email Cards 2v.png" alt="Example email received by recipient showing a clean HTML snapshot of Google Sheets rows" />
           <p class="email-preview-caption">
             Recipients receive a clear, professional snapshot of exactly the rows you selected —
             no spreadsheet access, no downloads required.
@@ -731,7 +807,7 @@
 
         <div class="email-preview">
           <p class="email-preview-subtitle">PDF snapshot (for larger selections)</p>
-          <img src="Clear Approve Send Snapshot Demo PDF Img.png" alt="Auto-generated PDF attachment preview for larger Google Sheets selections" />
+          <img src=" Canva SC/Email Snapshot C.png" alt="Auto-generated PDF attachment preview for larger Google Sheets selections" />
           <p class="email-preview-caption">
             Larger selections are automatically delivered as a PDF attachment for easier reading.
           </p>
@@ -853,6 +929,40 @@
           </small>
         </div>
       </div>
+    </section>
+
+    <!-- From the Blog -->
+    <section>
+      <p class="section-label">From the blog</p>
+      <h2 class="section-title">Guides and tutorials</h2>
+
+      <div class="blog-grid">
+        <a href="blog/send-google-sheets-rows-by-email.html" class="blog-card">
+          <span class="blog-tag">Send Now</span>
+          <h3>How to Send Google Sheets Rows by Email</h3>
+          <p>Select specific rows and email them as a clean snapshot — no file sharing needed.</p>
+        </a>
+
+        <a href="blog/schedule-email-reports-google-sheets.html" class="blog-card">
+          <span class="blog-tag">Schedule</span>
+          <h3>Schedule Automated Email Reports from Google Sheets</h3>
+          <p>Set up daily, weekly, or monthly reports that send the latest data automatically.</p>
+        </a>
+
+        <a href="blog/auto-send-email-when-cell-value-changes-google-sheets.html" class="blog-card">
+          <span class="blog-tag">Smart Trigger</span>
+          <h3>Auto-Send Email When a Cell Value Changes</h3>
+          <p>Watch a column and auto-email a snapshot when a condition is met.</p>
+        </a>
+
+        <a href="blog/google-sheets-email-notification-apps-script-vs-addons.html" class="blog-card">
+          <span class="blog-tag">Comparison</span>
+          <h3>Apps Script vs Add-ons for Email Notifications</h3>
+          <p>A practical comparison covering setup time, maintenance, and features.</p>
+        </a>
+      </div>
+
+      <a href="blog/index.html" class="blog-view-all">View all posts →</a>
     </section>
 
 

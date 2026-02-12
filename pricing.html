@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <link rel="icon" type="image/png" href="Clear Approve 128.png" />
+  <link rel="canonical" href="https://www.aayu-tech.com/pricing.html" />
+  <title>Pricing — Clear Approve Google Sheets Add-on</title>
+  <meta name="description"
+    content="Simple pricing for Clear Approve: $15/month per sender. Free trial included. Unlimited snapshots, scheduled reports, smart triggers, and auto PDF generation." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Clear Approve" />
+  <meta property="og:title" content="Pricing — Clear Approve Google Sheets Add-on" />
+  <meta property="og:description" content="Simple pricing for Clear Approve: $15/month per sender. Free trial included. Unlimited snapshots, scheduled reports, smart triggers, and auto PDF generation." />
+  <meta property="og:url" content="https://www.aayu-tech.com/pricing.html" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20Approve%20Logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Pricing — Clear Approve" />
+  <meta name="twitter:description" content="$15/month per sender. Free trial included. Unlimited snapshots, scheduled reports, smart triggers, and auto PDF generation." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .page-content {
+      padding: 56px 0 64px;
+    }
+
+    .page-content h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      margin: 0 0 40px;
+    }
+
+    /* Pricing card */
+    .pricing-card {
+      max-width: 480px;
+      margin: 0 auto 48px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .pricing-header {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      padding: 32px 32px 28px;
+      text-align: center;
+    }
+
+    .pricing-price {
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .pricing-price span {
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0.85;
+    }
+
+    .pricing-per {
+      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 4px 0 0;
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 5px 14px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .pricing-body {
+      padding: 32px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 0 0 32px;
+      padding: 0;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      font-size: 0.9375rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2316a34a'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .cta-button {
+      display: block;
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--primary);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .cta-button:hover {
+      background: #1d4ed8;
+    }
+
+    .cta-button:active {
+      transform: scale(0.98);
+    }
+
+    /* FAQ section */
+    .faq-section {
+      margin-top: 8px;
+    }
+
+    .faq-section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 20px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin-bottom: 12px;
+    }
+
+    .faq-item h3 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 8px;
+    }
+
+    .faq-item p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 32px;
+      padding: 10px 16px;
+      background: var(--surface);
+      color: var(--primary);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.06);
+      border-color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    footer .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    footer .copy {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html">
+        <img src="Clear Approve Logo.png" alt="Clear Approve" class="nav-logo" />
+      </a>
+      <a href="index.html">Clear Approve</a>
+      <div class="nav-links">
+        <a href="blog/index.html">Blog</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="support.html">Support</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <main class="page-content">
+      <h1>Simple, transparent pricing</h1>
+      <p class="subtitle">One plan. Everything included. No hidden fees.</p>
+
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <p class="pricing-price">$15<span>/month</span></p>
+          <p class="pricing-per">per active sender</p>
+          <span class="pricing-badge">Free trial included</span>
+        </div>
+        <div class="pricing-body">
+          <ul class="feature-list">
+            <li>Unlimited manual snapshots (email + auto PDF)</li>
+            <li>Scheduled reports — daily, weekly, or monthly</li>
+            <li>Smart Triggers — auto-send on data changes</li>
+            <li>5 comparison operators (equals, not equals, contains, greater than, less than)</li>
+            <li>Exact row-level control for all modes</li>
+            <li>No spreadsheet access required for recipients</li>
+            <li>Failure notifications for scheduled sends</li>
+            <li>Email support</li>
+          </ul>
+          <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428" class="cta-button">Start
+            Free Trial</a>
+        </div>
+      </div>
+
+      <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>How does the free trial work?</h3>
+          <p>You get a limited number of free sends to try all features before purchasing.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What counts as an "active sender"?</h3>
+          <p>Each Google account that creates schedules or triggers counts as one sender. Recipients are unlimited.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I pay?</h3>
+          <p>Payment is processed securely via Razorpay. We do not store your credit card or banking information.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I cancel anytime?</h3>
+          <p>Yes. You can stop your subscription at any time. Open schedules and triggers will stop at the end of your
+            billing period.</p>
+        </div>
+      </div>
+
+      <a href="index.html" class="back-link">&larr; Back to Home</a>
+    </main>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <p class="copy">&copy; 2026 Clear Approve. Built for Google Workspace.</p>
+  </footer>
+
+  <!-- JSON-LD Structured Data -->
+
+  <!-- WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Pricing — Clear Approve",
+    "description": "Simple pricing for Clear Approve: $15/month per sender. Free trial included. Unlimited snapshots, scheduled reports, smart triggers, and auto PDF generation.",
+    "url": "https://www.aayu-tech.com/pricing.html",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Clear Approve",
+      "url": "https://www.aayu-tech.com/"
+    },
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "Clear Approve",
+      "applicationCategory": "BusinessApplication"
+    },
+    "dateModified": "2026-02-12",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aayu Tech",
+      "url": "https://www.aayu-tech.com"
+    }
+  }
+  </script>
+
+  <!-- BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.aayu-tech.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Pricing",
+        "item": "https://www.aayu-tech.com/pricing.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Clear Approve Pro",
+    "description": "Google Sheets add-on for sending email snapshots, scheduling reports, and setting up smart triggers.",
+    "brand": {
+      "@type": "Organization",
+      "name": "Aayu Tech"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "15.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.aayu-tech.com/pricing.html"
+    }
+  }
+  </script>
+
+</body>
+
+</html>
