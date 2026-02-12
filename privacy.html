@@ -4,10 +4,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-snippet:-1" />
   <link rel="icon" type="image/png" href="Clear Approve 128.png" />
-  <title>Privacy Policy — Clear Approve</title>
+  <link rel="canonical" href="https://www.aayu-tech.com/privacy.html" />
+  <title>Privacy Policy — Clear Approve Google Sheets Add-on</title>
   <meta name="description"
-    content="Clear Approve privacy policy: how our Google Sheets add-on handles your data, scopes, and the Send Snapshot feature." />
+    content="Clear Approve privacy policy: learn how our Google Sheets add-on handles your data, what OAuth scopes are used, how scheduled reports and smart triggers process data, and our commitment to Google API Limited Use compliance." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Clear Approve" />
+  <meta property="og:title" content="Privacy Policy — Clear Approve Google Sheets Add-on" />
+  <meta property="og:description" content="How Clear Approve handles your Google Sheets data, OAuth scopes, scheduled reports, smart triggers, and Limited Use compliance." />
+  <meta property="og:url" content="https://www.aayu-tech.com/privacy.html" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20Approve%20Logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Privacy Policy — Clear Approve" />
+  <meta name="twitter:description" content="How Clear Approve handles your Google Sheets data and permissions." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -224,26 +240,36 @@
       <h2>2. Data Access & Scopes</h2>
       <p>Our Add-on requests only the minimum permissions necessary to function:</p>
       <ul>
-        <li><b>Active Spreadsheet Access (currentonly):</b> We read only the rows you explicitly select in the active
-          spreadsheet to generate snapshots. We do not access your other files or Drive data.</li>
-        <li><b>Email Service:</b> We use your Google account to send the snapshots you generate. We never send emails
-          without your direct interaction (clicking the "Send" button).</li>
+        <li><b>Active Spreadsheet Access (currentonly):</b> We read only the rows you explicitly select (or configure
+          for schedules/triggers) in the active spreadsheet. We do not access other spreadsheets.</li>
+        <li><b>Drive File Access (drive.file):</b> We create and manage files that the add-on itself generates — such
+          as PDF snapshots and internal data files for scheduled reports. We cannot access your other Drive files.</li>
+        <li><b>Email Service:</b> We use your Google account to send snapshots. Manual sends require clicking "Send."
+          Scheduled and triggered sends are dispatched automatically based on settings you configure.</li>
+        <li><b>Trigger Management (scriptapp):</b> We create time-based and edit-based triggers to power the Schedule
+          and Smart Trigger features. These triggers run only within this add-on's context.</li>
         <li><b>External Requests:</b> We connect to our secure licensing server solely to verify your subscription
           status and Pro features.</li>
       </ul>
 
-      <h2>3. Data Usage & The "Snapshot" Feature</h2>
-      <p>When you use the "Send Snapshot" feature, the following occurs:</p>
-      <ul>
-        <li>The data from your selected rows is converted into HTML "Cards" or a PDF document.</li>
-        <li><b>Automatic Formatting:</b> If you select more than 8 rows, the data is automatically converted to a PDF
-          attachment to ensure email deliverability and document clarity.</li>
-        <li>This data is sent directly to your chosen recipient via the Google Mail API.</li>
-      </ul>
+      <h2>3. Data Usage & Features</h2>
+      <p><b>Send Now (Manual Snapshots):</b> When you click "Send," the data from your selected rows is converted into
+        HTML cards or a PDF document and sent directly to your chosen recipient. If you select more than 8 rows, the
+        data is automatically converted to a PDF attachment.</p>
+      <p><b>Schedule (Automated Reports):</b> When you configure a schedule, we store your settings (row range,
+        recipients, frequency, time) using Google Apps Script Properties. At the scheduled time, a time-based trigger
+        reads the latest data from your configured rows and sends a snapshot. The snapshot data is temporarily stored in
+        a Drive file created by the add-on until the email is sent, then cleaned up.</p>
+      <p><b>Smart Trigger (Event-Driven):</b> When you configure a smart trigger, an edit-based trigger monitors
+        changes in your specified column. When a cell value matches your condition, the corresponding row's data is
+        sent as a snapshot. We store a small tracking file in Drive to prevent duplicate sends for the same row.</p>
 
       <h2>4. Data Storage & Security</h2>
-      <p><b>We do not store your spreadsheet data.</b> All row content is processed in real-time to generate your email
-        and is not cached or saved on our servers. Your spreadsheet data stays within the Google ecosystem.</p>
+      <p><b>We do not store your spreadsheet data on external servers.</b> Manual sends process row content in
+        real-time. Scheduled and triggered sends temporarily store snapshot data in Google Drive files created by the
+        add-on — these stay within your Google ecosystem and are managed automatically.</p>
+      <p>Configuration settings (schedule frequency, trigger conditions, row ranges) are stored using Google Apps
+        Script's built-in Properties Service, scoped to your spreadsheet.</p>
       <p>We only store your <b>Email Address</b> in our licensing database to manage your trial limits and Pro
         subscription.</p>
       <p><b>Data Protection Mechanisms:</b> We use industry-standard security protocols to protect your data during
@@ -252,8 +278,9 @@
 
       <h2>5. Data Sharing & Disclosure</h2>
       <p>Clear Approve does not share, sell, or rent Google user data to third parties. Data is only transferred to the
-        recipient's email address as explicitly directed by the user through the "Send Snapshot" action. We may disclose
-        information only if required by law or to protect our legal rights.</p>
+        recipient's email address as explicitly directed by the user — either through a manual send, a schedule you
+        configured, or a smart trigger you set up. We may disclose information only if required by law or to protect
+        our legal rights.</p>
 
       <h2>6. AI Disclosure</h2>
       <p>Clear Approve does not use your spreadsheet data to train artificial intelligence or machine learning models.
@@ -274,6 +301,58 @@
     </div>
     <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
   </footer>
+  <!-- JSON-LD Structured Data -->
+
+  <!-- WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy — Clear Approve",
+    "description": "How Clear Approve handles your Google Sheets data, what OAuth scopes are used, and our compliance with Google API Limited Use requirements.",
+    "url": "https://www.aayu-tech.com/privacy.html",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Clear Approve",
+      "url": "https://www.aayu-tech.com/"
+    },
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "Clear Approve",
+      "applicationCategory": "BusinessApplication"
+    },
+    "dateModified": "2026-02-04",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aayu Tech",
+      "url": "https://www.aayu-tech.com"
+    }
+  }
+  </script>
+
+  <!-- BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.aayu-tech.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": "https://www.aayu-tech.com/privacy.html"
+      }
+    ]
+  }
+  </script>
+
 </body>
 
 </html>

@@ -4,10 +4,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="icon" type="image/png" href="Clear Approve 128.png" />
-  <title>Support — Clear Approve</title>
+  <link rel="canonical" href="https://www.aayu-tech.com/support.html" />
+  <title>Support & FAQ — Clear Approve Google Sheets Add-on</title>
   <meta name="description"
-    content="Get help with Clear Approve: contact support, FAQs, and resources for the Google Sheets snapshot add-on." />
+    content="Get help with Clear Approve: contact support, FAQs about sending email snapshots, scheduling reports, smart triggers, PDF attachments, permissions, and cancelling automations in Google Sheets." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Clear Approve" />
+  <meta property="og:title" content="Support & FAQ — Clear Approve Google Sheets Add-on" />
+  <meta property="og:description" content="FAQs and support for Clear Approve: send snapshots, schedule reports, and set up smart triggers in Google Sheets." />
+  <meta property="og:url" content="https://www.aayu-tech.com/support.html" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20Approve%20Logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Support & FAQ — Clear Approve" />
+  <meta name="twitter:description" content="Get help with Clear Approve. FAQs about sending snapshots, scheduling reports, smart triggers, and more." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -172,6 +188,39 @@
       border-color: var(--primary);
     }
 
+    .faq-section {
+      margin-top: 40px;
+    }
+
+    .faq-section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 20px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin-bottom: 12px;
+    }
+
+    .faq-item h3 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 8px;
+    }
+
+    .faq-item p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
     footer {
       text-align: center;
       padding: 32px 24px;
@@ -230,6 +279,73 @@
         <a href="mailto:vaibhav@aayutech.in" class="support-email">vaibhav@aayutech.in</a>
         <p style="margin-top: 20px;">We typically respond within 1–2 business days.</p>
       </div>
+      <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>What are the three ways to send snapshots?</h3>
+          <p><b>Send Now</b> lets you manually select rows and send instantly. <b>Schedule</b> sends automated reports
+            daily, weekly, or monthly. <b>Smart Trigger</b> auto-sends when a cell value changes to match a condition
+            you set.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Does the scheduled snapshot use the latest data?</h3>
+          <p>Yes. At the scheduled time, Clear Approve reads the current data from your configured rows — so recipients
+            always get the most up-to-date information.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Will a smart trigger send duplicate emails for the same row?</h3>
+          <p>No. Each row fires only once per value transition. If the value reverts and changes back, it will fire
+            again — but it won't send repeatedly for the same change.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What happens if I select more than 8 rows?</h3>
+          <p>Selections of 8 rows or fewer are sent as clean HTML cards in the email body. Larger selections are
+            automatically converted to a PDF attachment.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What permissions does Clear Approve need?</h3>
+          <p>Only access to the current spreadsheet, the ability to create its own Drive files (for snapshots), send
+            email, and manage triggers. No Drive-wide access.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I cancel a schedule or trigger?</h3>
+          <p>Open the Clear Approve sidebar, go to the Schedule or Trigger tab, and click the delete button. The
+            automation stops immediately.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What comparison operators are available for smart triggers?</h3>
+          <p>Clear Approve supports five operators: <b>equals</b>, <b>does not equal</b>, <b>contains</b>,
+            <b>greater than</b>, and <b>less than</b>. For greater than and less than, values are compared
+            numerically.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I send to multiple recipients?</h3>
+          <p>Yes. Enter multiple email addresses separated by commas in the email field. This works for manual sends,
+            scheduled reports, and smart triggers.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Do recipients need a Google account to view the snapshot?</h3>
+          <p>No. Recipients receive a standard email with the snapshot rendered as HTML or attached as a PDF. They can
+            read it in any email client — no Google account or spreadsheet access required.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is my spreadsheet data stored on external servers?</h3>
+          <p>No. Clear Approve processes your data in real-time within Google's infrastructure. Scheduled and triggered
+            snapshots are temporarily stored in Google Drive files created by the add-on — all within your own Google
+            ecosystem. We only store your email address for license management.</p>
+        </div>
+      </div>
+
       <a href="index.html" class="back-link">← Back to Home</a>
     </main>
   </div>
@@ -242,6 +358,120 @@
     </div>
     <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
   </footer>
+  <!-- JSON-LD Structured Data -->
+
+  <!-- FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are the three ways to send snapshots in Clear Approve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Send Now lets you manually select rows and send instantly. Schedule sends automated reports daily, weekly, or monthly. Smart Trigger auto-sends when a cell value changes to match a condition you set."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the scheduled snapshot use the latest data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. At the scheduled time, Clear Approve reads the current data from your configured rows — so recipients always get the most up-to-date information."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will a smart trigger send duplicate emails for the same row?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Each row fires only once per value transition. If the value reverts and changes back, it will fire again — but it won't send repeatedly for the same change."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I select more than 8 rows in Clear Approve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Selections of 8 rows or fewer are sent as clean HTML cards in the email body. Larger selections are automatically converted to a PDF attachment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What permissions does Clear Approve need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Only access to the current spreadsheet, the ability to create its own Drive files (for snapshots), send email, and manage triggers. No Drive-wide access."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I cancel a schedule or trigger in Clear Approve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the Clear Approve sidebar, go to the Schedule or Trigger tab, and click the delete button. The automation stops immediately."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What comparison operators are available for smart triggers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clear Approve supports five operators: equals, does not equal, contains, greater than, and less than. For greater than and less than, values are compared numerically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I send to multiple recipients with Clear Approve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Enter multiple email addresses separated by commas in the email field. This works for manual sends, scheduled reports, and smart triggers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do recipients need a Google account to view the snapshot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Recipients receive a standard email with the snapshot rendered as HTML or attached as a PDF. They can read it in any email client — no Google account or spreadsheet access required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my spreadsheet data stored on external servers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Clear Approve processes your data in real-time within Google's infrastructure. Scheduled and triggered snapshots are temporarily stored in Google Drive files created by the add-on — all within your own Google ecosystem. Only your email address is stored for license management."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.aayu-tech.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Support",
+        "item": "https://www.aayu-tech.com/support.html"
+      }
+    ]
+  }
+  </script>
+
 </body>
 
 </html>

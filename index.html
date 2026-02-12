@@ -4,10 +4,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="icon" type="image/png" href="Clear Approve 128.png" />
-  <title>Clear Approve — Clean Email & PDF Snapshots from Google Sheets</title>
+  <link rel="canonical" href="https://www.aayu-tech.com/" />
+  <title>Clear Approve — Send, Schedule & Auto-Trigger Email Snapshots from Google Sheets</title>
   <meta name="description"
-    content="Google Sheets add-on: send selected rows as clean email snapshots or PDFs. No screenshots, no sharing the sheet. Recipients don't need access. Free trial." />
+    content="Clear Approve is a Google Sheets add-on that lets you send selected rows as clean email snapshots, schedule recurring reports daily/weekly/monthly, or auto-trigger emails when cell values change. No screenshots, no file sharing, no spreadsheet access needed for recipients. Free trial included." />
+  <meta name="keywords" content="Google Sheets add-on, email snapshots, scheduled reports, smart triggers, send rows by email, Google Sheets email, automated reports, spreadsheet email, row-level sharing, PDF snapshots, Google Workspace add-on" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Clear Approve" />
+  <meta property="og:title" content="Clear Approve — Send, Schedule & Auto-Trigger Email Snapshots from Google Sheets" />
+  <meta property="og:description" content="Google Sheets add-on: send selected rows as clean email snapshots, schedule daily/weekly/monthly reports, or auto-trigger emails when data changes. Free trial." />
+  <meta property="og:url" content="https://www.aayu-tech.com/" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20approve%20Updated%20Banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Clear Approve — Email Snapshots from Google Sheets" />
+  <meta name="twitter:description" content="Send, schedule, or auto-trigger clean email snapshots from Google Sheets. No screenshots, no file sharing. Free trial." />
+  <meta name="twitter:image" content="https://www.aayu-tech.com/Clear%20approve%20Updated%20Banner.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -369,6 +390,14 @@
       background: rgba(168, 85, 247, 0.12);
     }
 
+    .card:nth-child(5) .card-icon {
+      background: rgba(14, 165, 233, 0.12);
+    }
+
+    .card:nth-child(6) .card-icon {
+      background: rgba(239, 68, 68, 0.12);
+    }
+
     .card h3 {
       font-size: 1.125rem;
       font-weight: 600;
@@ -533,17 +562,18 @@
     </div>
   </nav>
 
+  <main>
   <header class="hero">
     <div class="container">
-      <img src="Clear Approve Logo.png" alt="Clear Approve" class="hero-logo" />
-      <h1>Clear Approve</h1>
+      <img src="Clear Approve Logo.png" alt="Clear Approve Google Sheets add-on logo" class="hero-logo" />
+      <h1>Clear Approve — Email Snapshots from Google Sheets</h1>
       <p class="hero-text">
-        Turn selected rows in Google Sheets into <b>clean, read-only email snapshots</b>.
+        <b>Send, schedule, or auto-trigger</b> clean email snapshots from Google Sheets.
         No screenshots. No file sharing. No spreadsheet access required for recipients.
       </p>
-      <span class="badge">✓ Free trial · Only accesses the current sheet</span>
+      <span class="badge">✓ Free trial · 3 ways to share · Only accesses the current sheet</span>
       <div class="hero-banner">
-        <img src="Clear approve Updated Banner.png" alt="Clear Approve in Google Sheets" />
+        <img src="Clear approve Updated Banner.png" alt="Clear Approve sidebar open in Google Sheets showing send, schedule, and trigger tabs" />
       </div>
     </div>
   </header>
@@ -557,11 +587,43 @@
 
       <div class="video-wrap">
         <video controls poster="Clear Approve Demo 1.png" preload="metadata">
-          <source src="Clear Approve Send Snapshot Demo/Clear Approve Send Snapshot Demo.mp4" type="video/mp4" />
+          <source src="Demo Video 2.mp4" type="video/mp4" />
         </video>
         <p class="video-caption">
           Select rows in Google Sheets and send a clean snapshot by email.
         </p>
+      </div>
+    </section>
+
+    <!-- Three modes -->
+    <section>
+      <p class="section-label">Three ways to share</p>
+      <h2 class="section-title">Send now, schedule it, or let data trigger it</h2>
+
+      <div class="feature-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="card" style="text-align:center;">
+          <div class="card-icon" style="margin:0 auto 16px; background:rgba(37,99,235,0.12); font-size:1.5rem;">
+            <span>📨</span>
+          </div>
+          <h3>Send Now</h3>
+          <p>Select rows and send a clean snapshot instantly. You control exactly what gets shared.</p>
+        </div>
+
+        <div class="card" style="text-align:center;">
+          <div class="card-icon" style="margin:0 auto 16px; background:rgba(14,165,233,0.12); font-size:1.5rem;">
+            <span>📅</span>
+          </div>
+          <h3>Schedule</h3>
+          <p>Set up daily, weekly, or monthly automated snapshots. Reports go out on time, every time.</p>
+        </div>
+
+        <div class="card" style="text-align:center;">
+          <div class="card-icon" style="margin:0 auto 16px; background:rgba(34,197,94,0.12); font-size:1.5rem;">
+            <span>⚡</span>
+          </div>
+          <h3>Smart Trigger</h3>
+          <p>Auto-send when a cell value changes to match your condition. No manual checks needed.</p>
+        </div>
       </div>
     </section>
 
@@ -572,7 +634,7 @@
 
       <div class="demo-explained">
         <div class="demo-explained-img-wrap">
-          <img src="Clear Approve Send Snapshot Demo Img.png" alt="Send snapshot demo" />
+          <img src="Clear Approve Send Snapshot Demo Img.png" alt="Step-by-step demo of sending a row snapshot from Google Sheets via Clear Approve" />
         </div>
 
         <div class="demo-explained-text">
@@ -598,6 +660,62 @@
       </div>
     </section>
 
+    <!-- Schedule -->
+    <section>
+      <p class="section-label">Automated reports</p>
+      <h2 class="section-title">Schedule recurring snapshots</h2>
+
+      <div class="demo-explained">
+        <div class="demo-explained-text">
+          <p class="demo-explained-intro">
+            Set it once, and Clear Approve sends snapshot emails on your schedule — no manual work required.
+          </p>
+          <ol class="demo-steps-list">
+            <li>
+              <strong>Pick your rows and recipients</strong> — same as a manual send, but in the Schedule tab.
+            </li>
+            <li>
+              <strong>Choose a frequency:</strong> daily, weekly (pick the day), or monthly (pick the date).
+            </li>
+            <li>
+              <strong>Set the time</strong> and Clear Approve handles the rest. Snapshots capture the latest data at send time.
+            </li>
+            <li>
+              <strong>Edit or cancel anytime</strong> from the sidebar. You stay in full control.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Smart Trigger -->
+    <section>
+      <p class="section-label">Event-driven</p>
+      <h2 class="section-title">Auto-send when your data changes</h2>
+
+      <div class="demo-explained">
+        <div class="demo-explained-text">
+          <p class="demo-explained-intro">
+            Smart Triggers watch a column for value changes and fire an email the moment a condition is met.
+          </p>
+          <ol class="demo-steps-list">
+            <li>
+              <strong>Pick a trigger column</strong> — for example, a "Status" or "Approval" column.
+            </li>
+            <li>
+              <strong>Set the condition:</strong> equals, contains, greater than, less than, or not equal to a value you define.
+            </li>
+            <li>
+              <strong>Choose your rows and recipients.</strong> When any cell in the trigger column changes to match, that row's snapshot is sent automatically.
+            </li>
+            <li>
+              <strong>Each row fires once</strong> per transition, so recipients aren't spammed with duplicates.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
     <!-- Recipient preview -->
     <section>
       <p class="section-label">What recipients see</p>
@@ -605,7 +723,7 @@
 
       <div class="recipient-previews">
         <div class="email-preview">
-          <img src="Clear Approve Send Snapshot Email Img.png" alt="Snapshot email preview" />
+          <img src="Clear Approve Send Snapshot Email Img.png" alt="Example email received by recipient showing a clean HTML snapshot of Google Sheets rows" />
           <p class="email-preview-caption">
             Recipients receive a clear, professional snapshot of exactly the rows you selected —
             no spreadsheet access, no downloads required.
@@ -614,7 +732,7 @@
 
         <div class="email-preview">
           <p class="email-preview-subtitle">PDF snapshot (for larger selections)</p>
-          <img src="Clear Approve Send Snapshot Demo PDF Img.png" alt="PDF snapshot preview" />
+          <img src="Clear Approve Send Snapshot Demo PDF Img.png" alt="Auto-generated PDF attachment preview for larger Google Sheets selections" />
           <p class="email-preview-caption">
             Larger selections are automatically delivered as a PDF attachment for easier reading.
           </p>
@@ -625,38 +743,54 @@
     <!-- Features -->
     <section>
       <p class="section-label">Features</p>
-      <h2 class="section-title">Designed for fast, controlled sharing</h2>
+      <h2 class="section-title">Everything you need, nothing you don't</h2>
 
       <div class="feature-grid">
         <div class="card">
           <div class="card-icon">📧</div>
           <h3>Email-ready snapshots</h3>
           <p>
-            Send clean HTML snapshots or PDFs directly from Google Sheets — no formatting work required.
+            Clean HTML cards for small selections, auto-generated PDFs for larger ones. Professional every time.
           </p>
         </div>
 
         <div class="card">
-          <div class="card-icon">📄</div>
-          <h3>Automatic PDF generation</h3>
+          <div class="card-icon">📅</div>
+          <h3>Scheduled reports</h3>
           <p>
-            Larger selections are converted into a professional PDF attachment automatically.
+            Daily, weekly, or monthly automated snapshots. Always uses the latest data at send time.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Smart Triggers</h3>
+          <p>
+            Auto-send when a cell value matches your condition. Each row fires once — no duplicate emails.
           </p>
         </div>
 
         <div class="card">
           <div class="card-icon">🎯</div>
-          <h3>Exact row-level control</h3>
+          <h3>Row-level control</h3>
           <p>
-            Share only what you select. Nothing more, nothing less.
+            Share only the rows you select. Specify exact ranges for schedules and triggers too.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📄</div>
+          <h3>Auto PDF generation</h3>
+          <p>
+            Larger selections are automatically converted into a clean PDF attachment for easier reading.
           </p>
         </div>
 
         <div class="card">
           <div class="card-icon">🔒</div>
-          <h3>Context-only access</h3>
+          <h3>Minimal permissions</h3>
           <p>
-            The add-on only accesses the sheet you are currently working in. No Drive-wide permissions.
+            Only accesses the current sheet and files the add-on creates. No Drive-wide access, ever.
           </p>
         </div>
       </div>
@@ -675,9 +809,9 @@
           line-height:1.65;
           color:var(--text);
         ">
-          “We stopped sending screenshots and messy exports.
-          Now we just select the rows and send a clean snapshot.
-          It looks professional every time.”
+          "We set up a weekly schedule for our client reports and a smart trigger
+          for approval notifications. What used to take 30 minutes of copy-pasting
+          now happens automatically."
           <footer style="
             margin-top:16px;
             font-size:0.875rem;
@@ -701,17 +835,17 @@
           <p class="price-subline">Per active sender · Free trial included</p>
 
           <p class="price-intro">
-            Clear Approve is built for people who regularly share spreadsheet data with
-            clients, stakeholders, or leadership—and want it to look clean, intentional,
-            and controlled.
+            One plan covers everything — manual sends, scheduled reports, and smart triggers.
+            Built for teams that share spreadsheet data with clients, stakeholders, or leadership.
           </p>
 
           <ul class="price-features">
-            <li>Unlimited email snapshots from Google Sheets</li>
-            <li>Automatic PDF generation for larger selections</li>
-            <li>Clean HTML email formatting for quick updates</li>
-            <li>Exact row-level control — share only what you select</li>
+            <li>Unlimited manual snapshots (email + auto PDF)</li>
+            <li>Scheduled reports — daily, weekly, or monthly</li>
+            <li>Smart Triggers — auto-send on data changes</li>
+            <li>Exact row-level control for all modes</li>
             <li>No spreadsheet access required for recipients</li>
+            <li>Failure notifications if a scheduled send has issues</li>
           </ul>
 
           <small class="price-footnote">
@@ -724,6 +858,7 @@
 
 
   </div>
+  </main>
 
   <footer>
     <div class="links">
@@ -733,6 +868,221 @@
     </div>
     <p class="copy">© 2026 Clear Approve. Built for Google Workspace.</p>
   </footer>
+
+  <!-- JSON-LD Structured Data for SEO + AI Results -->
+
+  <!-- Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aayu Tech",
+    "url": "https://www.aayu-tech.com",
+    "logo": "https://www.aayu-tech.com/Clear%20Approve%20Logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "vaibhav@aayutech.in",
+      "contactType": "customer support",
+      "url": "https://www.aayu-tech.com/support.html"
+    }
+  }
+  </script>
+
+  <!-- SoftwareApplication (Product) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Clear Approve",
+    "description": "Google Sheets add-on that sends selected rows as clean email snapshots. Supports manual sends, scheduled recurring reports (daily, weekly, monthly), and smart triggers that auto-send when cell values change. Recipients get a clean read-only snapshot — no spreadsheet access required.",
+    "url": "https://www.aayu-tech.com/",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "Spreadsheet Add-on",
+    "operatingSystem": "Web (Google Sheets)",
+    "softwareRequirements": "Google Sheets, Google Workspace account",
+    "image": "https://www.aayu-tech.com/Clear%20approve%20Updated%20Banner.png",
+    "screenshot": "https://www.aayu-tech.com/Clear%20Approve%20Send%20Snapshot%20Demo%20Img.png",
+    "featureList": [
+      "Send selected rows as clean HTML email snapshots",
+      "Auto-generate PDF attachments for large selections",
+      "Schedule daily, weekly, or monthly recurring reports",
+      "Smart Triggers auto-send when cell values match conditions",
+      "5 comparison operators: equals, not equals, contains, greater than, less than",
+      "Row-level control — share only the rows you select",
+      "Recipients need no spreadsheet access",
+      "Minimal permissions — only accesses the current sheet",
+      "Duplicate prevention — each triggered row fires once per transition"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "15.00",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "description": "Pro license — unlimited sends, scheduled reports, smart triggers"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aayu Tech",
+      "url": "https://www.aayu-tech.com"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "ratingCount": "1",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+
+  <!-- HowTo — Send a Snapshot -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to send an email snapshot from Google Sheets using Clear Approve",
+    "description": "Step-by-step guide to send selected rows from Google Sheets as a clean email snapshot using the Clear Approve add-on.",
+    "totalTime": "PT1M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Open Clear Approve",
+        "text": "Open Clear Approve from the Extensions menu inside your Google Sheet."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Select rows",
+        "text": "Select the rows you want to share. Only the selected data is included in the snapshot."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Automatic formatting",
+        "text": "Clear Approve automatically formats small selections as clean HTML email cards and larger selections as a PDF attachment."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Click Send",
+        "text": "Enter the recipient's email and click Send. Nothing is shared until you explicitly send it."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Recipient receives snapshot",
+        "text": "Recipients receive a clean, read-only snapshot they can read instantly — no Google Sheets access required."
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Clear Approve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clear Approve is a Google Sheets add-on that lets you send selected rows as clean email snapshots. It supports three modes: Send Now (manual), Schedule (daily, weekly, or monthly automated reports), and Smart Trigger (auto-send when a cell value matches a condition like equals, contains, greater than, less than, or not equal to)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I send rows from Google Sheets by email?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Install Clear Approve from the Google Workspace Marketplace, open it from the Extensions menu, select the rows you want to share, enter the recipient's email, and click Send. Small selections are sent as clean HTML cards in the email body; larger selections are automatically converted to a PDF attachment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I schedule recurring email reports from Google Sheets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Clear Approve's Schedule feature lets you set up daily, weekly, or monthly automated snapshot emails. You choose the rows, recipients, frequency, and time. The report always uses the latest data at send time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are Smart Triggers in Clear Approve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Smart Triggers watch a specific column in your Google Sheet and automatically send an email snapshot when a cell value matches your condition. You can use operators like equals, does not equal, contains, greater than, or less than. Each row fires only once per value transition to prevent duplicate emails."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do recipients need access to my Google Sheet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Recipients receive a clean, read-only snapshot via email. They do not need a Google account or any access to your spreadsheet. The email contains only the specific rows you selected or configured."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What permissions does Clear Approve need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clear Approve only accesses the current spreadsheet, creates its own Drive files for snapshot storage, and sends email. It does not access other spreadsheets or your broader Google Drive. All data stays within your Google ecosystem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does Clear Approve cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clear Approve offers a free trial with 10 sends. The Pro plan costs $15/month per active sender and includes unlimited manual snapshots, scheduled reports, smart triggers, auto PDF generation, and failure notifications."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens when I select more than 8 rows?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Selections of 8 rows or fewer are sent as clean HTML cards directly in the email body. Larger selections are automatically converted into a professionally formatted PDF attachment for easier reading."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.aayu-tech.com/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- WebSite (for sitelinks search box) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Clear Approve",
+    "url": "https://www.aayu-tech.com/",
+    "description": "Google Sheets add-on to send, schedule, and auto-trigger clean email snapshots of your spreadsheet data.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aayu Tech"
+    }
+  }
+  </script>
 
 </body>
 
