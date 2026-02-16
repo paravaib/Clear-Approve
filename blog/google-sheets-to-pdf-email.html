@@ -1,67 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="icon" type="image/png" href="../Clear Approve 128.png" />
   <link rel="canonical" href="https://www.aayu-tech.com/blog/google-sheets-to-pdf-email.html" />
   <title>How to Convert Google Sheets Rows to PDF and Email Them — Clear Approve</title>
-  <meta name="description" content="Learn how to convert specific Google Sheets rows to a clean PDF and email them automatically. Send invoices, reports, and client deliverables in seconds." />
+  <meta name="description"
+    content="Learn how to convert specific Google Sheets rows to a clean PDF and email them automatically. Send invoices, reports, and client deliverables in seconds." />
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Clear Approve" />
   <meta property="og:title" content="How to Convert Google Sheets Rows to PDF and Email Them" />
-  <meta property="og:description" content="Convert specific Google Sheets rows to a professional PDF and email them automatically. Perfect for invoices, reports, and client deliverables." />
+  <meta property="og:description"
+    content="Convert specific Google Sheets rows to a professional PDF and email them automatically. Perfect for invoices, reports, and client deliverables." />
   <meta property="og:url" content="https://www.aayu-tech.com/blog/google-sheets-to-pdf-email.html" />
-  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20Approve%20Logo.png" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20approve%20Updated%20Banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="How to Convert Google Sheets Rows to PDF and Email Them" />
-  <meta name="twitter:description" content="Convert specific Google Sheets rows to a professional PDF and email them automatically. Perfect for invoices, reports, and client deliverables." />
+  <meta name="twitter:description"
+    content="Convert specific Google Sheets rows to a professional PDF and email them automatically. Perfect for invoices, reports, and client deliverables." />
+  <meta name="twitter:image" content="https://www.aayu-tech.com/Clear%20approve%20Updated%20Banner.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+    rel="stylesheet" />
   <style>
-    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --text: #1e293b; --text-muted: #64748b; --bg: #f8fafc; --surface: #ffffff; --border: #e2e8f0; --radius: 16px; --radius-sm: 10px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05); }
-    * { box-sizing: border-box; }
-    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.7; margin: 0; padding: 0; background: var(--bg); -webkit-font-smoothing: antialiased; }
-    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-    .nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
-    .nav .container { display: flex; align-items: center; gap: 12px; max-width: 960px; }
-    .nav a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
-    .nav a:hover { color: var(--primary); }
-    .nav-logo { width: 36px; height: 36px; border-radius: 8px; display: block; }
-    .nav-links { margin-left: auto; display: flex; gap: 24px; }
-    .nav-links a { font-size: 0.9375rem; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--primary); }
-    article { padding: 56px 0 64px; }
-    article h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 700; color: var(--text); margin: 0 0 12px; letter-spacing: -0.02em; line-height: 1.25; }
-    .post-meta { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 32px; }
-    .post-tag { display: inline-block; padding: 3px 10px; background: rgba(37,99,235,0.08); color: var(--primary); font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin-right: 6px; }
-    article h2 { font-size: 1.375rem; font-weight: 600; color: var(--text); margin: 40px 0 16px; line-height: 1.3; }
-    article h3 { font-size: 1.125rem; font-weight: 600; color: var(--text); margin: 32px 0 12px; }
-    article p { margin: 0 0 16px; font-size: 1rem; }
-    article ul, article ol { margin: 0 0 20px; padding-left: 1.5rem; }
-    article li { margin-bottom: 8px; font-size: 1rem; }
-    .step-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 16px 0; }
-    .step-box h3 { margin: 0 0 8px; font-size: 1rem; }
-    .step-box p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); }
-    .cta-box { background: rgba(37,99,235,0.06); border: 1px solid rgba(37,99,235,0.15); border-radius: var(--radius); padding: 28px 32px; margin: 40px 0; text-align: center; }
-    .cta-box h3 { margin: 0 0 8px; font-size: 1.125rem; color: var(--text); }
-    .cta-box p { margin: 0 0 16px; font-size: 0.9375rem; color: var(--text-muted); }
-    .cta-btn { display: inline-block; padding: 12px 28px; background: var(--primary); color: #fff; font-size: 0.9375rem; font-weight: 600; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s ease; }
-    .cta-btn:hover { background: var(--primary-dark); }
-    .back-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 32px; padding: 10px 16px; background: var(--surface); color: var(--primary); font-size: 0.9375rem; font-weight: 500; border-radius: var(--radius-sm); border: 1px solid var(--border); text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease; }
-    .back-link:hover { background: rgba(37,99,235,0.06); border-color: var(--primary); }
-    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); background: var(--surface); }
-    footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; }
-    footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
-    footer a:hover { color: var(--primary); }
-    footer .copy { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 960px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    article {
+      padding: 56px 0 64px;
+    }
+
+    article h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .post-meta {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .post-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 999px;
+      margin-right: 6px;
+    }
+
+    article h2 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 40px 0 16px;
+      line-height: 1.3;
+    }
+
+    article h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 32px 0 12px;
+    }
+
+    article p {
+      margin: 0 0 16px;
+      font-size: 1rem;
+    }
+
+    article ul,
+    article ol {
+      margin: 0 0 20px;
+      padding-left: 1.5rem;
+    }
+
+    article li {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .step-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+
+    .step-box h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .step-box p {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .cta-box {
+      background: rgba(37, 99, 235, 0.06);
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .cta-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.125rem;
+      color: var(--text);
+    }
+
+    .cta-box p {
+      margin: 0 0 16px;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 32px;
+      padding: 10px 16px;
+      background: var(--surface);
+      color: var(--primary);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.06);
+      border-color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    footer .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    footer .copy {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
   </style>
 </head>
+
 <body>
   <nav class="nav">
     <div class="container" style="max-width:960px;">
@@ -82,137 +307,223 @@
       <h1>How to Convert Google Sheets Rows to PDF and Email Them</h1>
       <p class="post-meta">February 10, 2026</p>
 
-      <p>Google Sheets is where most teams track everything from project budgets to client invoices. But when the time comes to actually <strong>send</strong> that data to someone outside your organization, a shared spreadsheet link rarely cuts it. Clients expect a polished PDF attachment. Finance teams need printable records. Vendors want a formal purchase order they can file away.</p>
+      <p>Google Sheets is where most teams track everything from project budgets to client invoices. But when the time
+        comes to actually <strong>send</strong> that data to someone outside your organization, a shared spreadsheet
+        link rarely cuts it. Clients expect a polished PDF attachment. Finance teams need printable records. Vendors
+        want a formal purchase order they can file away.</p>
 
-      <p>The gap between "data lives in a spreadsheet" and "data arrives in someone's inbox as a clean PDF" is surprisingly wide. In this guide, we will walk through the different ways to convert Google Sheets rows to PDF and email them, from fully manual approaches to one-click solutions that handle everything automatically.</p>
+      <p>The gap between "data lives in a spreadsheet" and "data arrives in someone's inbox as a clean PDF" is
+        surprisingly wide. In this guide, we will walk through the different ways to convert Google Sheets rows to PDF
+        and email them, from fully manual approaches to one-click solutions that handle everything automatically.</p>
 
       <h2>Why Send Spreadsheet Data as PDF?</h2>
 
-      <p>Before diving into the how, it is worth understanding why PDF remains the gold standard for sharing business data:</p>
+      <p>Before diving into the how, it is worth understanding why PDF remains the gold standard for sharing business
+        data:</p>
 
       <ul>
-        <li><strong>Consistent rendering</strong> &mdash; A PDF looks identical on every device, operating system, and email client. No broken formatting, no shifted columns, no missing fonts.</li>
-        <li><strong>Professional appearance</strong> &mdash; PDF documents carry an inherent sense of formality that a raw spreadsheet or pasted table cannot match. This matters when you are sending invoices, proposals, or compliance reports.</li>
-        <li><strong>Print-ready</strong> &mdash; Recipients can print a PDF and it will look exactly as intended, with proper margins and page breaks.</li>
-        <li><strong>Archivable</strong> &mdash; PDFs are easy to store, search, and retrieve. Many document management systems and regulatory frameworks specifically require PDF format.</li>
-        <li><strong>Privacy</strong> &mdash; Unlike sharing a live spreadsheet link, a PDF is a static snapshot. The recipient sees exactly the rows you chose to share and nothing else. No accidental exposure of formulas, hidden columns, or other tabs.</li>
+        <li><strong>Consistent rendering</strong> &mdash; A PDF looks identical on every device, operating system, and
+          email client. No broken formatting, no shifted columns, no missing fonts.</li>
+        <li><strong>Professional appearance</strong> &mdash; PDF documents carry an inherent sense of formality that a
+          raw spreadsheet or pasted table cannot match. This matters when you are sending invoices, proposals, or
+          compliance reports.</li>
+        <li><strong>Print-ready</strong> &mdash; Recipients can print a PDF and it will look exactly as intended, with
+          proper margins and page breaks.</li>
+        <li><strong>Archivable</strong> &mdash; PDFs are easy to store, search, and retrieve. Many document management
+          systems and regulatory frameworks specifically require PDF format.</li>
+        <li><strong>Privacy</strong> &mdash; Unlike sharing a live spreadsheet link, a PDF is a static snapshot. The
+          recipient sees exactly the rows you chose to share and nothing else. No accidental exposure of formulas,
+          hidden columns, or other tabs.</li>
       </ul>
 
       <h2>The Traditional Approaches (and Their Limitations)</h2>
 
       <h3>Method 1: File &gt; Download as PDF</h3>
 
-      <p>The most straightforward option built into Google Sheets. You go to <strong>File &gt; Download &gt; PDF Document</strong>, configure page orientation and margins, download the file, open your email client, compose a message, attach the PDF, and hit send.</p>
+      <p>The most straightforward option built into Google Sheets. You go to <strong>File &gt; Download &gt; PDF
+          Document</strong>, configure page orientation and margins, download the file, open your email client, compose
+        a message, attach the PDF, and hit send.</p>
 
-      <p>This works, but it has significant drawbacks. First, it exports the <em>entire sheet</em> (or the entire workbook), not just the rows you care about. If your spreadsheet has 500 rows and you only need to send rows 12 through 25, you will need to either hide the irrelevant rows first or copy the data to a temporary sheet. Second, the process is entirely manual. If you need to send weekly reports, you are repeating these steps every single week. Third, the formatting options are limited to basic page layout controls. You cannot easily style the output as a clean, branded document.</p>
+      <p>This works, but it has significant drawbacks. First, it exports the <em>entire sheet</em> (or the entire
+        workbook), not just the rows you care about. If your spreadsheet has 500 rows and you only need to send rows 12
+        through 25, you will need to either hide the irrelevant rows first or copy the data to a temporary sheet.
+        Second, the process is entirely manual. If you need to send weekly reports, you are repeating these steps every
+        single week. Third, the formatting options are limited to basic page layout controls. You cannot easily style
+        the output as a clean, branded document.</p>
 
       <h3>Method 2: Google Apps Script PDF Generation</h3>
 
-      <p>For teams with developer resources, Google Apps Script can programmatically generate a PDF from spreadsheet data. A typical approach involves using the Sheets API to read specific rows, rendering them into an HTML template, converting that HTML to a PDF blob, and then sending it via <code>MailApp.sendEmail()</code> with the PDF as an attachment.</p>
+      <p>For teams with developer resources, Google Apps Script can programmatically generate a PDF from spreadsheet
+        data. A typical approach involves using the Sheets API to read specific rows, rendering them into an HTML
+        template, converting that HTML to a PDF blob, and then sending it via <code>MailApp.sendEmail()</code> with the
+        PDF as an attachment.</p>
 
-      <p>This method gives you full control over the output, but the development effort is substantial. You need to write and maintain the script, handle edge cases like empty cells or special characters, manage email formatting, and update the code whenever your spreadsheet structure changes. For a one-off project it can be worthwhile, but for recurring use across multiple spreadsheets, the maintenance burden adds up quickly.</p>
+      <p>This method gives you full control over the output, but the development effort is substantial. You need to
+        write and maintain the script, handle edge cases like empty cells or special characters, manage email
+        formatting, and update the code whenever your spreadsheet structure changes. For a one-off project it can be
+        worthwhile, but for recurring use across multiple spreadsheets, the maintenance burden adds up quickly.</p>
 
       <h3>Method 3: Third-Party Automation Platforms</h3>
 
-      <p>Tools like Zapier or Make (formerly Integromat) can connect Google Sheets to email services. You can build a workflow that triggers on new rows, formats the data, generates a PDF through an intermediate service, and sends it via Gmail. The visual workflow builders make this accessible to non-developers, but the costs can be surprising. Useful plans start at $20 per month or more, and complex workflows with PDF generation often require premium tiers. There is also latency to consider, since your data passes through external servers before reaching the recipient's inbox.</p>
+      <p>Tools like Zapier or Make (formerly Integromat) can connect Google Sheets to email services. You can build a
+        workflow that triggers on new rows, formats the data, generates a PDF through an intermediate service, and sends
+        it via Gmail. The visual workflow builders make this accessible to non-developers, but the costs can be
+        surprising. Useful plans start at $20 per month or more, and complex workflows with PDF generation often require
+        premium tiers. There is also latency to consider, since your data passes through external servers before
+        reaching the recipient's inbox.</p>
 
       <h2>A Simpler Way: Automatic PDF from Selected Rows</h2>
 
-      <p>Clear Approve, a Google Sheets add-on, takes a different approach to the PDF problem. Instead of requiring manual exports or custom code, it automatically decides the best format based on the amount of data you are sending:</p>
+      <p>Clear Approve, a Google Sheets add-on, takes a different approach to the PDF problem. Instead of requiring
+        manual exports or custom code, it automatically decides the best format based on the amount of data you are
+        sending:</p>
 
       <ul>
-        <li><strong>8 rows or fewer</strong> &mdash; Your data is sent as inline HTML cards directly in the email body. This is ideal for quick updates, single records, or small data sets where the recipient should see the information immediately without opening an attachment.</li>
-        <li><strong>More than 8 rows</strong> &mdash; A clean PDF is automatically generated and attached to the email. The PDF includes your column headers, maintains a professional table layout, and is ready to print or archive.</li>
+        <li><strong>8 rows or fewer</strong> &mdash; Your data is sent as inline HTML cards directly in the email body.
+          This is ideal for quick updates, single records, or small data sets where the recipient should see the
+          information immediately without opening an attachment.</li>
+        <li><strong>More than 8 rows</strong> &mdash; A clean PDF is automatically generated and attached to the email.
+          The PDF includes your column headers, maintains a professional table layout, and is ready to print or archive.
+        </li>
       </ul>
 
-      <p>This automatic switching means you never have to think about format selection. Select the rows you want to send, and the add-on picks the right delivery method for the data volume.</p>
+      <p>This automatic switching means you never have to think about format selection. Select the rows you want to
+        send, and the add-on picks the right delivery method for the data volume.</p>
 
       <h2>Step-by-Step: Email Google Sheets Rows as a PDF</h2>
 
       <div class="step-box">
         <h3>Step 1: Install Clear Approve</h3>
-        <p>Open Google Sheets and go to <strong>Extensions &gt; Add-ons &gt; Get add-ons</strong>. Search for "Clear Approve" in the Google Workspace Marketplace and click Install. Grant the required permissions when prompted. The add-on only requests access to the current spreadsheet and your email address.</p>
+        <p>Open Google Sheets and go to <strong>Extensions &gt; Add-ons &gt; Get add-ons</strong>. Search for "Clear
+          Approve" in the Google Workspace Marketplace and click Install. Grant the required permissions when prompted.
+          The add-on only requests access to the current spreadsheet and your email address.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 2: Select the Rows You Want to Send</h3>
-        <p>Highlight the rows in your spreadsheet that should be included in the PDF. For automatic PDF generation, select more than 8 rows. You can select any contiguous range &mdash; the add-on will use your header row (row 1) as the column titles in the generated PDF.</p>
+        <p>Highlight the rows in your spreadsheet that should be included in the PDF. For automatic PDF generation,
+          select more than 8 rows. You can select any contiguous range &mdash; the add-on will use your header row (row
+          1) as the column titles in the generated PDF.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 3: Open the Sidebar and Enter Details</h3>
-        <p>Go to <strong>Extensions &gt; Clear Approve &gt; Open</strong> to launch the sidebar. Enter the recipient email address (or multiple addresses separated by commas), a subject line, and an optional note. The sidebar previews the row count and confirms whether the data will be sent as inline cards or a PDF attachment.</p>
+        <p>Go to <strong>Extensions &gt; Clear Approve &gt; Open</strong> to launch the sidebar. Enter the recipient
+          email address (or multiple addresses separated by commas), a subject line, and an optional note. The sidebar
+          previews the row count and confirms whether the data will be sent as inline cards or a PDF attachment.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 4: Click Send</h3>
-        <p>Hit the Send button. Clear Approve generates the PDF, attaches it to the email, and delivers it to all recipients. The entire process takes a few seconds. You will see a confirmation once the email has been sent successfully.</p>
+        <p>Hit the Send button. Clear Approve generates the PDF, attaches it to the email, and delivers it to all
+          recipients. The entire process takes a few seconds. You will see a confirmation once the email has been sent
+          successfully.</p>
       </div>
 
       <h2>What the PDF Looks Like</h2>
 
-      <p>The generated PDF is designed to be clean and professional. It includes a formatted table with your column headers as the top row, alternating row shading for readability, proper text wrapping for long cell values, and a compact layout that fits standard page sizes. The goal is a document that looks like someone took the time to format it in a word processor, not a raw data dump.</p>
+      <p>The generated PDF is designed to be clean and professional. It includes a formatted table with your column
+        headers as the top row, alternating row shading for readability, proper text wrapping for long cell values, and
+        a compact layout that fits standard page sizes. The goal is a document that looks like someone took the time to
+        format it in a word processor, not a raw data dump.</p>
 
       <h2>PDF Works with All Three Sending Modes</h2>
 
-      <p>The automatic PDF feature is not limited to one-time sends. It works across all three of Clear Approve's delivery modes:</p>
+      <p>The automatic PDF feature is not limited to one-time sends. It works across all three of Clear Approve's
+        delivery modes:</p>
 
       <ul>
-        <li><strong>Send Now</strong> &mdash; Select rows and send immediately. Great for ad-hoc requests like "Can you send me the latest order details?"</li>
-        <li><strong>Schedule</strong> &mdash; Set a recurring schedule (daily, weekly, or monthly) to send a specific row range as a PDF. The add-on always captures the latest data at send time, so the PDF reflects current values, not stale snapshots.</li>
-        <li><strong>Smart Trigger</strong> &mdash; Configure a cell condition (like a status column changing to "Approved") to automatically send the relevant rows as a PDF. Useful for approval workflows where a document needs to be emailed the moment a decision is made.</li>
+        <li><strong>Send Now</strong> &mdash; Select rows and send immediately. Great for ad-hoc requests like "Can you
+          send me the latest order details?"</li>
+        <li><strong>Schedule</strong> &mdash; Set a recurring schedule (daily, weekly, or monthly) to send a specific
+          row range as a PDF. The add-on always captures the latest data at send time, so the PDF reflects current
+          values, not stale snapshots.</li>
+        <li><strong>Smart Trigger</strong> &mdash; Configure a cell condition (like a status column changing to
+          "Approved") to automatically send the relevant rows as a PDF. Useful for approval workflows where a document
+          needs to be emailed the moment a decision is made.</li>
       </ul>
 
       <h2>Real-World Use Cases</h2>
 
       <h3>Invoices and Billing</h3>
-      <p>Many small businesses track invoices in Google Sheets. When an invoice is finalized, select the relevant rows and email a PDF directly to the client. No need to export, reformat, or switch to a separate invoicing tool.</p>
+      <p>Many small businesses track invoices in Google Sheets. When an invoice is finalized, select the relevant rows
+        and email a PDF directly to the client. No need to export, reformat, or switch to a separate invoicing tool.</p>
 
       <h3>Weekly and Monthly Reports</h3>
-      <p>Finance, sales, and operations teams often maintain rolling reports in spreadsheets. Schedule a weekly PDF send to stakeholders so they receive a formatted snapshot every Monday morning without anyone having to remember to do it manually.</p>
+      <p>Finance, sales, and operations teams often maintain rolling reports in spreadsheets. Schedule a weekly PDF send
+        to stakeholders so they receive a formatted snapshot every Monday morning without anyone having to remember to
+        do it manually.</p>
 
       <h3>Project Summaries</h3>
-      <p>Project managers can select milestone rows or task summaries and send a PDF update to clients or executives. The PDF format ensures the data looks professional regardless of the recipient's device or email client.</p>
+      <p>Project managers can select milestone rows or task summaries and send a PDF update to clients or executives.
+        The PDF format ensures the data looks professional regardless of the recipient's device or email client.</p>
 
       <h3>Vendor and Purchase Orders</h3>
-      <p>Procurement teams can maintain order details in a spreadsheet and send selected line items as a PDF to vendors. The document serves as a formal record that both parties can archive.</p>
+      <p>Procurement teams can maintain order details in a spreadsheet and send selected line items as a PDF to vendors.
+        The document serves as a formal record that both parties can archive.</p>
 
       <h3>Compliance and Audit Records</h3>
-      <p>For teams that need to provide data snapshots at specific points in time, a PDF attachment serves as a timestamped record. Schedule daily or weekly sends to create an automatic audit trail.</p>
+      <p>For teams that need to provide data snapshots at specific points in time, a PDF attachment serves as a
+        timestamped record. Schedule daily or weekly sends to create an automatic audit trail.</p>
 
       <h2>Tips for Better PDF Output</h2>
 
       <ul>
-        <li><strong>Keep column headers clear and concise.</strong> The header row becomes the table header in the PDF, so short, descriptive column names produce the best results.</li>
-        <li><strong>Use consistent data formatting.</strong> Dates, currencies, and numbers that are formatted consistently in the spreadsheet will carry over cleanly to the PDF.</li>
-        <li><strong>Avoid merged cells in the send range.</strong> Merged cells can produce unexpected layouts in the generated table. Stick to a flat, unmerged structure for the rows you plan to send.</li>
-        <li><strong>Trim unnecessary columns.</strong> If your spreadsheet has columns that are only relevant internally (like notes or formulas), consider whether the recipient needs to see them. You can select a specific column range to exclude irrelevant data.</li>
+        <li><strong>Keep column headers clear and concise.</strong> The header row becomes the table header in the PDF,
+          so short, descriptive column names produce the best results.</li>
+        <li><strong>Use consistent data formatting.</strong> Dates, currencies, and numbers that are formatted
+          consistently in the spreadsheet will carry over cleanly to the PDF.</li>
+        <li><strong>Avoid merged cells in the send range.</strong> Merged cells can produce unexpected layouts in the
+          generated table. Stick to a flat, unmerged structure for the rows you plan to send.</li>
+        <li><strong>Trim unnecessary columns.</strong> If your spreadsheet has columns that are only relevant internally
+          (like notes or formulas), consider whether the recipient needs to see them. You can select a specific column
+          range to exclude irrelevant data.</li>
       </ul>
 
       <h2>When Inline Cards Are the Better Choice</h2>
 
-      <p>Not every email needs a PDF attachment. For small data sets &mdash; a single order status, a handful of updated records, a quick summary &mdash; inline HTML cards are often more convenient. The recipient sees the data directly in the email body without having to download and open an attachment. Clear Approve handles this automatically for selections of 8 rows or fewer, so you get the right format without making a decision each time.</p>
+      <p>Not every email needs a PDF attachment. For small data sets &mdash; a single order status, a handful of updated
+        records, a quick summary &mdash; inline HTML cards are often more convenient. The recipient sees the data
+        directly in the email body without having to download and open an attachment. Clear Approve handles this
+        automatically for selections of 8 rows or fewer, so you get the right format without making a decision each
+        time.</p>
 
-      <p>Whether you are sending a single record or a hundred-row report, the goal is the same: get the right data to the right person in a format they can actually use. Converting Google Sheets rows to a clean, professional PDF and emailing it should be as simple as selecting and clicking Send.</p>
+      <p>Whether you are sending a single record or a hundred-row report, the goal is the same: get the right data to
+        the right person in a format they can actually use. Converting Google Sheets rows to a clean, professional PDF
+        and emailing it should be as simple as selecting and clicking Send.</p>
 
       <div class="cta-box">
         <h3>Try Clear Approve Free</h3>
         <p>Install the add-on and send your first snapshot in under a minute.</p>
-        <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428" class="cta-btn">Install from Google Workspace Marketplace</a>
+        <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428" class="cta-btn">Install from
+          Google Workspace Marketplace</a>
       </div>
       <div style="margin-top:48px; padding-top:32px; border-top:1px solid #e2e8f0;">
         <h2 style="font-size:1.125rem; font-weight:600; margin:0 0 16px;">Related Posts</h2>
         <div style="display:flex; flex-direction:column; gap:12px;">
-          <a href="send-google-sheets-rows-by-email.html" style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Send Google Sheets Rows by Email (Without Sharing the File)</div>
-            <div style="font-size:0.8125rem; color:#64748b;">Select specific rows and email them as a clean snapshot.</div>
+          <a href="send-google-sheets-rows-by-email.html"
+            style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;"
+            onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
+            onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Send Google Sheets Rows by
+              Email (Without Sharing the File)</div>
+            <div style="font-size:0.8125rem; color:#64748b;">Select specific rows and email them as a clean snapshot.
+            </div>
           </a>
-          <a href="share-google-sheets-data-without-giving-access.html" style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Share Google Sheets Data Without Giving Access to the Spreadsheet</div>
+          <a href="share-google-sheets-data-without-giving-access.html"
+            style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;"
+            onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
+            onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Share Google Sheets Data
+              Without Giving Access to the Spreadsheet</div>
             <div style="font-size:0.8125rem; color:#64748b;">Share rows without granting Viewer or Editor access.</div>
           </a>
-          <a href="automated-reports-google-sheets.html" style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">5 Ways to Send Automated Reports from Google Sheets</div>
+          <a href="automated-reports-google-sheets.html"
+            style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;"
+            onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
+            onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">5 Ways to Send Automated Reports from
+              Google Sheets</div>
             <div style="font-size:0.8125rem; color:#64748b;">Compare approaches for sending recurring reports.</div>
           </a>
         </div>
@@ -256,4 +567,5 @@
   }
   </script>
 </body>
+
 </html>

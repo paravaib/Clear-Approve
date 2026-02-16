@@ -1,67 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="icon" type="image/png" href="../Clear Approve 128.png" />
   <link rel="canonical" href="https://www.aayu-tech.com/blog/send-google-sheets-rows-by-email.html" />
   <title>How to Send Google Sheets Rows by Email (Without Sharing the File) — Clear Approve</title>
-  <meta name="description" content="Learn how to email specific rows from Google Sheets without sharing the entire spreadsheet. Keep formulas, tabs, and sensitive data private with Clear Approve." />
+  <meta name="description"
+    content="Learn how to email specific rows from Google Sheets without sharing the entire spreadsheet. Keep formulas, tabs, and sensitive data private with Clear Approve." />
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Clear Approve" />
   <meta property="og:title" content="How to Send Google Sheets Rows by Email (Without Sharing the File)" />
-  <meta property="og:description" content="Email specific rows from Google Sheets without sharing the entire file. Keep formulas and sensitive data private." />
+  <meta property="og:description"
+    content="Email specific rows from Google Sheets without sharing the entire file. Keep formulas and sensitive data private." />
   <meta property="og:url" content="https://www.aayu-tech.com/blog/send-google-sheets-rows-by-email.html" />
-  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20Approve%20Logo.png" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20approve%20Updated%20Banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="How to Send Google Sheets Rows by Email (Without Sharing the File)" />
-  <meta name="twitter:description" content="Email specific rows from Google Sheets without sharing the entire file. Keep formulas and sensitive data private." />
+  <meta name="twitter:description"
+    content="Email specific rows from Google Sheets without sharing the entire file. Keep formulas and sensitive data private." />
+  <meta name="twitter:image" content="https://www.aayu-tech.com/Clear%20approve%20Updated%20Banner.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+    rel="stylesheet" />
   <style>
-    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --text: #1e293b; --text-muted: #64748b; --bg: #f8fafc; --surface: #ffffff; --border: #e2e8f0; --radius: 16px; --radius-sm: 10px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05); }
-    * { box-sizing: border-box; }
-    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.7; margin: 0; padding: 0; background: var(--bg); -webkit-font-smoothing: antialiased; }
-    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-    .nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
-    .nav .container { display: flex; align-items: center; gap: 12px; max-width: 960px; }
-    .nav a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
-    .nav a:hover { color: var(--primary); }
-    .nav-logo { width: 36px; height: 36px; border-radius: 8px; display: block; }
-    .nav-links { margin-left: auto; display: flex; gap: 24px; }
-    .nav-links a { font-size: 0.9375rem; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--primary); }
-    article { padding: 56px 0 64px; }
-    article h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 700; color: var(--text); margin: 0 0 12px; letter-spacing: -0.02em; line-height: 1.25; }
-    .post-meta { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 32px; }
-    .post-tag { display: inline-block; padding: 3px 10px; background: rgba(37,99,235,0.08); color: var(--primary); font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin-right: 6px; }
-    article h2 { font-size: 1.375rem; font-weight: 600; color: var(--text); margin: 40px 0 16px; line-height: 1.3; }
-    article h3 { font-size: 1.125rem; font-weight: 600; color: var(--text); margin: 32px 0 12px; }
-    article p { margin: 0 0 16px; font-size: 1rem; }
-    article ul, article ol { margin: 0 0 20px; padding-left: 1.5rem; }
-    article li { margin-bottom: 8px; font-size: 1rem; }
-    .step-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 16px 0; }
-    .step-box h3 { margin: 0 0 8px; font-size: 1rem; }
-    .step-box p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); }
-    .cta-box { background: rgba(37,99,235,0.06); border: 1px solid rgba(37,99,235,0.15); border-radius: var(--radius); padding: 28px 32px; margin: 40px 0; text-align: center; }
-    .cta-box h3 { margin: 0 0 8px; font-size: 1.125rem; color: var(--text); }
-    .cta-box p { margin: 0 0 16px; font-size: 0.9375rem; color: var(--text-muted); }
-    .cta-btn { display: inline-block; padding: 12px 28px; background: var(--primary); color: #fff; font-size: 0.9375rem; font-weight: 600; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s ease; }
-    .cta-btn:hover { background: var(--primary-dark); }
-    .back-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 32px; padding: 10px 16px; background: var(--surface); color: var(--primary); font-size: 0.9375rem; font-weight: 500; border-radius: var(--radius-sm); border: 1px solid var(--border); text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease; }
-    .back-link:hover { background: rgba(37,99,235,0.06); border-color: var(--primary); }
-    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); background: var(--surface); }
-    footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; }
-    footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
-    footer a:hover { color: var(--primary); }
-    footer .copy { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 960px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    article {
+      padding: 56px 0 64px;
+    }
+
+    article h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .post-meta {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .post-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 999px;
+      margin-right: 6px;
+    }
+
+    article h2 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 40px 0 16px;
+      line-height: 1.3;
+    }
+
+    article h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 32px 0 12px;
+    }
+
+    article p {
+      margin: 0 0 16px;
+      font-size: 1rem;
+    }
+
+    article ul,
+    article ol {
+      margin: 0 0 20px;
+      padding-left: 1.5rem;
+    }
+
+    article li {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .step-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+
+    .step-box h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .step-box p {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .cta-box {
+      background: rgba(37, 99, 235, 0.06);
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .cta-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.125rem;
+      color: var(--text);
+    }
+
+    .cta-box p {
+      margin: 0 0 16px;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 32px;
+      padding: 10px 16px;
+      background: var(--surface);
+      color: var(--primary);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.06);
+      border-color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    footer .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    footer .copy {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
   </style>
 </head>
+
 <body>
   <nav class="nav">
     <div class="container" style="max-width:960px;">
@@ -84,129 +309,200 @@
         February 10, 2026 &middot; 5 min read
       </div>
 
-      <p>You have a Google Sheets spreadsheet with project data, client details, or inventory records. A colleague or client needs to see a few specific rows, but you do not want to share the entire file. Sound familiar?</p>
+      <p>You have a Google Sheets spreadsheet with project data, client details, or inventory records. A colleague or
+        client needs to see a few specific rows, but you do not want to share the entire file. Sound familiar?</p>
 
-      <p>The most common workaround is to grant viewer access to the whole spreadsheet, copy rows into a new document, or take a screenshot and paste it into an email. Each of these approaches creates problems: exposed formulas, visible tabs that contain sensitive data, or hard-to-read images that recipients cannot search or reference later.</p>
+      <p>The most common workaround is to grant viewer access to the whole spreadsheet, copy rows into a new document,
+        or take a screenshot and paste it into an email. Each of these approaches creates problems: exposed formulas,
+        visible tabs that contain sensitive data, or hard-to-read images that recipients cannot search or reference
+        later.</p>
 
-      <p>There is a better way. You can <strong>send Google Sheets rows by email</strong> directly from your spreadsheet, formatted as clean, readable cards that arrive in the recipient's inbox. No spreadsheet access required on their end, no formulas exposed, and no screenshots to crop.</p>
+      <p>There is a better way. You can <strong>send Google Sheets rows by email</strong> directly from your
+        spreadsheet, formatted as clean, readable cards that arrive in the recipient's inbox. No spreadsheet access
+        required on their end, no formulas exposed, and no screenshots to crop.</p>
 
       <h2>Why Not Just Share the Spreadsheet?</h2>
 
-      <p>Sharing an entire Google Sheets file might seem like the fastest option, but it introduces several risks that teams often overlook until it is too late.</p>
+      <p>Sharing an entire Google Sheets file might seem like the fastest option, but it introduces several risks that
+        teams often overlook until it is too late.</p>
 
       <ul>
-        <li><strong>Formula exposure:</strong> Viewers can see every formula in the sheet. If your pricing, commissions, or calculations contain proprietary logic, that logic is now visible to anyone with access.</li>
-        <li><strong>Other tabs are visible:</strong> Even if you only need to share data from one tab, every other tab in the workbook is accessible. Salary information, internal notes, or draft data on other sheets becomes visible.</li>
-        <li><strong>Ongoing access management:</strong> Once you share a file, the recipient has access until you manually revoke it. Over time, your sharing list grows, and it becomes difficult to track who can see what.</li>
-        <li><strong>Accidental edits:</strong> If you grant editor access by mistake, or if a viewer requests edit access and you approve it reflexively, your data is at risk of being changed.</li>
-        <li><strong>Cluttered recipient experience:</strong> The person you are sharing with has to open a spreadsheet, find the right tab, scroll to the right rows, and figure out which columns matter. That is a lot of friction for what should be a simple update.</li>
+        <li><strong>Formula exposure:</strong> Viewers can see every formula in the sheet. If your pricing, commissions,
+          or calculations contain proprietary logic, that logic is now visible to anyone with access.</li>
+        <li><strong>Other tabs are visible:</strong> Even if you only need to share data from one tab, every other tab
+          in the workbook is accessible. Salary information, internal notes, or draft data on other sheets becomes
+          visible.</li>
+        <li><strong>Ongoing access management:</strong> Once you share a file, the recipient has access until you
+          manually revoke it. Over time, your sharing list grows, and it becomes difficult to track who can see what.
+        </li>
+        <li><strong>Accidental edits:</strong> If you grant editor access by mistake, or if a viewer requests edit
+          access and you approve it reflexively, your data is at risk of being changed.</li>
+        <li><strong>Cluttered recipient experience:</strong> The person you are sharing with has to open a spreadsheet,
+          find the right tab, scroll to the right rows, and figure out which columns matter. That is a lot of friction
+          for what should be a simple update.</li>
       </ul>
 
-      <p>When all someone needs is a snapshot of specific rows, sending that data by email is simpler, safer, and more professional.</p>
+      <p>When all someone needs is a snapshot of specific rows, sending that data by email is simpler, safer, and more
+        professional.</p>
 
       <h2>How to Email Specific Rows from Google Sheets with Clear Approve</h2>
 
-      <p>Clear Approve is a Google Sheets add-on that lets you select rows and send them by email in seconds. Here is how to set it up and send your first snapshot.</p>
+      <p>Clear Approve is a Google Sheets add-on that lets you select rows and send them by email in seconds. Here is
+        how to set it up and send your first snapshot.</p>
 
       <div class="step-box">
         <h3>Step 1: Install Clear Approve</h3>
-        <p>Go to the <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428" style="color:var(--primary);">Google Workspace Marketplace listing for Clear Approve</a> and click Install. Grant the required permissions when prompted. The add-on works with any Google Sheets file in your account.</p>
+        <p>Go to the <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428"
+            style="color:var(--primary);">Google Workspace Marketplace listing for Clear Approve</a> and click Install.
+          Grant the required permissions when prompted. The add-on works with any Google Sheets file in your account.
+        </p>
       </div>
 
       <div class="step-box">
         <h3>Step 2: Open Your Spreadsheet and Select the Rows</h3>
-        <p>Open the spreadsheet that contains the data you want to send. Select the specific rows you want to include in the email. You can select a contiguous range (for example, rows 5 through 12) or pick individual rows by holding Ctrl or Cmd while clicking row numbers.</p>
+        <p>Open the spreadsheet that contains the data you want to send. Select the specific rows you want to include in
+          the email. You can select a contiguous range (for example, rows 5 through 12) or pick individual rows by
+          holding Ctrl or Cmd while clicking row numbers.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 3: Launch Clear Approve</h3>
-        <p>Go to <strong>Extensions &gt; Clear Approve &gt; Open</strong>. A sidebar panel opens on the right side of your spreadsheet. The Send Now tab is selected by default, and it will automatically detect the rows you have selected.</p>
+        <p>Go to <strong>Extensions &gt; Clear Approve &gt; Open</strong>. A sidebar panel opens on the right side of
+          your spreadsheet. The Send Now tab is selected by default, and it will automatically detect the rows you have
+          selected.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 4: Enter Recipient Details</h3>
-        <p>Type the recipient's email address in the To field. You can add multiple recipients separated by commas. Enter a subject line that describes what you are sending, such as "Q1 Project Status Update" or "Invoice Details for January."</p>
+        <p>Type the recipient's email address in the To field. You can add multiple recipients separated by commas.
+          Enter a subject line that describes what you are sending, such as "Q1 Project Status Update" or "Invoice
+          Details for January."</p>
       </div>
 
       <div class="step-box">
         <h3>Step 5: Click Send</h3>
-        <p>Click the Send button. Clear Approve reads the selected rows, formats them into clean HTML cards, and delivers the email. The entire process takes just a few seconds.</p>
+        <p>Click the Send button. Clear Approve reads the selected rows, formats them into clean HTML cards, and
+          delivers the email. The entire process takes just a few seconds.</p>
       </div>
 
       <h2>What the Recipient Sees</h2>
 
-      <p>The recipient receives a standard email in their inbox. There is no link to a spreadsheet, no request to sign in, and no permission prompt. The data appears directly in the email body as neatly formatted cards.</p>
+      <p>The recipient receives a standard email in their inbox. There is no link to a spreadsheet, no request to sign
+        in, and no permission prompt. The data appears directly in the email body as neatly formatted cards.</p>
 
-      <p>Each row is displayed as a separate card with column headers as labels and cell values as the content. The formatting is clean and professional, making it easy to scan the information at a glance. Recipients can read the data on any device, including phones and tablets, without needing to install anything.</p>
+      <p>Each row is displayed as a separate card with column headers as labels and cell values as the content. The
+        formatting is clean and professional, making it easy to scan the information at a glance. Recipients can read
+        the data on any device, including phones and tablets, without needing to install anything.</p>
 
       <h3>Small Selections vs. Large Selections</h3>
 
       <p>Clear Approve automatically adapts its formatting based on how many rows you send:</p>
 
       <ul>
-        <li><strong>8 rows or fewer:</strong> Data is rendered as inline HTML cards directly in the email body. Recipients see the data immediately when they open the email, with no attachments to download.</li>
-        <li><strong>More than 8 rows:</strong> The data is automatically converted to a PDF and attached to the email. This keeps the email lightweight and ensures that larger datasets remain well-formatted and easy to print or archive.</li>
+        <li><strong>8 rows or fewer:</strong> Data is rendered as inline HTML cards directly in the email body.
+          Recipients see the data immediately when they open the email, with no attachments to download.</li>
+        <li><strong>More than 8 rows:</strong> The data is automatically converted to a PDF and attached to the email.
+          This keeps the email lightweight and ensures that larger datasets remain well-formatted and easy to print or
+          archive.</li>
       </ul>
 
-      <p>You do not need to configure this behavior. Clear Approve handles the transition automatically, choosing the best format based on the amount of data you are sending.</p>
+      <p>You do not need to configure this behavior. Clear Approve handles the transition automatically, choosing the
+        best format based on the amount of data you are sending.</p>
 
       <h2>Real-World Use Cases</h2>
 
-      <p>Sending Google Sheets rows by email is useful across many workflows. Here are some of the most common scenarios where teams use Clear Approve.</p>
+      <p>Sending Google Sheets rows by email is useful across many workflows. Here are some of the most common scenarios
+        where teams use Clear Approve.</p>
 
       <h3>Project Updates</h3>
-      <p>Project managers track tasks, owners, and status in Google Sheets. Instead of sharing the entire tracker with stakeholders who only need a high-level view, you can select the relevant rows and email a snapshot. The recipient gets a clear summary without being overwhelmed by the full project plan.</p>
+      <p>Project managers track tasks, owners, and status in Google Sheets. Instead of sharing the entire tracker with
+        stakeholders who only need a high-level view, you can select the relevant rows and email a snapshot. The
+        recipient gets a clear summary without being overwhelmed by the full project plan.</p>
 
       <h3>Client Reports</h3>
-      <p>Agencies and consultants often maintain performance data, deliverables, or billing information in spreadsheets. When it is time to update a client, select the rows that pertain to their account and send them directly. The client sees polished, formatted data without ever accessing your internal spreadsheet.</p>
+      <p>Agencies and consultants often maintain performance data, deliverables, or billing information in spreadsheets.
+        When it is time to update a client, select the rows that pertain to their account and send them directly. The
+        client sees polished, formatted data without ever accessing your internal spreadsheet.</p>
 
       <h3>Team Status Reports</h3>
-      <p>Team leads who collect weekly updates in a shared sheet can email each team member's rows to their respective managers. This keeps reporting lightweight and avoids granting broad access to a sheet that contains data for the entire team.</p>
+      <p>Team leads who collect weekly updates in a shared sheet can email each team member's rows to their respective
+        managers. This keeps reporting lightweight and avoids granting broad access to a sheet that contains data for
+        the entire team.</p>
 
       <h3>Invoice and Order Details</h3>
-      <p>Finance teams and small businesses that track invoices or purchase orders in Google Sheets can send specific line items to vendors or customers. The recipient gets a clear breakdown without needing access to the full financial workbook.</p>
+      <p>Finance teams and small businesses that track invoices or purchase orders in Google Sheets can send specific
+        line items to vendors or customers. The recipient gets a clear breakdown without needing access to the full
+        financial workbook.</p>
 
       <h3>Inventory and Warehouse Updates</h3>
-      <p>Operations teams that manage stock levels or shipment tracking in spreadsheets can email specific rows to suppliers or logistics partners. This is especially useful when the partner does not use Google Workspace and cannot easily access a shared sheet.</p>
+      <p>Operations teams that manage stock levels or shipment tracking in spreadsheets can email specific rows to
+        suppliers or logistics partners. This is especially useful when the partner does not use Google Workspace and
+        cannot easily access a shared sheet.</p>
 
       <h2>Why Email Snapshots Are Better Than Screenshots</h2>
 
-      <p>Some teams resort to taking screenshots of spreadsheet rows and pasting them into emails. While this is quick, it has several drawbacks.</p>
+      <p>Some teams resort to taking screenshots of spreadsheet rows and pasting them into emails. While this is quick,
+        it has several drawbacks.</p>
 
       <ul>
-        <li><strong>Text is not selectable:</strong> Recipients cannot copy values from a screenshot. If they need to reference an order number or email address, they have to retype it manually.</li>
-        <li><strong>Poor readability on mobile:</strong> Screenshots often appear small on phone screens, forcing recipients to zoom and scroll.</li>
-        <li><strong>No accessibility:</strong> Screen readers cannot interpret text in images, making screenshots inaccessible to visually impaired users.</li>
-        <li><strong>File size:</strong> High-resolution screenshots increase email size, which can cause delivery issues or slow loading.</li>
+        <li><strong>Text is not selectable:</strong> Recipients cannot copy values from a screenshot. If they need to
+          reference an order number or email address, they have to retype it manually.</li>
+        <li><strong>Poor readability on mobile:</strong> Screenshots often appear small on phone screens, forcing
+          recipients to zoom and scroll.</li>
+        <li><strong>No accessibility:</strong> Screen readers cannot interpret text in images, making screenshots
+          inaccessible to visually impaired users.</li>
+        <li><strong>File size:</strong> High-resolution screenshots increase email size, which can cause delivery issues
+          or slow loading.</li>
       </ul>
 
-      <p>Clear Approve sends real HTML content, which means the text is selectable, searchable, responsive on all devices, and accessible to screen readers. It is a better experience for everyone involved.</p>
+      <p>Clear Approve sends real HTML content, which means the text is selectable, searchable, responsive on all
+        devices, and accessible to screen readers. It is a better experience for everyone involved.</p>
 
       <h2>Getting Started</h2>
 
-      <p>Sending specific rows from Google Sheets by email does not require complex scripting, third-party integrations, or sharing your entire file. With Clear Approve, you select the rows, enter an email address, and click Send. Your data arrives in the recipient's inbox as formatted, readable content, and your spreadsheet stays private.</p>
+      <p>Sending specific rows from Google Sheets by email does not require complex scripting, third-party integrations,
+        or sharing your entire file. With Clear Approve, you select the rows, enter an email address, and click Send.
+        Your data arrives in the recipient's inbox as formatted, readable content, and your spreadsheet stays private.
+      </p>
 
-      <p>If you regularly need to share rows from Google Sheets with people who do not need access to the full file, Clear Approve simplifies the process and keeps your data secure.</p>
+      <p>If you regularly need to share rows from Google Sheets with people who do not need access to the full file,
+        Clear Approve simplifies the process and keeps your data secure.</p>
 
       <div class="cta-box">
         <h3>Try Clear Approve Free</h3>
         <p>Install the add-on and send your first snapshot in under a minute.</p>
-        <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428" class="cta-btn">Install from Google Workspace Marketplace</a>
+        <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428" class="cta-btn">Install from
+          Google Workspace Marketplace</a>
       </div>
       <div style="margin-top:48px; padding-top:32px; border-top:1px solid #e2e8f0;">
         <h2 style="font-size:1.125rem; font-weight:600; margin:0 0 16px;">Related Posts</h2>
         <div style="display:flex; flex-direction:column; gap:12px;">
-          <a href="share-google-sheets-data-without-giving-access.html" style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Share Google Sheets Data Without Giving Access to the Spreadsheet</div>
-            <div style="font-size:0.8125rem; color:#64748b;">Share exactly the rows you need without granting Viewer or Editor access.</div>
+          <a href="share-google-sheets-data-without-giving-access.html"
+            style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;"
+            onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
+            onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Share Google Sheets Data
+              Without Giving Access to the Spreadsheet</div>
+            <div style="font-size:0.8125rem; color:#64748b;">Share exactly the rows you need without granting Viewer or
+              Editor access.</div>
           </a>
-          <a href="google-sheets-to-pdf-email.html" style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Convert Google Sheets Rows to PDF and Email Them</div>
-            <div style="font-size:0.8125rem; color:#64748b;">Generate a clean PDF from selected rows and send it as an attachment.</div>
+          <a href="google-sheets-to-pdf-email.html"
+            style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;"
+            onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
+            onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Convert Google Sheets Rows to
+              PDF and Email Them</div>
+            <div style="font-size:0.8125rem; color:#64748b;">Generate a clean PDF from selected rows and send it as an
+              attachment.</div>
           </a>
-          <a href="google-sheets-email-notification-apps-script-vs-addons.html" style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">Google Sheets Email Notifications: Apps Script vs Add-ons Compared</div>
-            <div style="font-size:0.8125rem; color:#64748b;">A practical comparison covering setup time, maintenance, and features.</div>
+          <a href="google-sheets-email-notification-apps-script-vs-addons.html"
+            style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;"
+            onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
+            onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">Google Sheets Email Notifications:
+              Apps Script vs Add-ons Compared</div>
+            <div style="font-size:0.8125rem; color:#64748b;">A practical comparison covering setup time, maintenance,
+              and features.</div>
           </a>
         </div>
       </div>
@@ -249,4 +545,5 @@
   }
   </script>
 </body>
+
 </html>

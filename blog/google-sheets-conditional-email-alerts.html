@@ -1,71 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="icon" type="image/png" href="../Clear Approve 128.png" />
   <link rel="canonical" href="https://www.aayu-tech.com/blog/google-sheets-conditional-email-alerts.html" />
   <title>How to Set Up Conditional Email Alerts in Google Sheets — Clear Approve</title>
-  <meta name="description" content="Learn how to set up conditional email alerts in Google Sheets. Get notified when a cell equals a value, drops below a threshold, or contains specific text." />
+  <meta name="description"
+    content="Learn how to set up conditional email alerts in Google Sheets. Get notified when a cell equals a value, drops below a threshold, or contains specific text." />
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Clear Approve" />
   <meta property="og:title" content="How to Set Up Conditional Email Alerts in Google Sheets" />
-  <meta property="og:description" content="Set up conditional email alerts in Google Sheets — get notified when cells match specific values, thresholds, or text patterns. No coding required." />
+  <meta property="og:description"
+    content="Set up conditional email alerts in Google Sheets — get notified when cells match specific values, thresholds, or text patterns. No coding required." />
   <meta property="og:url" content="https://www.aayu-tech.com/blog/google-sheets-conditional-email-alerts.html" />
-  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20Approve%20Logo.png" />
+  <meta property="og:image" content="https://www.aayu-tech.com/Clear%20approve%20Updated%20Banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="How to Set Up Conditional Email Alerts in Google Sheets" />
-  <meta name="twitter:description" content="Set up conditional email alerts in Google Sheets — get notified when cells match specific values, thresholds, or text patterns. No coding required." />
+  <meta name="twitter:description"
+    content="Set up conditional email alerts in Google Sheets — get notified when cells match specific values, thresholds, or text patterns. No coding required." />
+  <meta name="twitter:image" content="https://www.aayu-tech.com/Clear%20approve%20Updated%20Banner.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+    rel="stylesheet" />
   <style>
-    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --text: #1e293b; --text-muted: #64748b; --bg: #f8fafc; --surface: #ffffff; --border: #e2e8f0; --radius: 16px; --radius-sm: 10px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05); }
-    * { box-sizing: border-box; }
-    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.7; margin: 0; padding: 0; background: var(--bg); -webkit-font-smoothing: antialiased; }
-    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-    .nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
-    .nav .container { display: flex; align-items: center; gap: 12px; max-width: 960px; }
-    .nav a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
-    .nav a:hover { color: var(--primary); }
-    .nav-logo { width: 36px; height: 36px; border-radius: 8px; display: block; }
-    .nav-links { margin-left: auto; display: flex; gap: 24px; }
-    .nav-links a { font-size: 0.9375rem; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--primary); }
-    article { padding: 56px 0 64px; }
-    article h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 700; color: var(--text); margin: 0 0 12px; letter-spacing: -0.02em; line-height: 1.25; }
-    .post-meta { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 32px; }
-    .post-tag { display: inline-block; padding: 3px 10px; background: rgba(37,99,235,0.08); color: var(--primary); font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin-right: 6px; }
-    article h2 { font-size: 1.375rem; font-weight: 600; color: var(--text); margin: 40px 0 16px; line-height: 1.3; }
-    article h3 { font-size: 1.125rem; font-weight: 600; color: var(--text); margin: 32px 0 12px; }
-    article p { margin: 0 0 16px; font-size: 1rem; }
-    article ul, article ol { margin: 0 0 20px; padding-left: 1.5rem; }
-    article li { margin-bottom: 8px; font-size: 1rem; }
-    .step-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 16px 0; }
-    .step-box h3 { margin: 0 0 8px; font-size: 1rem; }
-    .step-box p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); }
-    .cta-box { background: rgba(37,99,235,0.06); border: 1px solid rgba(37,99,235,0.15); border-radius: var(--radius); padding: 28px 32px; margin: 40px 0; text-align: center; }
-    .cta-box h3 { margin: 0 0 8px; font-size: 1.125rem; color: var(--text); }
-    .cta-box p { margin: 0 0 16px; font-size: 0.9375rem; color: var(--text-muted); }
-    .cta-btn { display: inline-block; padding: 12px 28px; background: var(--primary); color: #fff; font-size: 0.9375rem; font-weight: 600; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s ease; }
-    .cta-btn:hover { background: var(--primary-dark); }
-    .comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 0.9375rem; }
-    .comparison-table th { background: var(--primary); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; }
-    .comparison-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
-    .comparison-table tr:nth-child(even) td { background: rgba(37,99,235,0.03); }
-    .back-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 32px; padding: 10px 16px; background: var(--surface); color: var(--primary); font-size: 0.9375rem; font-weight: 500; border-radius: var(--radius-sm); border: 1px solid var(--border); text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease; }
-    .back-link:hover { background: rgba(37,99,235,0.06); border-color: var(--primary); }
-    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); background: var(--surface); }
-    footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; }
-    footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
-    footer a:hover { color: var(--primary); }
-    footer .copy { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 960px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    article {
+      padding: 56px 0 64px;
+    }
+
+    article h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .post-meta {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .post-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 999px;
+      margin-right: 6px;
+    }
+
+    article h2 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 40px 0 16px;
+      line-height: 1.3;
+    }
+
+    article h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 32px 0 12px;
+    }
+
+    article p {
+      margin: 0 0 16px;
+      font-size: 1rem;
+    }
+
+    article ul,
+    article ol {
+      margin: 0 0 20px;
+      padding-left: 1.5rem;
+    }
+
+    article li {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .step-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+
+    .step-box h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .step-box p {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .cta-box {
+      background: rgba(37, 99, 235, 0.06);
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .cta-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.125rem;
+      color: var(--text);
+    }
+
+    .cta-box p {
+      margin: 0 0 16px;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 28px;
+      font-size: 0.9375rem;
+    }
+
+    .comparison-table th {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .comparison-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table tr:nth-child(even) td {
+      background: rgba(37, 99, 235, 0.03);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 32px;
+      padding: 10px 16px;
+      background: var(--surface);
+      color: var(--primary);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.06);
+      border-color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    footer .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    footer .copy {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
   </style>
 </head>
+
 <body>
   <nav class="nav">
     <div class="container" style="max-width:960px;">
@@ -88,153 +333,249 @@
         Feb 10, 2026 &middot; 5 min read
       </div>
 
-      <p>You have a Google Sheet tracking orders, project tasks, or inventory levels. You want to be notified by email when something specific happens: a status column changes to "Overdue," inventory drops below 10 units, or a deal stage contains the word "Won." Instead of checking the spreadsheet every hour, you want the spreadsheet to tell you when a condition is met.</p>
+      <p>You have a Google Sheet tracking orders, project tasks, or inventory levels. You want to be notified by email
+        when something specific happens: a status column changes to "Overdue," inventory drops below 10 units, or a deal
+        stage contains the word "Won." Instead of checking the spreadsheet every hour, you want the spreadsheet to tell
+        you when a condition is met.</p>
 
-      <p>This is a conditional email alert, and it is one of the most requested automations for Google Sheets. In this guide, we will cover the different ways to set up conditional email alerts, from the built-in notification system to custom Apps Script code to a no-code approach using Clear Approve's Smart Trigger.</p>
+      <p>This is a conditional email alert, and it is one of the most requested automations for Google Sheets. In this
+        guide, we will cover the different ways to set up conditional email alerts, from the built-in notification
+        system to custom Apps Script code to a no-code approach using Clear Approve's Smart Trigger.</p>
 
       <h2>Why Conditional Alerts Matter</h2>
 
-      <p>Spreadsheets are passive tools. They store data, but they do not proactively tell you when something important changes. That means someone on your team has to be the one checking — scanning rows, looking for the thing that needs attention right now.</p>
+      <p>Spreadsheets are passive tools. They store data, but they do not proactively tell you when something important
+        changes. That means someone on your team has to be the one checking — scanning rows, looking for the thing that
+        needs attention right now.</p>
 
       <p>This creates real problems in practice:</p>
 
       <ul>
-        <li><strong>Delayed action.</strong> An expense request sits at "Pending" for two days because the approver did not notice it. A low-stock item goes unordered because nobody checked the inventory tab until the weekly meeting.</li>
-        <li><strong>Missed transitions.</strong> A project task changed from "In Progress" to "Blocked" three days ago, but the project manager only sees it during the next status review. Three days of potential unblocking time, wasted.</li>
-        <li><strong>Alert fatigue from broad notifications.</strong> Google Sheets does offer basic notification rules, but they notify you on every edit, not just the ones that matter. After the tenth "someone edited your spreadsheet" email in a day, most people turn them off entirely.</li>
-        <li><strong>Manual workarounds.</strong> Teams resort to Slack messages, verbal check-ins, or calendar reminders to compensate for the lack of smart notifications. These workarounds are fragile and do not scale.</li>
+        <li><strong>Delayed action.</strong> An expense request sits at "Pending" for two days because the approver did
+          not notice it. A low-stock item goes unordered because nobody checked the inventory tab until the weekly
+          meeting.</li>
+        <li><strong>Missed transitions.</strong> A project task changed from "In Progress" to "Blocked" three days ago,
+          but the project manager only sees it during the next status review. Three days of potential unblocking time,
+          wasted.</li>
+        <li><strong>Alert fatigue from broad notifications.</strong> Google Sheets does offer basic notification rules,
+          but they notify you on every edit, not just the ones that matter. After the tenth "someone edited your
+          spreadsheet" email in a day, most people turn them off entirely.</li>
+        <li><strong>Manual workarounds.</strong> Teams resort to Slack messages, verbal check-ins, or calendar reminders
+          to compensate for the lack of smart notifications. These workarounds are fragile and do not scale.</li>
       </ul>
 
-      <p>What you need is a system that watches for a specific condition and only sends a notification when that condition is met. Not "any change was made," but "this column now equals this value in this row."</p>
+      <p>What you need is a system that watches for a specific condition and only sends a notification when that
+        condition is met. Not "any change was made," but "this column now equals this value in this row."</p>
 
       <h2>Option 1: Built-in Google Sheets Notification Rules</h2>
 
-      <p>Google Sheets has a basic notification feature under <strong>Tools &gt; Notification settings</strong>. It lets you receive an email when "any changes are made" or "a user submits a form." You can choose to be notified immediately or as a daily digest.</p>
+      <p>Google Sheets has a basic notification feature under <strong>Tools &gt; Notification settings</strong>. It lets
+        you receive an email when "any changes are made" or "a user submits a form." You can choose to be notified
+        immediately or as a daily digest.</p>
 
-      <p>The limitation is significant: there are no conditions. You cannot say "notify me when Column D equals Overdue." You cannot filter by column, value, or data type. You will receive a notification for every single edit in the spreadsheet, whether it is a formatting change, a typo fix, or the critical status update you actually care about. For most teams, this creates more noise than value.</p>
+      <p>The limitation is significant: there are no conditions. You cannot say "notify me when Column D equals
+        Overdue." You cannot filter by column, value, or data type. You will receive a notification for every single
+        edit in the spreadsheet, whether it is a formatting change, a typo fix, or the critical status update you
+        actually care about. For most teams, this creates more noise than value.</p>
 
       <h2>Option 2: Apps Script with onEdit and MailApp</h2>
 
-      <p>The traditional technical solution is to write a Google Apps Script that uses an installable <code>onEdit</code> trigger. The script checks which cell was edited, evaluates whether the new value meets your condition, and sends an email using <code>MailApp.sendEmail()</code> if it does.</p>
+      <p>The traditional technical solution is to write a Google Apps Script that uses an installable
+        <code>onEdit</code> trigger. The script checks which cell was edited, evaluates whether the new value meets your
+        condition, and sends an email using <code>MailApp.sendEmail()</code> if it does.</p>
 
       <p>This approach is fully functional, and many teams use it. However, it comes with real trade-offs:</p>
 
       <ul>
-        <li><strong>JavaScript knowledge required.</strong> You need to be comfortable writing and debugging code in the Apps Script editor.</li>
-        <li><strong>Duplicate prevention is your responsibility.</strong> Without explicit tracking logic, the same cell change can trigger multiple emails if the row is edited again for unrelated reasons.</li>
-        <li><strong>HTML email formatting is manual.</strong> If you want the notification to include row data in a readable format, you have to build HTML tables by hand in your script.</li>
-        <li><strong>Maintenance burden.</strong> If someone renames a column, inserts a new one, or changes the sheet structure, the script can silently break. There are no built-in alerts when your trigger stops working.</li>
-        <li><strong>Non-technical users cannot modify it.</strong> Once the script is written, only someone comfortable with code can change the condition, the watched column, or the recipient list.</li>
+        <li><strong>JavaScript knowledge required.</strong> You need to be comfortable writing and debugging code in the
+          Apps Script editor.</li>
+        <li><strong>Duplicate prevention is your responsibility.</strong> Without explicit tracking logic, the same cell
+          change can trigger multiple emails if the row is edited again for unrelated reasons.</li>
+        <li><strong>HTML email formatting is manual.</strong> If you want the notification to include row data in a
+          readable format, you have to build HTML tables by hand in your script.</li>
+        <li><strong>Maintenance burden.</strong> If someone renames a column, inserts a new one, or changes the sheet
+          structure, the script can silently break. There are no built-in alerts when your trigger stops working.</li>
+        <li><strong>Non-technical users cannot modify it.</strong> Once the script is written, only someone comfortable
+          with code can change the condition, the watched column, or the recipient list.</li>
       </ul>
 
-      <p>Apps Script is a solid choice if you have a developer on the team and need highly custom logic. For standard conditional alerts, there is a faster path.</p>
+      <p>Apps Script is a solid choice if you have a developer on the team and need highly custom logic. For standard
+        conditional alerts, there is a faster path.</p>
 
       <h2>Option 3: No-Code Conditional Alerts with Clear Approve</h2>
 
-      <p>Clear Approve is a Google Sheets add-on with a Smart Trigger feature built specifically for conditional email alerts. You configure everything through a sidebar — no code, no script editor, no JavaScript. Here is how to set it up.</p>
+      <p>Clear Approve is a Google Sheets add-on with a Smart Trigger feature built specifically for conditional email
+        alerts. You configure everything through a sidebar — no code, no script editor, no JavaScript. Here is how to
+        set it up.</p>
 
       <div class="step-box">
         <h3>Step 1: Install Clear Approve</h3>
-        <p>Go to the <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428" style="color: var(--primary);">Google Workspace Marketplace</a> and install Clear Approve. It works with any Google Sheet in your account.</p>
+        <p>Go to the <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428"
+            style="color: var(--primary);">Google Workspace Marketplace</a> and install Clear Approve. It works with any
+          Google Sheet in your account.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 2: Open the Trigger Tab</h3>
-        <p>In your spreadsheet, go to <strong>Extensions &gt; Clear Approve &gt; Open</strong>. When the sidebar appears, switch to the <strong>Trigger</strong> tab at the top.</p>
+        <p>In your spreadsheet, go to <strong>Extensions &gt; Clear Approve &gt; Open</strong>. When the sidebar
+          appears, switch to the <strong>Trigger</strong> tab at the top.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 3: Select the Column to Watch</h3>
-        <p>Choose the column that contains the values you want to monitor. This is the column where edits will be evaluated against your condition.</p>
+        <p>Choose the column that contains the values you want to monitor. This is the column where edits will be
+          evaluated against your condition.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 4: Choose an Operator and Set the Value</h3>
-        <p>Pick one of the five available operators: <strong>equals</strong>, <strong>does not equal</strong>, <strong>contains</strong>, <strong>greater than</strong>, or <strong>less than</strong>. Then enter the trigger value. For example, set the operator to "less than" and the value to "10" for a low-stock alert.</p>
+        <p>Pick one of the five available operators: <strong>equals</strong>, <strong>does not equal</strong>,
+          <strong>contains</strong>, <strong>greater than</strong>, or <strong>less than</strong>. Then enter the
+          trigger value. For example, set the operator to "less than" and the value to "10" for a low-stock alert.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 5: Define the Row Range and Recipient</h3>
-        <p>Specify which rows the trigger should monitor (e.g., rows 2 through 200) and enter the email address that should receive the alert. You can add multiple recipients separated by commas.</p>
+        <p>Specify which rows the trigger should monitor (e.g., rows 2 through 200) and enter the email address that
+          should receive the alert. You can add multiple recipients separated by commas.</p>
       </div>
 
       <div class="step-box">
         <h3>Step 6: Save</h3>
-        <p>Click <strong>Save</strong>. Clear Approve installs an edit-based trigger that runs in the background. From this point on, any qualifying cell change sends an email automatically.</p>
+        <p>Click <strong>Save</strong>. Clear Approve installs an edit-based trigger that runs in the background. From
+          this point on, any qualifying cell change sends an email automatically.</p>
       </div>
 
       <h2>The Five Operators Explained</h2>
 
-      <p>Clear Approve's Smart Trigger supports five conditional operators. Each one opens up different use cases depending on the type of data you are monitoring.</p>
+      <p>Clear Approve's Smart Trigger supports five conditional operators. Each one opens up different use cases
+        depending on the type of data you are monitoring.</p>
 
       <h3>Equals</h3>
-      <p>The trigger fires when a cell's new value exactly matches the specified text or number. This is the most common operator for status-based workflows. For example, set the watched column to your "Status" column and the value to "Approved." When a manager changes any row's status to "Approved," the requester gets an email with the full row details. Other status values like "Pending" or "In Review" are ignored.</p>
+      <p>The trigger fires when a cell's new value exactly matches the specified text or number. This is the most common
+        operator for status-based workflows. For example, set the watched column to your "Status" column and the value
+        to "Approved." When a manager changes any row's status to "Approved," the requester gets an email with the full
+        row details. Other status values like "Pending" or "In Review" are ignored.</p>
 
       <h3>Does Not Equal</h3>
-      <p>The trigger fires when a cell changes to any value that does not match the specified text. This is useful for filtering out low-priority items. For instance, if your task tracker has a Priority column and you set the condition to does not equal "Low," you will receive an alert whenever a task is created or updated with Medium, High, or Critical priority. Low-priority items will not generate notifications.</p>
+      <p>The trigger fires when a cell changes to any value that does not match the specified text. This is useful for
+        filtering out low-priority items. For instance, if your task tracker has a Priority column and you set the
+        condition to does not equal "Low," you will receive an alert whenever a task is created or updated with Medium,
+        High, or Critical priority. Low-priority items will not generate notifications.</p>
 
       <h3>Contains</h3>
-      <p>The trigger fires when a cell's value includes the specified text anywhere within it. This operator is ideal for free-text fields where exact matching would be too rigid. For example, set the watched column to "Notes" and the value to "urgent." Whether someone types "urgent fix needed," "URGENT," or "This is urgent — please review," the trigger fires. It performs a case-insensitive partial match, so you do not need to worry about exact formatting.</p>
+      <p>The trigger fires when a cell's value includes the specified text anywhere within it. This operator is ideal
+        for free-text fields where exact matching would be too rigid. For example, set the watched column to "Notes" and
+        the value to "urgent." Whether someone types "urgent fix needed," "URGENT," or "This is urgent — please review,"
+        the trigger fires. It performs a case-insensitive partial match, so you do not need to worry about exact
+        formatting.</p>
 
       <h3>Greater Than</h3>
-      <p>The trigger fires when a cell's numeric value exceeds the specified threshold. This is essential for monitoring financial data and large transactions. Set the watched column to "Amount" and the value to "10000." When a new invoice or transaction exceeds $10,000, the finance team receives an alert with the full row — vendor name, amount, date, and any other columns in the sheet. Amounts at or below $10,000 do not trigger a notification.</p>
+      <p>The trigger fires when a cell's numeric value exceeds the specified threshold. This is essential for monitoring
+        financial data and large transactions. Set the watched column to "Amount" and the value to "10000." When a new
+        invoice or transaction exceeds $10,000, the finance team receives an alert with the full row — vendor name,
+        amount, date, and any other columns in the sheet. Amounts at or below $10,000 do not trigger a notification.</p>
 
       <h3>Less Than</h3>
-      <p>The trigger fires when a cell's numeric value drops below the specified threshold. This is the go-to operator for inventory management and SLA monitoring. Set the watched column to "Stock Quantity" and the value to "5." When someone logs a sale or adjustment that brings a product's stock below 5 units, the purchasing manager gets an immediate email with the product details and current quantity.</p>
+      <p>The trigger fires when a cell's numeric value drops below the specified threshold. This is the go-to operator
+        for inventory management and SLA monitoring. Set the watched column to "Stock Quantity" and the value to "5."
+        When someone logs a sale or adjustment that brings a product's stock below 5 units, the purchasing manager gets
+        an immediate email with the product details and current quantity.</p>
 
       <h2>Built-in Duplicate Prevention</h2>
 
-      <p>One of the most common problems with conditional email alerts is duplicate notifications. A naive implementation sends an email every time a row is edited, even if the value that triggered the alert has not changed. If someone fixes a typo in a different column on the same row, the alert fires again. Over time, this creates a flood of redundant emails that erode trust in the system.</p>
+      <p>One of the most common problems with conditional email alerts is duplicate notifications. A naive
+        implementation sends an email every time a row is edited, even if the value that triggered the alert has not
+        changed. If someone fixes a typo in a different column on the same row, the alert fires again. Over time, this
+        creates a flood of redundant emails that erode trust in the system.</p>
 
-      <p>Clear Approve handles this with smart duplicate prevention. The system tracks which rows have already fired for a given value transition. If a row's watched column already equals "Approved" and someone edits the description column on that same row, no email is sent. The trigger only fires on the actual value transition in the watched column.</p>
+      <p>Clear Approve handles this with smart duplicate prevention. The system tracks which rows have already fired for
+        a given value transition. If a row's watched column already equals "Approved" and someone edits the description
+        column on that same row, no email is sent. The trigger only fires on the actual value transition in the watched
+        column.</p>
 
-      <p>There is an important nuance here: if the value reverts and then transitions back, the trigger does fire again. Say a row changes from "Approved" to "Pending Review" (perhaps the item was sent back for revisions) and later changes back to "Approved." The second transition to "Approved" generates a new notification, because it represents a genuine workflow event. This design handles real-world workflows where items cycle through states multiple times.</p>
+      <p>There is an important nuance here: if the value reverts and then transitions back, the trigger does fire again.
+        Say a row changes from "Approved" to "Pending Review" (perhaps the item was sent back for revisions) and later
+        changes back to "Approved." The second transition to "Approved" generates a new notification, because it
+        represents a genuine workflow event. This design handles real-world workflows where items cycle through states
+        multiple times.</p>
 
       <h2>Sending to Multiple Recipients</h2>
 
-      <p>You are not limited to a single recipient. In the email field, you can enter multiple addresses separated by commas. All recipients receive the same alert with the same row snapshot. This is useful when multiple stakeholders need to be informed of the same event — for example, both the account manager and the fulfillment team when an order status changes to "Ready to Ship."</p>
+      <p>You are not limited to a single recipient. In the email field, you can enter multiple addresses separated by
+        commas. All recipients receive the same alert with the same row snapshot. This is useful when multiple
+        stakeholders need to be informed of the same event — for example, both the account manager and the fulfillment
+        team when an order status changes to "Ready to Ship."</p>
 
       <h2>Real-World Use Cases</h2>
 
       <h3>Inventory Management</h3>
-      <p>A retail operations team tracks product stock levels in Google Sheets. Using the less than operator with a threshold of 10, the purchasing manager receives an alert the moment any product drops below reorder level. The email contains the product name, SKU, current quantity, and supplier — everything needed to place a reorder without opening the spreadsheet.</p>
+      <p>A retail operations team tracks product stock levels in Google Sheets. Using the less than operator with a
+        threshold of 10, the purchasing manager receives an alert the moment any product drops below reorder level. The
+        email contains the product name, SKU, current quantity, and supplier — everything needed to place a reorder
+        without opening the spreadsheet.</p>
 
       <h3>Project Status Tracking</h3>
-      <p>A project coordinator uses a shared spreadsheet to track deliverables. With the equals operator set to "Blocked," the project lead gets an immediate alert when any task hits a blocker. Instead of waiting for the weekly standup to learn about obstacles, they can intervene the same day.</p>
+      <p>A project coordinator uses a shared spreadsheet to track deliverables. With the equals operator set to
+        "Blocked," the project lead gets an immediate alert when any task hits a blocker. Instead of waiting for the
+        weekly standup to learn about obstacles, they can intervene the same day.</p>
 
       <h3>Sales Pipeline Alerts</h3>
-      <p>A sales team tracks deals in a Google Sheet with a "Stage" column. Using the contains operator with the value "Won," the sales director and onboarding team receive an alert when any deal is marked as "Closed Won" or "Won - Pending Contract." The alert includes the client name, deal value, and expected close date, enabling an immediate handoff from sales to delivery.</p>
+      <p>A sales team tracks deals in a Google Sheet with a "Stage" column. Using the contains operator with the value
+        "Won," the sales director and onboarding team receive an alert when any deal is marked as "Closed Won" or "Won -
+        Pending Contract." The alert includes the client name, deal value, and expected close date, enabling an
+        immediate handoff from sales to delivery.</p>
 
       <h3>Expense Approval Workflows</h3>
-      <p>A finance team uses a spreadsheet for expense submissions. Using the greater than operator with a value of 5000, the CFO receives an alert for any expense request exceeding $5,000. Lower amounts go through the standard approval flow, but high-value requests get immediate visibility at the executive level.</p>
+      <p>A finance team uses a spreadsheet for expense submissions. Using the greater than operator with a value of
+        5000, the CFO receives an alert for any expense request exceeding $5,000. Lower amounts go through the standard
+        approval flow, but high-value requests get immediate visibility at the executive level.</p>
 
       <h3>SLA and Deadline Monitoring</h3>
-      <p>A support team tracks ticket resolution status. Using the equals operator with the value "Overdue," the team lead receives an instant notification when any ticket breaches its SLA. The email includes the ticket ID, customer name, priority level, and due date, enabling fast escalation before the situation worsens.</p>
+      <p>A support team tracks ticket resolution status. Using the equals operator with the value "Overdue," the team
+        lead receives an instant notification when any ticket breaches its SLA. The email includes the ticket ID,
+        customer name, priority level, and due date, enabling fast escalation before the situation worsens.</p>
 
       <h2>Getting Started</h2>
 
-      <p>Conditional email alerts transform Google Sheets from a passive data store into an active notification system. Instead of relying on manual checks or generic "something changed" notifications, you define the exact conditions that matter to your workflow and receive targeted alerts only when those conditions are met.</p>
+      <p>Conditional email alerts transform Google Sheets from a passive data store into an active notification system.
+        Instead of relying on manual checks or generic "something changed" notifications, you define the exact
+        conditions that matter to your workflow and receive targeted alerts only when those conditions are met.</p>
 
-      <p>With Clear Approve's Smart Trigger, the entire setup takes under two minutes. Pick your column, choose an operator, set the value, enter the recipient, and save. The spreadsheet handles the rest.</p>
+      <p>With Clear Approve's Smart Trigger, the entire setup takes under two minutes. Pick your column, choose an
+        operator, set the value, enter the recipient, and save. The spreadsheet handles the rest.</p>
 
       <div class="cta-box">
         <h3>Try Clear Approve Free</h3>
         <p>Install the add-on and send your first snapshot in under a minute.</p>
-        <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428" class="cta-btn">Install from Google Workspace Marketplace</a>
+        <a href="https://workspace.google.com/marketplace/app/clear_approve/61311016428" class="cta-btn">Install from
+          Google Workspace Marketplace</a>
       </div>
       <div style="margin-top:48px; padding-top:32px; border-top:1px solid #e2e8f0;">
         <h2 style="font-size:1.125rem; font-weight:600; margin:0 0 16px;">Related Posts</h2>
         <div style="display:flex; flex-direction:column; gap:12px;">
-          <a href="auto-send-email-when-cell-value-changes-google-sheets.html" style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Auto-Send an Email When a Cell Value Changes in Google Sheets</div>
+          <a href="auto-send-email-when-cell-value-changes-google-sheets.html"
+            style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;"
+            onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
+            onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Auto-Send an Email When a Cell
+              Value Changes in Google Sheets</div>
             <div style="font-size:0.8125rem; color:#64748b;">Watch a column for changes and auto-email a snapshot.</div>
           </a>
-          <a href="schedule-email-reports-google-sheets.html" style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Schedule Automated Email Reports from Google Sheets</div>
+          <a href="schedule-email-reports-google-sheets.html"
+            style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;"
+            onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
+            onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">How to Schedule Automated Email
+              Reports from Google Sheets</div>
             <div style="font-size:0.8125rem; color:#64748b;">Set up daily, weekly, or monthly automated reports.</div>
           </a>
-          <a href="automated-reports-google-sheets.html" style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">5 Ways to Send Automated Reports from Google Sheets</div>
+          <a href="automated-reports-google-sheets.html"
+            style="display:block; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#1e293b; transition:border-color 0.2s, box-shadow 0.2s;"
+            onmouseover="this.style.borderColor='rgba(37,99,235,0.3)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
+            onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+            <div style="font-weight:600; font-size:0.9375rem; margin-bottom:4px;">5 Ways to Send Automated Reports from
+              Google Sheets</div>
             <div style="font-size:0.8125rem; color:#64748b;">Compare Apps Script, Zapier, add-ons, and more.</div>
           </a>
         </div>
@@ -278,4 +619,5 @@
   }
   </script>
 </body>
+
 </html>
